@@ -56,7 +56,7 @@ router.post('/:fid', auth,async(req, res) => {
 
     let update = new Update(req.body);
     const id = mongoose.Types.ObjectId(req.params.fid);
-    const task = Fawn.Task();
+    const task = new Fawn.Task();
     try{
         task.save('updates',update)
         .update('fundraisers',{_id:id},{$push: {updates:{$each:[update._id], $sort:-1}}})

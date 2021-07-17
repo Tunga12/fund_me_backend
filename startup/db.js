@@ -1,7 +1,7 @@
 const winston = require('winston');
 const mongoose = require('mongoose');
 const config = require('config');
-const Fawn = require('fawn');
+//const Fawn = require('fawn');
 
 module.exports = function(){
     const db = config.get('db');
@@ -14,6 +14,6 @@ module.exports = function(){
     .then(() => winston.info('Connected to the database...'))
     .catch((err) => console.error('Error',err));
 
-    Fawn.init(db);
+    //Fawn.init(db);
     
 }
