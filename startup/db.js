@@ -6,6 +6,7 @@ const Fawn = require('fawn');
 module.exports = function(){
     const db = config.get('db');
 	mongoose.connect(db,{
+        useMongoClient: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
