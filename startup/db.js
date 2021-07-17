@@ -14,6 +14,6 @@ module.exports = function(){
     .then(() => winston.info('Connected to the database...'))
     .catch((err) => console.error('Error',err));
 
-    //Fawn.init(db);
+    Fawn.init(mongoose);
     
 }

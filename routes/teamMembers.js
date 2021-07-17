@@ -5,7 +5,7 @@ const {TeamMember,validate} = require('../models/teamMember');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const Fawn = require('fawn');
-Fawn.init(mongoose);
+//Fawn.init(mongoose);
 const router = express();
 
 // Get all members (for admin)
