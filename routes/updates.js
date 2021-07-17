@@ -8,7 +8,7 @@ const admin = require('../middleware/admin');
 
 const router = express();
 
-// Get all updates of all fundraisers for admin
+// Get all updates of all fundraisers (for admin)
 router.get('/', [auth,admin],async(req,res) => {
     const updates = await Update.find()
     .sort('-dateCreated');
@@ -39,7 +39,7 @@ router.get('/:id', async(req, res) => {
 //     res.send(updates);
 // });
 
-// Return all updates done by a single member
+// Return all updates done by one user
 router.get('/member/:uid', async(req,res) => {
     const updates = await Update
     .find({userId: req.params.uid, isDeleted: false})
@@ -83,7 +83,7 @@ router.put('/:id', auth,async(req, res) => {
     res.send(update);
 });
 
-// Delete fundraiser
+// Delete an update
 router.delete('/:id',auth,async(req, res) => {
     const update = await Update.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
     

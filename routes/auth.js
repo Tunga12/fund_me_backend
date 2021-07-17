@@ -4,7 +4,7 @@ const router = express();
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 
-
+// Login a user
 router.post('/', async (req,res) => {
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);

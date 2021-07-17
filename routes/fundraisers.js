@@ -82,7 +82,7 @@ router.get('/category/:cid', async(req, res) => {
     res.send(toBeSent(funds));
 });
 
-// Get fundraisers by user which may be an organizer or a team member
+// Get fundraisers by Id of organizers or by id of team members
 router.get('/user/:uid', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));

@@ -8,7 +8,7 @@ const Fawn = require('fawn');
 
 const router = express();
 
-// Get all members for admin
+// Get all members (for admin)
 router.get('/',[auth,admin], async(req,res) => {
     const members = await TeamMember
     .find().sort('-_id');

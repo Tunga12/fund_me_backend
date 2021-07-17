@@ -8,7 +8,7 @@ const admin = require('../middleware/admin');
 
 const router = express();
 
-// Get all updates of all fundraisers
+// Get all donations (for admin)
 router.get('/', [auth,admin],async(req,res) => {
     const donations = await Donation.find()
     .sort('-date');
@@ -69,7 +69,7 @@ router.post('/:fid', auth,async(req, res) => {
       }
 });
 
-// Update an donation of a fundraiser
+// Update an donation 
 router.put('/:id',auth,async(req, res) => {
     req.body.userId = req.user._id;
 	const {error} = validate(req.body);
