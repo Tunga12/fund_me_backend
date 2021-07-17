@@ -1,5 +1,5 @@
 
-const Joi = require('Joi');
+const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
