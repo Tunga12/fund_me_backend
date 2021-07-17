@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const Fawn = require('fawn');
 const mongoose = require('mongoose');
 const admin = require('../middleware/admin');
-
+Fawn.init(mongoose);
 const router = express();
 
 // Get all donations (for admin)

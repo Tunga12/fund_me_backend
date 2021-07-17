@@ -2,7 +2,6 @@ const _ = require('lodash');
 const express = require('express');
 const {Fundraiser,validate,getPagination} = require('../models/fundraiser');
 const auth = require('../middleware/auth');
-const Fawn = require('fawn');
 const admin = require('../middleware/admin');
 
 const router = express();
