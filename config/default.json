@@ -1,4 +1,4 @@
 {
 	"jwtPrivateKey": "crowd_jwtPrivateKey",
-	"db": "mongodb://localhost/crowd"
+	"db": "mongodb://localhost:27017/crowd"
 }
