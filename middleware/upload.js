@@ -4,10 +4,10 @@ const storage = multer.diskStorage({
         cb(null, './uploads')
     },
     filename: function(req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname)
+        cb(null, new Date().toISOString()+ file.originalname)
     }
 });
-
+//replace(/:/g, '-') 
 const fileFilter = (req, file, cb) => {
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png'){
         cb(null, true);
