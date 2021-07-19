@@ -12,11 +12,8 @@ const fileFilter = (req, file, cb) => {
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png'){
         cb(null, true);
     }else{
-        try{
          cb(null, false);
-        }catch(e){
         req.im= "Invalid image format";
-        }
     }
 }
 
