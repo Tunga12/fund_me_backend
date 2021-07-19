@@ -147,3 +147,24 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-07-17T00:27:39.789Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-17T01:17:22.216Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-07-17T01:17:23.763Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T10:35:31.502Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T10:35:32.590Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T10:41:51.506Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T10:41:51.548Z"}
+{"message":"ENOENT: no such file or directory, open 'C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:06:46.871Zundefined'","stack":"Error: ENOENT: no such file or directory, open 'C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:06:46.871Zundefined'","errno":-4058,"code":"ENOENT","syscall":"open","path":"C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:06:46.871Zundefined","storageErrors":[],"level":"error","timestamp":"2021-07-19T11:06:46.923Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:12:09.986Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:12:10.032Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:13:10.234Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:13:10.274Z"}
+{"message":"ENOENT: no such file or directory, open 'C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:13:24.394ZAvatar.png'","stack":"Error: ENOENT: no such file or directory, open 'C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:13:24.394ZAvatar.png'","errno":-4058,"code":"ENOENT","syscall":"open","path":"C:\\Users\\User\\Documents\\nodecode\\crowd\\uploads\\2021-07-19T11:13:24.394ZAvatar.png","storageErrors":[],"level":"error","timestamp":"2021-07-19T11:13:24.399Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:19:45.742Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:19:45.797Z"}
+{"message":"im is not defined","stack":"ReferenceError: im is not defined\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\image.js:8:12\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Immediate.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\multer\\lib\\make-middleware.js:53:37)\n    at processImmediate (internal/timers.js:463:21)","level":"error","timestamp":"2021-07-19T11:20:39.104Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:22:13.634Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:22:13.682Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:29:22.601Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:29:22.653Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:40:24.793Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:40:24.873Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-19T11:44:39.823Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-19T11:44:39.895Z"}

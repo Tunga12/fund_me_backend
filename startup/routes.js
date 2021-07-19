@@ -6,6 +6,7 @@ const updates = require('../routes/updates');
 const donations = require('../routes/donations');
 const teamMembers = require('../routes/teamMembers');
 const notifications = require('../routes/notifications');
+const image = require('../routes/image');
 const auth = require('../routes/auth');
 const error = require('../middleware/error');
 
@@ -18,6 +19,7 @@ module.exports = function(app){
     app.use('/api/members', teamMembers)
     app.use('/api/notifications', notifications)
 	app.use('/api/users', users);
+    app.use('/api/image', image);
     app.use('/api/auth', auth);
 	app.use(error);
 }
