@@ -16,7 +16,7 @@ router.get('/popular', async(req, res) => {
         limit:limit,
        // slice: [{path:'donations',val:1}],
         sort:'-totalRaised -dateCreated',
-        select:'title image totalRaised goalAmount donations',
+        select:'title image totalRaised goalAmount donations location',
         populate: population};
         
     const funds = await Fundraiser.paginate(query, options);

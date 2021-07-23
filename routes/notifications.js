@@ -53,8 +53,9 @@ router.post('/',auth,async(req,res) => {
 
     let notification = new Notification(req.body);
     notification = await notification.save();
-
-    res.send(notification);
+    const {sendNotification} = require('../startup/notification');
+    sendNotification(notification);
+    res.status(201).send(notification);
 });
 
 // Update a notification
@@ -78,5 +79,45 @@ router.delete('/:id',auth,async(req, res) => {
 
     res.send('Notification is deleted');
 });
+
+async function createNotification(notification) {
+    // const { error } = validateSysNotification(notification);
+    // if (error) return res.status(400).send(error.details[0].message);
+
+    const newNotification = new Notification({
+        notificationType: notification.notificationType,
+        recipients: notification.recipients,
+        title: notification.title,
+        content: notification.content,
+        target: notification.target,
+    });
+    await newNotification.save();
+
+    return newNotification;
+    // res.send(newNotification);
+}
+
+async function numOfUnreadNotification(userId){
+
+    const count = await Notification.countDocuments({
+        recipients: userId,
+        viewed: { "$ne": userId}
+    });
+
+    return count;
+}
+
+async function markAsViewed(notificationId, userId){
+    const notification = await Notification.findByIdAndUpdate(
+        notificationId,
+        { $push: { viewed: userId } },
+        { new: true }
+    );
+
+    return notification;
+ }
+
+
+
 
 module.exports = router;
