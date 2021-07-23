@@ -32,3 +32,7 @@
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-23T13:23:29.469Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-23T13:25:27.514Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T13:25:36.208Z"}
+{"level":"info","message":"Listening on port 4000...","timestamp":"2021-07-23T23:30:40.622Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T23:30:40.668Z"}
+{"level":"info","message":"Listening on port 4000...","timestamp":"2021-07-23T23:31:14.972Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T23:31:15.010Z"}
