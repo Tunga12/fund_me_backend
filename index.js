@@ -8,7 +8,7 @@ const server = http.createServer(app);
 //const io = require('socket.io')(server);
 
 module.exports.io = io;
-app.use(cors());
+app.use(cors({orgin: '*'}));
 app.use('/uploads',express.static('uploads'));
 require('./startup/logging')();
 require('./startup/routes')(app);
