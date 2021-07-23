@@ -54,7 +54,7 @@ router.post('/',auth,async(req,res) => {
     let notification = new Notification(req.body);
     notification = await notification.save();
     const {sendNotification} = require('../startup/notification');
-    sendNotification(notification);
+   // sendNotification(notification);
     res.status(201).send(notification);
 });
 
