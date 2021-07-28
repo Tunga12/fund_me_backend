@@ -1,10 +1,15 @@
 const _ = require('lodash');
 const express = require('express');
 const {Donation,validate} = require('../models/donation');
-const auth = require('../middleware/auth');
+const {Fundraiser} = require('../models/fundraiser');
+const {Notification} = require('../models/notification');
+const {User} = require('../models/user');
+const {auth} = require('../middleware/auth');
+const {newNotification} = require('../startup/connection');
 const Fawn = require('fawn');
 const mongoose = require('mongoose');
 const admin = require('../middleware/admin');
+
 //Fawn.init(mongoose);
 const router = express();
 
@@ -49,6 +54,7 @@ router.get('/donor/:uid',async(req,res) => {
 // Post a donation
 router.post('/:fid', auth,async(req, res) => {
     req.body.userId = req.user._id;
+    req.target = req.params.fid;
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
@@ -60,13 +66,31 @@ router.post('/:fid', auth,async(req, res) => {
         .update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {totalRaised: donation.amount}})
         .update('teammembers', {_id: donation.memberId}, {$inc: {hasRaised: donation.amount}})
         .run();
-
+        }catch(e){
+            console.log(e.message);
+            res.status(500).send('Something went wrong');
+        }
         res.status(201).send(donation);
+
+        const fund = await Fundraiser.findById(id);
+        var recp = [];
+        recp.push(fund.organizer);
+        const user = await User.findById(donation.userId);
+
+        const newNot = new Notification({
+            notificationType:'Donation',
+            recipients: recp,
+            title:`${fund.title}[Donation]`,
+            content: `${user.firstName} ${user.lastName} donated ${donation.amount} birr.`,
+            target: req.params.fid
+            
+        });
+      //  newNot.target =  'jkkkkkkkkkkkkkkkkkjkjkkk';
+       await newNotification(newNot);
+       // io.emit('notification',newNot);
+        
            
-      }catch(e){
-          console.log(e.message);
-          res.status(500).send('Something went wrong');
-      }
+      
 });
 
 // Update an donation 
@@ -100,5 +124,7 @@ router.delete('/:id',auth,async(req, res) => {
     //       res.status(500).send('Something went wrong');
     //   }
 });
+
+
 
 module.exports = router;

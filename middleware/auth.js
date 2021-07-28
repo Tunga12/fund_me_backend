@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-module.exports = function (req, res, next){
+function auth(req, res, next){
 	const token = req.header('x-auth-token');
 	if(!token) return res.status(401).send('Access Denied. No token provided');
 	
@@ -16,7 +16,8 @@ module.exports = function (req, res, next){
 }
 
 function authSocket(socket,next){
-	if(socket.handshake.query && socket.handshake.query.token){
+	if(socket.handshake.query && socket.handshake.query['token']){
+		const token = socket.handshake.query['token'];
 		jwt.verify(token,config.get('jwtPrivateKey'),function(err, decoded){
 			if(err){
 				console.log(err);
@@ -31,7 +32,7 @@ function authSocket(socket,next){
 	}
 }
 
-// module.exports = {
-// 	auth: auth,
-// 	authSocket: authSocket
-// }
+module.exports = {
+	auth: auth,
+	authSocket: authSocket
+}

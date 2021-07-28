@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express();
 const upload = require('../middleware/upload');
-const auth = require('../middleware/auth');
+const {auth} = require('../middleware/auth');
 
 router.use(express.urlencoded({extended :true})); 
 

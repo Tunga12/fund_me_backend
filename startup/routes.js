@@ -6,18 +6,22 @@ const updates = require('../routes/updates');
 const donations = require('../routes/donations');
 const teamMembers = require('../routes/teamMembers');
 const notifications = require('../routes/notifications');
+const payment = require('../routes/payment');
 const image = require('../routes/image');
 const auth = require('../routes/auth');
 const error = require('../middleware/error');
 
+
 module.exports = function(app){
 	app.use(express.json());
+    //app.use('/donation', status);
     app.use('/api/categories',categories);
     app.use('/api/fundraisers',fundraisers);
     app.use('/api/updates', updates)
     app.use('/api/donations', donations)
     app.use('/api/members', teamMembers)
     app.use('/api/notifications', notifications)
+    app.use('/donation', payment)
 	app.use('/api/users', users);
     app.use('/api/image', image);
     app.use('/api/auth', auth);

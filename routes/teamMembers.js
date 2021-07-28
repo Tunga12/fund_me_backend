@@ -2,7 +2,7 @@ const _ = require('lodash');
 const express = require('express');
 const mongoose = require('mongoose');
 const {TeamMember,validate} = require('../models/teamMember');
-const auth = require('../middleware/auth');
+const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const Fawn = require('fawn');
 //Fawn.init(mongoose);

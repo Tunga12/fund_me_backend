@@ -10,7 +10,7 @@ const notificationSchema  = new mongoose.Schema({
     target: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Fundraiser',
-        required: true,
+       // required: true,
     },
     notificationType: {
         type: String,
@@ -42,7 +42,7 @@ const Notification = mongoose.model('Notification', notificationSchema);
 function validateNotification(notification){
     const schema = Joi.object({
         recipients: Joi.array(),
-        target: Joi.objectId().required(),
+       // target: Joi.objectId().required(),
         notificationType: Joi.string().required(),
         title: Joi.string().required(),
         content: Joi.string().min(10).max(255).required(),
@@ -52,6 +52,53 @@ function validateNotification(notification){
 
     return schema.validate(notification);
 }
+
+async function createNotification(notification) {
+    // const { error } = validateSysNotification(notification);
+    // if (error) return res.status(400).send(error.details[0].message);
+
+    const newNotification = new Notification({
+        notificationType: notification.notificationType,
+        recipients: notification.recipients,
+        title: notification.title,
+        content: notification.content,
+        target: notification.target,
+    });
+    await newNotification.save();
+
+    return newNotification;
+    // res.send(newNotification);
+}
+
+async function numOfUnreadNotification(userId){
+
+    const count = await Notification.countDocuments({
+        recipients: userId,
+        viewed: { "$ne": userId}
+
+    });
+
+    return count;
+}
+
+async function markAsViewed(notificationId, userId){
+    const notification = await Notification.findByIdAndUpdate(
+        notificationId,
+        { $push: { viewed: userId } },
+        { new: true }
+    );
+
+    return notification;
+ }
+
+ module.exports = {
+     Notification: Notification,
+     validate: validateNotification,
+     createNotification: createNotification,
+     numOfUnreadNotification: numOfUnreadNotification,
+     markAsViewed: markAsViewed 
+
+ }
 
 module.exports.Notification = Notification;
 module.exports.validate = validateNotification;

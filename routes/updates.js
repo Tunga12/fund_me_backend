@@ -1,10 +1,13 @@
 const _ = require('lodash');
 const express = require('express');
 const {Update,validate} = require('../models/update');
-const auth = require('../middleware/auth');
+const {Fundraiser} = require('../models/fundraiser');
+const {Notification} = require('../models/notification');
+const {auth} = require('../middleware/auth');
 const Fawn = require('fawn');
 const mongoose = require('mongoose');
 const admin = require('../middleware/admin');
+const {newNotification} = require('../startup/connection');
 //Fawn.init(mongoose);
 const router = express();
 
@@ -27,17 +30,6 @@ router.get('/:id', async(req, res) => {
 
     res.send(update);
 });
-
-// Get updates by fundraiser id
-// router.get('/fundraiser/:fid', async(req, res) => {
-//     const updates = await Update.find({fundraiser: req.params.fid,isDeleted: false})
-//     .sort('-dateCreated')
-//     .select('-isDeleted')
-//     //.populate('fundraiser','title story image organizer')
-//     .populate('userId', 'firstName lastName email');
-
-//     res.send(updates);
-// });
 
 // Return all updates done by one user
 router.get('/member/:uid', async(req,res) => {
@@ -63,11 +55,29 @@ router.post('/:fid', auth,async(req, res) => {
         .run();
 
         res.status(201).send(update);
-           
-      }catch(e){
-          console.log(e.message);
-          res.status(500).send('Something went wrong');
-      }
+              
+    }catch(e){
+        console.log(e.message);
+        res.status(500).send('Something went wrong');
+    }
+
+        const fund = await Fundraiser.findById(id) .populate('donations','userId');
+        var recp = [];
+        fund.donations.forEach(donation => {
+            console.log(donation.userId);
+            recp.push(donation.userId);
+        });
+        const newNot = new Notification({
+            notificationType:'Update',
+            recipients: recp,
+            title:`${fund.title}[Update]`,
+            content: update.content,
+            target: req.params.fid
+            
+        });
+
+       await newNotification(newNot);
+     
 });
 
 // Update an update of a fundraiser

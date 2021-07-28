@@ -16,8 +16,10 @@ const donationSchema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        // get: (v) => Math.round(v),
-        // set: (v) => Math.round(v)
+    },
+    tip: {
+        type: Number,
+        required: true,
     },
     comment: {
         type: String,
@@ -39,6 +41,7 @@ function validateDonation(donation){
         userId: Joi.objectId().required(),
         memberId: Joi.objectId().required(),
         amount: Joi.number().required(),
+        tip: Joi.number().required(),
         comment: Joi.string(),
         date: Joi.date(),
         isDeleted: Joi.boolean()

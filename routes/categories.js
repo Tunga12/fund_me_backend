@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const express = require('express');
 const {Category,validate} = require('../models/category');
-const auth = require('../middleware/auth');
+const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
 const router = express();

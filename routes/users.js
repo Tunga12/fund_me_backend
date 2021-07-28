@@ -2,7 +2,7 @@ const _ = require('lodash');
 const express = require('express');
 const {User,validate} = require('../models/user');
 const bcrypt = require('bcrypt');
-const auth = require('../middleware/auth');
+const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
 const router = express();
@@ -40,7 +40,6 @@ router.post('/', async (req,res) => {
 
 // Update a user
 router.put('/me', auth, async(req, res) => {
-    req.body.userId = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
 

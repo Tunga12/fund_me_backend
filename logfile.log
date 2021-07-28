@@ -36,3 +36,419 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T23:30:40.668Z"}
 {"level":"info","message":"Listening on port 4000...","timestamp":"2021-07-23T23:31:14.972Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T23:31:15.010Z"}
+{"level":"info","message":"Listening on port 4000...","timestamp":"2021-07-23T23:32:34.599Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-23T23:32:34.661Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T14:49:57.879Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T14:49:57.967Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T14:55:12.924Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T14:55:12.980Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T14:57:14.661Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T14:57:14.715Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T14:58:35.735Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T14:58:35.782Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:01:27.100Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:01:27.156Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:02:13.902Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:02:13.952Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:02:16.095Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:09:36.955Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:09:36.992Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:09:40.619Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:11:07.273Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:11:07.313Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:11:10.132Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:12:44.802Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:12:44.841Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:12:47.094Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:14:34.469Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:14:34.507Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:14:36.409Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:29:03.026Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:29:03.060Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:29:06.607Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:29:44.479Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:29:44.516Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:29:46.508Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:31:40.702Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:31:40.744Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:31:45.951Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:32:44.354Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:32:44.388Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:32:46.285Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:34:21.192Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:34:21.224Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:34:23.722Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:35:56.699Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:35:56.739Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:36:00.984Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:37:28.843Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:37:28.878Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:37:32.507Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:39:04.081Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:39:04.113Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:39:11.782Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:39:24.576Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:41:40.455Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:44:42.183Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:45:09.739Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:45:09.778Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:45:13.462Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:50:25.369Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:50:33.285Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:50:33.388Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:51:54.106Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T15:59:02.237Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T15:59:02.271Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T15:59:09.912Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:02:03.922Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:02:03.966Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:02:13.024Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:04:16.921Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:04:16.980Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:05:18.129Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:08:39.377Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:08:39.476Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:08:41.881Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:11:18.809Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:11:18.843Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:11:27.336Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:12:59.383Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:12:59.417Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:13:01.776Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:15:16.529Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:15:16.738Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:15:23.409Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:15:47.014Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:15:47.048Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:15:49.491Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:18:31.247Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:18:31.279Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:18:35.265Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:19:26.596Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:19:26.628Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:19:28.990Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:23:12.950Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:23:12.984Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:23:51.091Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:25:22.402Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:25:22.438Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:25:24.125Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:26:49.402Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:26:49.438Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:26:51.203Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:29:15.004Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:29:15.040Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:29:16.904Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:33:05.979Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:33:06.019Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:33:09.888Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:34:12.786Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:34:12.842Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:34:15.265Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:35:18.795Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:35:18.829Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:35:21.535Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:35:48.326Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:35:48.420Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:35:50.109Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T16:38:56.194Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T16:38:56.229Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T16:38:58.344Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:27:06.925Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:27:06.975Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:27:34.187Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:30:28.886Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:30:28.920Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:30:49.009Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:33:17.512Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:33:17.547Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:33:20.111Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:34:07.139Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:34:07.172Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:34:09.108Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:35:30.187Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:35:30.223Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:35:32.512Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:36:46.794Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:36:46.871Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:36:49.391Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:37:11.255Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:37:11.288Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:37:13.485Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:42:06.448Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:42:06.481Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:42:08.697Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:43:51.080Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:43:51.115Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:43:53.777Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:52:24.356Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:52:25.000Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:54:03.488Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:56:03.246Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:56:03.316Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:56:06.779Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:56:44.952Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:56:44.986Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:56:46.773Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:57:28.002Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:57:28.073Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:57:29.617Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T17:58:04.469Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T17:58:04.509Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T17:58:07.184Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:11:53.518Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:11:53.551Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:11:58.687Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:20:00.229Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:20:00.271Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:20:03.058Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:21:24.400Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:21:24.431Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:21:26.222Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:25:17.080Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:25:17.116Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:25:18.822Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:27:31.258Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:27:31.303Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:28:01.342Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:32:21.094Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:32:21.127Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:32:25.037Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:41:53.392Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:41:53.682Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:42:00.238Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:44:07.750Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:44:07.784Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:44:10.289Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:45:15.574Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:45:15.606Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:45:28.411Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:48:47.090Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:48:47.122Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:48:50.250Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:49:25.533Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:49:25.567Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:49:29.177Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:51:40.233Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:51:40.314Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:51:44.041Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:52:34.830Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:52:34.863Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:52:36.762Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T18:57:03.061Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T18:57:03.096Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T18:57:06.449Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:08:31.962Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:08:32.057Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:13:10.086Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:13:10.126Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:13:12.407Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:20:05.866Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:20:05.902Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:20:09.184Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:21:30.316Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:21:30.352Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:21:32.977Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:22:56.353Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:22:56.419Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:23:01.634Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:24:22.300Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:24:22.333Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:24:35.065Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:25:20.822Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:25:20.859Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:25:23.557Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:28:10.468Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:28:10.524Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:28:14.610Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:30:02.127Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:30:02.183Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:30:05.042Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:31:04.404Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:31:04.453Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:31:07.025Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:32:28.396Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:32:28.441Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:32:47.853Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:36:09.759Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:36:09.812Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:36:11.336Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:37:44.822Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:37:44.855Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:37:46.537Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:39:28.536Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:39:28.583Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:39:32.218Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T19:41:38.160Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T19:41:38.240Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T19:41:41.832Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:25:01.699Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:25:01.857Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:25:31.180Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:27:10.307Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:27:10.366Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:27:25.898Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:30:01.069Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:30:01.115Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:30:06.789Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:31:41.136Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:31:41.175Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:31:44.630Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:32:33.723Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:32:33.801Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:32:41.523Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:33:50.119Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:33:50.153Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:33:51.769Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:36:19.873Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:36:19.912Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:36:21.748Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:43:35.337Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:43:35.369Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:43:38.254Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T20:58:20.234Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T20:58:20.306Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T20:58:44.199Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:00:30.581Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:00:30.618Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:00:36.577Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:03:00.465Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:03:00.504Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:03:02.322Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:10:52.315Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:10:52.415Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:15:29.796Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:15:34.012Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:15:34.047Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:15:36.281Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:28:12.354Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:28:12.459Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:28:18.818Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:30:50.849Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:30:50.890Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:30:54.246Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:38:00.749Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:38:00.784Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:38:50.310Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-24T21:52:48.706Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-24T21:52:48.784Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-24T21:52:54.403Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T14:54:55.100Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T14:54:55.493Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T14:56:30.303Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:37:04.408Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\updates.js:87:27\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at auth (C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\auth.js:11:3)\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\index.js:281:22\n    at param (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\index.js:354:14)\n    at param (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\index.js:365:14)\n    at Function.process_params (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\index.js:410:3)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\index.js:275:10)\n    at expressInit (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\middleware\\init.js:40:5)\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T15:37:53.255Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T15:39:41.779Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T15:39:42.185Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:39:53.129Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:40:29.206Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T15:43:30.912Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T15:43:30.948Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:43:36.187Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:43:47.184Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T15:46:46.083Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T15:46:46.117Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:46:53.203Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:47:56.643Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T15:49:52.157Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T15:49:52.277Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:50:04.954Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T15:52:34.802Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T15:52:34.836Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:52:38.673Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T15:53:20.020Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T16:17:18.186Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T16:17:18.272Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T16:17:30.310Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T16:20:50.098Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T16:20:50.150Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T16:20:54.609Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T16:23:28.485Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T16:23:28.520Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T16:23:35.352Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T16:25:01.127Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:12:35.325Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:12:36.558Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:13:13.549Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:18:09.884Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:18:09.943Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:18:25.430Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:30:46.718Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:30:46.803Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:30:54.550Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:39:32.273Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:39:32.314Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:39:35.974Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:41:31.395Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:41:31.439Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:41:40.867Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:43:06.918Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:43:06.974Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:43:09.606Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:46:43.697Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:46:43.758Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:46:48.153Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:48:34.565Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:50:09.733Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:50:09.784Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:50:13.142Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:53:42.732Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:53:42.778Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:53:48.009Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T20:55:53.917Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T20:55:53.969Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T20:56:00.631Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:01:06.895Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:01:06.949Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:01:11.334Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:06:22.707Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:06:22.752Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:06:34.794Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:12:18.296Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:12:18.369Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:12:25.583Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:92:27\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:75:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T21:13:10.089Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:15:03.900Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:15:03.963Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:15:07.342Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:92:27\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:75:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T21:16:55.591Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:21:21.960Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:21:22.032Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:21:27.473Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:35:16.147Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:35:16.227Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:35:21.659Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:37:50.700Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:37:50.752Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:38:00.999Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:92:26\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:75:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T21:40:54.501Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:43:27.046Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:43:27.099Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:43:33.815Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:44:39.996Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:44:40.067Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:44:40.766Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:158:21)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:73:25\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:75:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T21:48:50.412Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T21:55:34.777Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T21:55:34.826Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T21:55:41.029Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:158:21)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:73:25\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:77:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T21:56:44.873Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-25T22:00:31.535Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-25T22:00:31.620Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-25T22:00:35.942Z"}
+{"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:558:11)\n    at ServerResponse.header (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:170:12)\n    at ServerResponse.json (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:267:15)\n    at ServerResponse.send (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\response.js:158:21)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\donations.js:73:25\n    at newFn (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\middleware\\payment.js:77:17\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\api.js:151:17\n    at IncomingMessage.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\paypal-rest-sdk\\lib\\client.js:146:13)\n    at IncomingMessage.emit (events.js:327:22)\n    at endReadableNT (internal/streams/readable.js:1327:12)\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2021-07-25T22:01:28.245Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-26T11:08:12.077Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-26T11:08:13.561Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-26T11:09:58.930Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-26T11:25:45.170Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-26T11:25:45.221Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-26T11:26:25.048Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-26T11:41:15.201Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-26T11:41:15.492Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-26T12:04:25.176Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-26T12:04:25.408Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-26T12:04:36.384Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-07-26T12:21:03.187Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-07-26T12:21:03.337Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-26T12:21:59.616Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-07-26T12:25:42.159Z"}
