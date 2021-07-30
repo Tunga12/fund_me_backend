@@ -14,6 +14,10 @@ var total;
 
 router.post('/pay/:fid', auth,(req, res) => {
     req.body.userId = req.user._id;
+    req.body.memberId= "60eb3139f08dc61f78ec786a";
+	req.bod.amount=10;
+	req.body.tip=5;
+	req.body.comment="fkjfkjdkjfkdjfkjdk";
     req.target = req.params.fid;
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);

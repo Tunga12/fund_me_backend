@@ -30,6 +30,10 @@ const notificationSchema  = new mongoose.Schema({
         type:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],  
         default: []
     },
+   date: {
+        type: Date,
+        default: Date.now,
+    },
     isDeleted: {
         type: Boolean,
         default: false
@@ -47,6 +51,7 @@ function validateNotification(notification){
         title: Joi.string().required(),
         content: Joi.string().min(10).max(255).required(),
         viewed: Joi.array(),
+        date: Joi.date(),
         isDeleted: Joi.boolean()
     });
 
