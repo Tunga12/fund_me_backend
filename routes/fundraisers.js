@@ -136,7 +136,7 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 	if(!fund) return res.status(400).send('A fundraiser with this id is not found');
 	
 	var teamid;
-	fund.teams.forEach((tem){
+	fund.teams.forEach((team)=>{
 		if(team.userId.toString() === req.user._id.toString()){
 			teamid = team.id;
 		}
