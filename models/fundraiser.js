@@ -1,7 +1,7 @@
 
 const Joi = require('joi');
 const mongoose = require("mongoose");
-
+const {teamMemberSchema} = require("./teamMember");
 const fundraiserSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -72,7 +72,14 @@ const fundraiserSchema = new mongoose.Schema({
         default: []
     },
     teams: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'TeamMember'}],
+        type: [{
+			id:{ type:mongoose.Schema.Types.ObjectId, ref: 'TeamMember',required:true},
+			userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User',required:true},
+			status: {
+				type:String,
+				default: 'pending'
+			},
+		}],
         default: []
     },
     totalRaised: {
@@ -96,6 +103,9 @@ const fundraiserSchema = new mongoose.Schema({
         default: false,
     },
 });
+
+
+
 
 //fundraiserSchema.plugin(require('mongoose-autopopulate'));
 fundraiserSchema.plugin(require('mongoose-paginate-v2'));

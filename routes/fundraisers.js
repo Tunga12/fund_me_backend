@@ -24,6 +24,42 @@ router.get('/popular', async(req, res) => {
     res.send(toBeSent(funds));
 });
 
+// Get fundraisers by Id of organizer
+router.get('/user', auth,async(req, res) => {
+    const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+
+    const query = {organizer: req.user._id,isDeleted: false};
+    const options = {
+        offset:offset,
+        limit:limit,
+        sort:'-dateCreated',
+        select:'title image totalRaised goalAmount donations',
+        populate: population};
+    const funds = await Fundraiser.paginate(query, options);
+    
+    res.send(toBeSent(funds));
+});
+
+// Get fundraisers by Id of members
+router.get('/member', auth,async(req, res) => {
+	
+    const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+
+    const query = {'teams.userId': req.user._id,isDeleted: false};
+    const options = {
+        offset:offset,
+        limit:limit,
+        sort:'-dateCreated',
+        select:'title image totalRaised goalAmount donations',
+        populate: population};
+    const funds = await Fundraiser.paginate(query, options);
+   
+    
+    res.send(toBeSent(funds));
+});
+
 // Get fundraisers by id
 router.get('/:id', async(req, res) => {
     const page = parseInt(req.query.page);
@@ -35,7 +71,7 @@ router.get('/:id', async(req, res) => {
     .populate('category','name')
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
-    .populate({path: 'teams', populate:{path: 'userId', select:'firstName lastName email'}})
+    .populate({path: 'teams', select:'-userId',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
     .populate({path: 'donations', populate:{path: 'userId', select:'firstName lastName email'}})
     .populate({path:'updates',populate:{path: 'userId', select:'firstName lastName email'}});
     
@@ -81,27 +117,6 @@ router.get('/category/:cid', async(req, res) => {
     res.send(toBeSent(funds));
 });
 
-// Get fundraisers by Id of organizers or by id of team members
-router.get('/user/:uid', async(req, res) => {
-    const {page, size } = req.query;
-    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
-
-    let query = {organizer: req.params.uid,isDeleted: false};
-    const options = {
-        offset:offset,
-        limit:limit,
-        sort:'-dateCreated',
-        select:'title image totalRaised goalAmount donations',
-        populate: population};
-    let funds = await Fundraiser.paginate(query, options);
-    if(funds.docs.length === 0){
-        console.log('jfkfj');
-        query = {teams: {$in: [req.params.uid]},isPublished:true,isDeleted: false};
-        funds = await Fundraiser.paginate(query, options);
-    }
-    
-    res.send(toBeSent(funds));
-});
 
 // Post fundraiser
 router.post('/', auth,async(req, res) => {
@@ -113,6 +128,31 @@ router.post('/', auth,async(req, res) => {
     fund = await fund.save();
 
     res.status(201).send(fund);
+});
+
+router.put('/invitation/:fid', auth, async(req,res) => {
+	let fund = await Fundraisers.findById(req.params.fid);
+	
+	if(!fund) return res.status(400).send('A fundraiser with this id is not found');
+	
+	var teamid;
+	fund.teams.forEach((tem){
+		if(team.userId.toString() === req.user._id.toString()){
+			teamid = team.id;
+		}
+	});
+	const accepted = req.body.accepted;
+	fund = await Fundraiser.findById(req.params.id);
+		const team = fund.teams.userId(req.user._id);
+	if(accepted){
+		
+		team.status = 'accepted';
+		
+	}else{
+		team.remove();
+	}
+	fund.save();
+	res.send('done');
 });
 
 // Update a fundraiser
@@ -127,6 +167,8 @@ router.put('/:id', auth,async(req, res) => {
     
     res.send(fund);
 });
+
+
 
 // Delete fundraiser
 router.delete('/:id',auth,async(req, res) => {

@@ -17,6 +17,10 @@ const teamMemberSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+	status: {
+		type:String,
+		default: 'pending'
+	},
     isDeleted: {
         type: Boolean,
         default: false
@@ -30,11 +34,13 @@ function validateTeamMember(member){
         userId: Joi.objectId().required(),
         hasRaised: Joi.number(),
         shareCount: Joi.number(),
+		status: Joi.string(),
         isDeleted: Joi.boolean()
     });
 
     return schema.validate(member);
 }
 
+module.exports.teamMemberSchema = teamMemberSchema;
 module.exports.TeamMember = TeamMember;
 module.exports.validate = validateTeamMember;

@@ -61,11 +61,20 @@ router.post('/:fid', auth,async(req, res) => {
         res.status(500).send('Something went wrong');
     }
 
-        const fund = await Fundraiser.findById(id) .populate('donations','userId');
+        const fund = await Fundraiser.findById(id).populate('donations','userId');
         var recp = [];
         fund.donations.forEach(donation => {
-            console.log(donation.userId);
-            recp.push(donation.userId);
+           
+			if(recp.length != 0){
+			recp.some(function(id){
+				if(!id.equals(donation.userId.toString())){
+					recp.push(donation.userId);
+				}
+			});
+			}else{
+				recp.push(donation.userId);
+			}
+           
         });
         const newNot = new Notification({
             notificationType:'Update',
@@ -100,10 +109,10 @@ router.delete('/:id',auth,async(req, res) => {
     if(!update) res.status(404).send('An update with the given ID was not found.');
 
     res.send('Update is deleted');
-    // const task = Fawn.Task();
+    // const task = new Fawn.Task();
     // try{
     //     task.update('updates',{_id: update._id},{isDeleted: true})
-    //     .update('fundraisers',{_id:update.fundraiser},{$pull: {updates: { $in: [update._id] }}})
+    //     .update('fundraisers',{updates:update._id},{$pull: {updates: { $eq: [update._id] }}})
     //     .run();
 
     //     res.send('Update is deleted')   

@@ -2,6 +2,10 @@ const _ = require('lodash');
 const express = require('express');
 const mongoose = require('mongoose');
 const {TeamMember,validate} = require('../models/teamMember');
+const {User} = require('../models/user');
+const {Fundraiser} = require('../models/fundraiser');
+const {Notification} = require('../models/notification');
+const {newNotification} = require('../startup/connection');
 const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const Fawn = require('fawn');
@@ -40,16 +44,27 @@ router.get('/membership/:uid',async(req,res) => {
 
 // Post a member
 router.post('/:fid',auth,async(req,res) => {
-    req.body.userId = req.user._id;
-    const {error} = validate(req.body);
+   // req.body.userId = req.user._id;
+    var email = req.body.email;
+    const user = await User.findOne({email: email});
+	if(!user) return res.status(400).send('A user with this email address does not exist.');
+	
+	const mem = {userId: user._id.toString()};
+    const {error} = validate(mem);
 	if(error) return res.status(400).send(error.details[0].message);
-
-    let member = new TeamMember(req.body);
-    const id = mongoose.Types.ObjectId(req.params.fid);
+	
+	 const id = mongoose.Types.ObjectId(req.params.fid);
+	 
+	const fund = await Fundraiser.findOne({'teams.userId':mem.userId, _id: id});
+	if(fund)return res.status(400).send('A team member with this email address already exists.');
+	
+    let member = new TeamMember(mem);
+   
+	
     const task = new Fawn.Task();
     try{
         task.save('teammembers',member)
-        .update('fundraisers',{_id:id},{$push: {teams:{$each:[member._id], $sort:-1}}})
+        .update('fundraisers',{_id:id},{$push: {teams:{$each:[{id: member._id, userId: member.userId}], $sort:-1}}})
         .run();
 
         res.status(201).send(member);
@@ -58,12 +73,26 @@ router.post('/:fid',auth,async(req,res) => {
           console.log(e.message);
           res.status(500).send('Something went wrong');
       }
+	  var recp = [];
+	  recp.push(member.userId);
+	   const newNot = new Notification({
+            notificationType:'Team Member',
+            recipients: recp,
+            title:`Membership invitation`,
+            content: `You are invited to be a membership of ....`,
+            target: req.params.fid
+            
+        });
+      //  newNot.target =  'jkkkkkkkkkkkkkkkkkjkjkkk';
+       await newNotification(newNot);
 
 });
 
+
+
 // Update a member
 router.put('/:id', auth,async(req,res) => {
-    req.body.userId = req.user._id;
+    //req.body.userId = req.user._id;
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
