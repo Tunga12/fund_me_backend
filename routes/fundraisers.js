@@ -1,8 +1,14 @@
 const _ = require('lodash');
 const express = require('express');
+const mongoose = require('mongoose');
 const {Fundraiser,validate,getPagination} = require('../models/fundraiser');
+const {User} = require('../models/user');
+const {TeamMember} = require('../models/teamMember');
+const {Notification} = require('../models/notification');
+const {newNotification} = require('../startup/connection');
 const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
+const Fawn = require('fawn');
 
 const router = express();
 
@@ -47,7 +53,7 @@ router.get('/member', auth,async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {'teams.userId': req.user._id,isDeleted: false};
+    const query = {'teams.userId': req.user._id, 'teams.status': 'accepted',isDeleted: false};
     const options = {
         offset:offset,
         limit:limit,
@@ -69,6 +75,7 @@ router.get('/:id', async(req, res) => {
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
+	.populate('withdraw')
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
     .populate({path: 'teams', select:'-userId',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
@@ -131,28 +138,62 @@ router.post('/', auth,async(req, res) => {
 });
 
 router.put('/invitation/:fid', auth, async(req,res) => {
-	let fund = await Fundraisers.findById(req.params.fid);
+	const id = mongoose.Types.ObjectId(req.params.fid);
+	const fund = await Fundraiser.findById(req.params.fid);
 	
 	if(!fund) return res.status(400).send('A fundraiser with this id is not found');
 	
 	var teamid;
 	fund.teams.forEach((team)=>{
-		if(team.userId.toString() === req.user._id.toString()){
-			teamid = team.id;
+	if(team.userId.toString() === req.user._id.toString()){
+		teamid = team.id;
 		}
 	});
+	
+	const user = await User.findById(req.user._id);
+	var recp= [];
+	
+	var content;
 	const accepted = req.body.accepted;
-	fund = await Fundraiser.findById(req.params.id);
-		const team = fund.teams.userId(req.user._id);
+	
 	if(accepted){
-		
-		team.status = 'accepted';
+		await Fundraiser.updateOne({_id: req.params.fid, 'teams.userId':user._id},{$set:{
+			'teams.$.status': 'accepted'
+		}});
+		content = `${user.firstName} ${user.lastName} has accepted your invitation to join the team of your fundraiser '${fund.title}'`;
 		
 	}else{
-		team.remove();
+		
+		
+		const task = new Fawn.Task();
+		try{
+        task.update('teammembers',{_id:teamid},{isDeleted: true})
+        .update('fundraisers',{_id:id},{$pull:{'teams': {'userId': user._id}}})
+        .run();
+
+           
+      }catch(e){
+          console.log(e.message);
+          res.status(500).send('Something went wrong');
+      }
+		
+		content = `${user.firstName} ${user.lastName} has declined your invitation to join the team of your fundraiser '${fund.title}'`;
+		
 	}
-	fund.save();
+	
 	res.send('done');
+	recp.push(fund.organizer);
+
+	const newNot = new Notification({
+            notificationType:'Team Member',
+            recipients: recp,
+            title:`Membership invitation`,
+            content: content,
+            target: req.params.fid
+            
+        });
+ 
+       await newNotification(newNot);
 });
 
 // Update a fundraiser
@@ -160,10 +201,27 @@ router.put('/:id', auth,async(req, res) => {
     req.body.organizer = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
+	/* let fund = await Fundraiser.findById(req.params.id);
+	
+	if(req.body.shareCount){
+		if(parseInt(fund.likeCount) != parseInt(req.body.shareCount)){
+			fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body, $push: {likedBy: req.user._id}},{new: true}).select('-isDeleted');
 
-    const fund = await Fundraiser.findByIdAndUpdate(req.params.id,req.body,{new: true}).select('-isDeleted');
+			if (!fund) return res.status(404).send('The user with the given ID was not found.');
+		}else{
+			fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body},{new: true}).select('-isDeleted');
 
-    if (!fund) return res.status(404).send('The user with the given ID was not found.');
+			if (!fund) return res.status(404).send('The user with the given ID was not found.');
+		}
+	}else{
+		fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body},{new: true}).select('-isDeleted');
+
+			if (!fund) return res.status(404).send('The user with the given ID was not found.');
+	} */
+	const fund = await Fundraiser.findByIdAndUpdate(req.params.id,req.body,{new: true}).select('-isDeleted');
+
+			if (!fund) return res.status(404).send('The user with the given ID was not found.');
+   
     
     res.send(fund);
 });

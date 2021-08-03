@@ -55,13 +55,10 @@ const fundraiserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-       // autopopulate: {"select" : "firstName lastName email", maxDepth: 1}
     },
-    beneficiary: {
+	withdraw: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-       // autopopulate: {"select" : "firstName lastName email", maxDepth: 1}
+        ref: 'Withdraw',
     },
     donations: {
         type:[{type: mongoose.Schema.Types.ObjectId, ref: 'Donation'}],  //Change later
@@ -98,6 +95,10 @@ const fundraiserSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+	likedBy: {
+		type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+        default: []
+	},
     isDeleted: {
         type: Boolean,
         default: false,
@@ -123,7 +124,7 @@ function validateFundraiser(fundraiser){
         location: Joi.object().required(),
         dateCreated: Joi.date(),
         organizer: Joi.objectId().required(),
-        beneficiary: Joi.objectId().required(),
+		withdraw: Joi.objectId(),
         donations: Joi.array(),
         updates: Joi.array(),
         teams: Joi.array(),
@@ -131,6 +132,7 @@ function validateFundraiser(fundraiser){
         isPublished: Joi.boolean(),
         totalShareCount: Joi.number(),
         likeCount: Joi.number(),
+		likedBy: Joi.array(),
         isDeleted: Joi.boolean(),
     });
 

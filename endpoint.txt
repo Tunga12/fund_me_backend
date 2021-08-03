@@ -1,0 +1,23 @@
+
+Create team member = /api/members/fundraiserId   => needs a token
+	body = {email:''} 
+	it will send a notification to the user with this email address
+
+See all fundraiser of a member = /api/fundraisers/member => needs a token
+
+Accept or decline invitation = /api/fundraisers/invitation/fundraiserId = > needs a token
+	body = {accepted: true or false}
+	it wil send a notification to the organizer of the fundraiser
+
+Create withdraw = /api/withdrawal/fundraiserId => needs a token
+	body = {
+		bankName:' ' required,
+		bankAccountNo: ' ' required
+		isOrganizer : boolean,
+		beneficiary: (set it if isOrganized is set to false)
+		}
+Accept or decline withdrawal request = (PUT) /api/withdrawal/withdrawalId => needs a token
+	body = {accepted: true or false}
+	it will send a notification to the organizer of the fundraiser that requested the withdrawal
+
+Get all withdrawals(should be admin) = /api/withdrawal => needs a token

@@ -7,6 +7,7 @@ const donations = require('../routes/donations');
 const teamMembers = require('../routes/teamMembers');
 const notifications = require('../routes/notifications');
 const payment = require('../routes/payment');
+const withdraw = require('../routes/withdraws');
 const image = require('../routes/image');
 const auth = require('../routes/auth');
 const error = require('../middleware/error');
@@ -22,6 +23,7 @@ module.exports = function(app){
     app.use('/api/members', teamMembers)
     app.use('/api/notifications', notifications)
     app.use('/donation', payment)
+	app.use('/api/withdrawal', withdraw)
 	app.use('/api/users', users);
     app.use('/api/image', image);
     app.use('/api/auth', auth);

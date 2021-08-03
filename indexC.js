@@ -1,7 +1,7 @@
 var io = require('socket.io-client');
 const winston = require('winston');
 const {Notification} = require('./models/notification');
-socket = io.connect('http://localhost:3000',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0Mjg4ZmI3NWNmYzBkMGMxZTEyZmYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjI3NjgwNDU1fQ.Na9uSUJKU-ag8zqpuxtmz47stt3kihbe_VqAmMz97-s"},{
+socket = io.connect('http://localhost:3000',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGViMzEzOWYwOGRjNjFmNzhlYzc4NmEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MjY5NjEwNDd9.EUWWbAZNuXeIaFVtn7SWcm6J8cJax4fuNEEZ2-Gi8hY"},{
    // reconnection: true,
   //  reconnectionDelay: 10000
   });

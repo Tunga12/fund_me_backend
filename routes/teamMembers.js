@@ -64,7 +64,7 @@ router.post('/:fid',auth,async(req,res) => {
     const task = new Fawn.Task();
     try{
         task.save('teammembers',member)
-        .update('fundraisers',{_id:id},{$push: {teams:{$each:[{id: member._id, userId: member.userId}], $sort:-1}}})
+        .update('fundraisers',{_id:id},{$push: {teams:{$each:[{id: member._id, userId: member.userId, status: 'pending'}], $sort:-1}}})
         .run();
 
         res.status(201).send(member);
@@ -79,7 +79,7 @@ router.post('/:fid',auth,async(req,res) => {
             notificationType:'Team Member',
             recipients: recp,
             title:`Membership invitation`,
-            content: `You are invited to be a membership of ....`,
+            content: `You are invited to be a member of fundraiser '${fund.title}'`,
             target: req.params.fid
             
         });

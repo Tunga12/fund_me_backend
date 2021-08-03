@@ -36,7 +36,7 @@ router.post('/', async (req,res) => {
 	await user.save();
 	const token = user.generateAuthToken();
 	res.header('access-control-expose-headers','x-auth-token');
-	res.header('x-auth-token',token).status(201).send(_.pick(user,['_id','name','email']));
+	res.header('x-auth-token',token).status(201).send(_.pick(user,['_id','firstName','lastName','email']));
 });
 
 // Update a user
@@ -60,6 +60,28 @@ router.put('/me', auth, async(req, res) => {
 
     if (!user) return res.status(404).send('The user with the given ID was not found.');
     res.send(user);
+});
+
+router.post('/forget', async(req,res) => {
+	const email = req.body.email;
+	let user = await User.findOne({email:req.body.email});
+	
+	if(!user) return res.status(400).send('A user with this email address is not found!');
+	
+	
+});
+
+router.get('/verify/:id', async(req,res) => {
+
+	let user = await User.findById(req.params.id);
+	
+	if(!user) return res.status(400).send('A user with this email address is not found!');
+	
+	const token = user.generateAuthToken();
+	res.header('access-control-expose-headers','x-auth-token');
+	res.header('x-auth-token',token).status(200).send(_.pick(user,['_id','firstName','lastName','email']));
+	
+	
 });
 
 // Delete user

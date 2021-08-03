@@ -104,21 +104,21 @@ router.put('/:id', auth,async(req, res) => {
 
 // Delete an update
 router.delete('/:id',auth,async(req, res) => {
-    const update = await Update.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
+    const update = await Update.findById(req.params.id);
     
     if(!update) res.status(404).send('An update with the given ID was not found.');
 
-    res.send('Update is deleted');
-    // const task = new Fawn.Task();
-    // try{
-    //     task.update('updates',{_id: update._id},{isDeleted: true})
-    //     .update('fundraisers',{updates:update._id},{$pull: {updates: { $eq: [update._id] }}})
-    //     .run();
+  //  res.send('Update is deleted');
+    const task = new Fawn.Task();
+    try{
+		task.update('updates',{_id: update._id},{isDeleted: true})
+		.update('fundraisers',{updates:update._id},{$pull:{'updates': update._id}})
+		.run();
 
-    //     res.send('Update is deleted')   
-    //   }catch(e){
-    //       res.status(500).send('Something went wrong');
-    //   }
+		res.send('Update is deleted')   
+	}catch(e){
+		res.status(500).send('Something went wrong');
+    }
 });
 
 module.exports = router;
