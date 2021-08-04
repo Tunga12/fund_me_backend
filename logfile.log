@@ -757,3 +757,8 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T19:09:06.568Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T19:23:18.396Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T19:23:18.567Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T19:37:13.199Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T19:37:13.243Z"}
+{"level":"info","message":"http://localhost:3000","timestamp":"2021-08-04T19:37:26.945Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T19:41:46.132Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T19:41:46.277Z"}

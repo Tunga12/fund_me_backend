@@ -207,7 +207,8 @@ router.put('/:id', auth,async(req, res) => {
 	
 	if(req.body.likeCount){
 		if(parseInt(fund.likeCount) != parseInt(req.body.likeCount)){
-			req.body.$push = {likedBy: req.user._id};
+			//req.body.$push = {likedBy: req.user._id};
+			fund = await Fundraiser.findByIdAndUpdate(req.params.id,{$push: {likedBy: req.user._id}},{new: true}).select('-isDeleted');
 			
 		}
 	}
