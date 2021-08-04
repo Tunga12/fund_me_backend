@@ -86,7 +86,7 @@ router.post('/forget', async(req,res) => {
 		subject:'Reset password',
 		html: "Hello,<br> Please click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
 	};
-	
+	winston.info(config.get('email'));
 	transporter.sendMail(mailOption, function(error, info){
 		if(error){
 			winston.error(error.message,error);
