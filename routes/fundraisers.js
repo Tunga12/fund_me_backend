@@ -22,7 +22,7 @@ router.get('/popular', async(req, res) => {
         limit:limit,
        // slice: [{path:'donations',val:1}],
         sort:'-totalRaised -dateCreated',
-        select:'title image totalRaised goalAmount donations location',
+        select:'title image totalRaised goalAmount donations location likedBy',
         populate: population};
         
     const funds = await Fundraiser.paginate(query, options);
@@ -40,7 +40,7 @@ router.get('/user', auth,async(req, res) => {
         offset:offset,
         limit:limit,
         sort:'-dateCreated',
-        select:'title image totalRaised goalAmount donations',
+        select:'title image totalRaised goalAmount donations likedBy',
         populate: population};
     const funds = await Fundraiser.paginate(query, options);
     
@@ -58,7 +58,7 @@ router.get('/member', auth,async(req, res) => {
         offset:offset,
         limit:limit,
         sort:'-dateCreated',
-        select:'title image totalRaised goalAmount donations',
+        select:'title image totalRaised goalAmount donations likedBy',
         populate: population};
     const funds = await Fundraiser.paginate(query, options);
    
@@ -198,27 +198,20 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 
 // Update a fundraiser
 router.put('/:id', auth,async(req, res) => {
-    req.body.organizer = req.user._id;
+    //req.body.organizer = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
-	/* let fund = await Fundraiser.findById(req.params.id);
 	
-	if(req.body.shareCount){
-		if(parseInt(fund.likeCount) != parseInt(req.body.shareCount)){
-			fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body, $push: {likedBy: req.user._id}},{new: true}).select('-isDeleted');
-
-			if (!fund) return res.status(404).send('The user with the given ID was not found.');
-		}else{
-			fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body},{new: true}).select('-isDeleted');
-
-			if (!fund) return res.status(404).send('The user with the given ID was not found.');
+	let fund = await Fundraiser.findById(req.params.id);
+	if (!fund) return res.status(404).send('The user with the given ID was not found.');
+	
+	if(req.body.likeCount){
+		if(parseInt(fund.likeCount) != parseInt(req.body.likeCount)){
+			req.body.$push = {likedBy: req.user._id};
+			
 		}
-	}else{
-		fund = await Fundraiser.findByIdAndUpdate(req.params.id,{req.body},{new: true}).select('-isDeleted');
-
-			if (!fund) return res.status(404).send('The user with the given ID was not found.');
-	} */
-	const fund = await Fundraiser.findByIdAndUpdate(req.params.id,req.body,{new: true}).select('-isDeleted');
+	}
+	fund = await Fundraiser.findByIdAndUpdate(req.params.id,req.body,{new: true}).select('-isDeleted');
 
 			if (!fund) return res.status(404).send('The user with the given ID was not found.');
    

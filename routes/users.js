@@ -1,11 +1,13 @@
 const _ = require('lodash');
 const express = require('express');
+const nodemailer = require('nodemailer');
 const {User,validate} = require('../models/user');
 const bcrypt = require('bcrypt');
 const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
-
+const config = require('config');
 const router = express();
+
 
 // Get all users
 router.get('/', [auth,admin],async(req, res) => {
@@ -67,6 +69,32 @@ router.post('/forget', async(req,res) => {
 	let user = await User.findOne({email:req.body.email});
 	
 	if(!user) return res.status(400).send('A user with this email address is not found!');
+	const link = `${config.get('url')}/api/users/verify/${user._id}`;
+	
+	const transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: config.get('email'),
+			pass: config.get('password')
+		}
+	});
+	
+	const mailOption = {
+		from: config.get('email'),
+		to:email,
+		subject:'Reset password',
+		html: "Hello,<br> Please click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+	};
+	
+	transporter.sendMail(mailOption, function(error, info){
+		if(error){
+			throw error;
+			res.status(500).send('Something went wrong');
+		}else{
+			console.log('Email sent: '+ info.response);
+			res.send('sent');
+		}
+	});
 	
 	
 });
@@ -77,10 +105,18 @@ router.get('/verify/:id', async(req,res) => {
 	
 	if(!user) return res.status(400).send('A user with this email address is not found!');
 	
-	const token = user.generateAuthToken();
-	res.header('access-control-expose-headers','x-auth-token');
-	res.header('x-auth-token',token).status(200).send(_.pick(user,['_id','firstName','lastName','email']));
+	res.send({id: req.params.id});
 	
+	
+});
+
+router.put('/reset/:id', async(req,res) => {
+	const salt = await bcrypt.genSalt(10);
+	req.body.password = await bcrypt.hash(req.body.password,salt);
+	
+	const user = await User.findByIdAndUpdate(req.params.id, {password: req.body.password},{new: true});
+	
+	res.send(user);
 	
 });
 

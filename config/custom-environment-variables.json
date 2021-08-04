@@ -1,4 +1,7 @@
 {
 	"jwtPrivateKey": "crowd_jwtPrivateKey",
-	"db": "crowd_db"
+	"db": "crowd_db",
+	"email": "crowd_email",
+	"password": "crowd_password",
+	"url": "crowd_url"
 }
