@@ -22,8 +22,6 @@ const notificationSchema  = new mongoose.Schema({
     },
     content: {
         type: String,
-        minlength: 10,
-        maxlength: 255,
         required: true
     },
     viewed: {
@@ -49,7 +47,7 @@ function validateNotification(notification){
        // target: Joi.objectId().required(),
         notificationType: Joi.string().required(),
         title: Joi.string().required(),
-        content: Joi.string().min(10).max(255).required(),
+        content: Joi.string().required(),
         viewed: Joi.array(),
         date: Joi.date(),
         isDeleted: Joi.boolean()
