@@ -751,3 +751,5 @@
 {"message":"Configuration property \"crowd_url\" is not defined","stack":"Error: Configuration property \"crowd_url\" is not defined\n    at Config.get (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\config\\lib\\config.js:182:11)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\users.js:72:25","level":"error","timestamp":"2021-08-04T16:34:52.092Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T16:49:22.027Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T16:49:23.731Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T18:49:28.055Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T18:49:37.877Z"}

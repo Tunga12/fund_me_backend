@@ -88,7 +88,7 @@ router.post('/forget', async(req,res) => {
 	
 	transporter.sendMail(mailOption, function(error, info){
 		if(error){
-			throw error;
+			//throw error;
 			res.status(500).send('Something went wrong');
 		}else{
 			console.log('Email sent: '+ info.response);
