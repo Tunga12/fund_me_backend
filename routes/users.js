@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const express = require('express');
+const winston = require('winston');
 const nodemailer = require('nodemailer');
 const {User,validate} = require('../models/user');
 const bcrypt = require('bcrypt');
@@ -88,6 +89,7 @@ router.post('/forget', async(req,res) => {
 	
 	transporter.sendMail(mailOption, function(error, info){
 		if(error){
+			winston.error(error.message,error);
 			//throw error;
 			res.status(500).send('Something went wrong');
 		}else{
