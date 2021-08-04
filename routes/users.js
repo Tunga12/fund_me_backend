@@ -68,7 +68,7 @@ router.put('/me', auth, async(req, res) => {
 router.post('/forget', async(req,res) => {
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
-	
+	winston.info(config.get('url'));
 	if(!user) return res.status(400).send('A user with this email address is not found!');
 	const link = `${config.get('url')}/api/users/verify/${user._id}`;
 	
@@ -86,7 +86,7 @@ router.post('/forget', async(req,res) => {
 		subject:'Reset password',
 		html: "Hello,<br> Please click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
 	};
-	winston.info(config.get('email'));
+	
 	transporter.sendMail(mailOption, function(error, info){
 		if(error){
 			winston.error(error.message,error);
