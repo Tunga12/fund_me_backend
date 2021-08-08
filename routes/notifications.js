@@ -16,7 +16,7 @@ router.get('/', [auth,admin],async(req,res) => {
 // Get notifications of a user
 router.get('/user', auth,async(req,res) => {
     const notifications = await Notification
-    .find({recipients:req.user._id, isDeleted: false}).select('-recipients -viewed');
+    .find({recipients:req.user._id, isDeleted: false}).select('-isDeleted');
 
     res.send(notifications);
 });
