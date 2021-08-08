@@ -30,6 +30,26 @@ router.get('/popular', async(req, res) => {
     res.send(toBeSent(funds));
 });
 
+// Get fundraisers by title
+router.get('/title/:name', async(req, res) => {
+    const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+	
+	const regex = new RegExp(req.params.name, 'i');
+	const query = {isPublished:true,isDeleted: false,title: {'$regex': regex}};
+	const options = {
+		offset:offset,
+		limit:limit,
+		sort:'-totalRaised -dateCreated',
+		select:'title image totalRaised goalAmount donations location likedBy',
+		populate: population};
+		
+	const funds = await Fundraiser.paginate(query, options);
+	
+	res.send(toBeSent(funds));
+	
+});
+
 // Get fundraisers by Id of organizer
 router.get('/user', auth,async(req, res) => {
     const {page, size } = req.query;

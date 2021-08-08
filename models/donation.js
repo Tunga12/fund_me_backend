@@ -28,6 +28,10 @@ const donationSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+	isAnonymous: {
+		type: Boolean,
+		default: false
+	},
     isDeleted: {
         type: Boolean,
         default: false,

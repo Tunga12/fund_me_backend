@@ -762,3 +762,21 @@
 {"level":"info","message":"http://localhost:3000","timestamp":"2021-08-04T19:37:26.945Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-04T19:41:46.132Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-04T19:41:46.277Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:31:49.195Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:31:50.402Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:41:19.076Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:41:19.192Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:45:14.894Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:45:15.040Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:47:13.329Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:47:13.446Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:49:08.897Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:49:09.017Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:52:15.936Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:52:16.058Z"}
+{"message":"Cast to ObjectId failed for value \"title\" (type string) at path \"_id\" for model \"Fundraiser\"","stack":"CastError: Cast to ObjectId failed for value \"title\" (type string) at path \"_id\" for model \"Fundraiser\"\n    at model.Query.exec (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4498:21)\n    at model.Query.Query.then (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4592:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","stringValue":"\"title\"","kind":"ObjectId","value":"title","path":"_id","reason":{},"valueType":"string","level":"error","timestamp":"2021-08-08T10:52:31.543Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:56:32.116Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:56:32.204Z"}
+{"message":"Cast to ObjectId failed for value \"title\" (type string) at path \"_id\" for model \"Fundraiser\"","stack":"CastError: Cast to ObjectId failed for value \"title\" (type string) at path \"_id\" for model \"Fundraiser\"\n    at model.Query.exec (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4498:21)\n    at model.Query.Query.then (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4592:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","stringValue":"\"title\"","kind":"ObjectId","value":"title","path":"_id","reason":{},"valueType":"string","level":"error","timestamp":"2021-08-08T10:57:10.179Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-08T10:58:41.020Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-08T10:58:41.140Z"}
