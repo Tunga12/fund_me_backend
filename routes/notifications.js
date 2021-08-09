@@ -67,7 +67,7 @@ router.put('/:id', auth,async(req,res) => {
 
     // res.send(notification);
     //io.emit('viewed',id);
-    viewedNotification(req.user._id,req.params.id);
+    await viewedNotification(req.user._id,req.params.id);
     res.send(true);
 });
 
