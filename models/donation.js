@@ -48,6 +48,7 @@ function validateDonation(donation){
         tip: Joi.number().required(),
         comment: Joi.string(),
         date: Joi.date(),
+		isAnonymous: Joi.boolean(),
         isDeleted: Joi.boolean()
     });
 

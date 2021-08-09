@@ -4,10 +4,11 @@ const app = express();
 const cors = require('cors');
 const {Server} = require('socket.io');
 const http = require('http');
-const server = http.createServer(app);
+let server = http.createServer(app);
 const io = require('socket.io')(server);
 
 module.exports.io = io;
+//module.exports.server = server
 app.use(cors({origin: '*'}));
 app.use('/uploads',express.static('uploads'));
 require('./startup/logging')();
@@ -21,4 +22,6 @@ require('./startup/connection').conn();
 // conn();
 
 const port = process.env.PORT || 3000;
-server.listen(port, () => winston.info(`Listening on port ${port}...`));
+server = app.listen(port, () => winston.info(`Listening on port ${port}...`));
+
+module.exports.server = server;
