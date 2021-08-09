@@ -44,21 +44,29 @@ router.post('/', async (req,res) => {
 
 // Update a user
 router.put('/me', auth, async(req, res) => {
-	const {error} = validate(req.body);
-	if(error) return res.status(400).send(error.details[0].message); 
 
     let user = await User.findById(req.user._id);
 	if(!user) return res.status(400).send('The user with the given ID was not found.');
-
-    const samePassword = await bcrypt.compare(req.body.password, user.password);
 	
-	if(!samePassword){
-        const salt = await bcrypt.genSalt(10);
-	    req.body.password = await bcrypt.hash(req.body.password,salt);
-    }else{
-        req.body.password = user.password
-    }
-
+	if(req.body.password){
+		const {error} = validate(req.body);
+		if(error) return res.status(400).send(error.details[0].message);
+		
+		const salt = await bcrypt.genSalt(10);
+		req.body.password = await bcrypt.hash(req.body.password,salt);
+		/* const samePassword = await bcrypt.compare(req.body.password, user.password);
+		
+		if(!samePassword){
+			const salt = await bcrypt.genSalt(10);
+			req.body.password = await bcrypt.hash(req.body.password,salt);
+		}else{
+			req.body.password = user.password
+		} */
+	}else{
+		req.body.password = user.password;
+		const {error} = validate(req.body);
+		if(error) return res.status(400).send(error.details[0].message);
+	}
     user = await User.findByIdAndUpdate(req.user._id,req.body,{new: true}).select('-password -isDeleted');
 
     if (!user) return res.status(404).send('The user with the given ID was not found.');
