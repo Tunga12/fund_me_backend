@@ -86,7 +86,7 @@ async function numOfUnreadNotification(userId){
 
 async function markAsViewed(notificationId, userId){
     const notification = await Notification.find(
-		{_id:notificationId,viewed: { "$ne": userId}},
+		{_id:notificationId,viewed: { $ne: userId}},
         { $push: { viewed: userId } },
         { new: true }
     );
