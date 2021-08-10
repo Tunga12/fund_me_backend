@@ -113,7 +113,7 @@ router.delete('/:id',auth,async(req, res) => {
 	
 	  const member = await TeamMember.findOne({_id:req.params.id, isDeleted: false});
     
-    if(!member) res.status(404).send('A team member with the given ID was not found.');
+    if(!member) return res.status(404).send('A team member with the given ID was not found.');
 
   //  res.send('Update is deleted');
     const task = new Fawn.Task();
