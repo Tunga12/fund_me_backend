@@ -111,7 +111,7 @@ router.delete('/:id',auth,async(req, res) => {
 
     res.send('Your membership is terminated'); */
 	
-	  const member = await TeamMembers.findOne({_id:req.params.id, isDeleted: false});
+	  const member = await TeamMember.findOne({_id:req.params.id, isDeleted: false});
     
     if(!member) res.status(404).send('A team member with the given ID was not found.');
 
