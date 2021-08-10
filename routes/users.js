@@ -46,7 +46,7 @@ router.post('/', async (req,res) => {
 router.put('/me', auth, async(req, res) => {
 
     let user = await User.findById(req.user._id);
-	if(!user) return res.status(400).send('The user with the given ID was not found.');
+	if(!user) return res.status(404).send('The user with the given ID was not found.');
 	
 	if(req.body.password){
 		const {error} = validate(req.body);

@@ -59,8 +59,10 @@ router.post('/:fid', auth,async(req, res) => {
 	if(error) return res.status(400).send(error.details[0].message);
 
     let donation = new Donation(req.body);
+	
     const id = mongoose.Types.ObjectId(req.params.fid);
     const task = new Fawn.Task();
+	if(donation.memberId){
     try{
         task.save('donations',donation)
         .update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {totalRaised: donation.amount}})
@@ -70,6 +72,16 @@ router.post('/:fid', auth,async(req, res) => {
             console.log(e.message);
             res.status(500).send('Something went wrong');
         }
+	}else{
+		 try{
+        task.save('donations',donation)
+        .update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {totalRaised: donation.amount}})
+        .run();
+        }catch(e){
+            console.log(e.message);
+            res.status(500).send('Something went wrong');
+        }
+	}
         res.status(201).send(donation);
 
         const fund = await Fundraiser.findById(id);

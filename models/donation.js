@@ -11,7 +11,7 @@ const donationSchema = new mongoose.Schema({
     memberId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'TeamMember',
-        required: true,
+    
     },
     amount: {
         type: Number,
@@ -43,7 +43,7 @@ const Donation = mongoose.model('Donation', donationSchema);
 function validateDonation(donation){
     const schema = Joi.object({
         userId: Joi.objectId().required(),
-        memberId: Joi.objectId().required(),
+        memberId: Joi.objectId(),
         amount: Joi.number().required(),
         tip: Joi.number().required(),
         comment: Joi.string(),

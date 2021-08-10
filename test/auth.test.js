@@ -1,22 +1,23 @@
-process.env.NODE_ENV = 'test';
+/* process.env.NODE_ENV = 'test';
 
 const mongoose = require("mongoose");
 const {User} = require('../models/user');
 
-//Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server;
 let should = chai.should();
 
-
+const serv = 'http://localhost:3000';
 chai.use(chaiHttp);
 
 describe('auth middleware', () => {
-	before(() => { server = require('../index'); });
-	afterEach(async (done) => { 
-		await User.deleteOne({email: 'first@gmail.com'});
-		done();
+	before(() => { server = require('../index');});
+	afterEach((done) => { 
+		User.deleteMany({})
+		.then(done())
+		.catch((err) => console.log((err)=> console.log('Error auth: ',err)));
+		
 		//server.close(); 
 	});
 
@@ -25,44 +26,53 @@ describe('auth middleware', () => {
 	  const exec = () => {
 		
      
-		return chai.request(server)
+		return chai.request(serv)
 		  .get('/api/users/me')
 		  .set('x-auth-token', token);
 		  
-	  }
+	 }
 
-  beforeEach(async(done) => {
-	   let user = {firstName:'firstName',lastName:'lastName', email:'first@gmail.com', password:'12345678'};
-	   user = new User(user);
+	beforeEach((done) => {
+	   const user = new User({firstName:'firstName',lastName:'lastName', email:'first@gmail.com', password:'12345678',phoneNumber: '09085849995'});
 	   token = user.generateAuthToken();
-      await user.save(user);
-	  done();
+       user.save()
+	   .then(done())
+	   .catch((err) => console.log('Error auth: ',err));
+	  
 	  
 	
-  });
-  
-  it('should return 401 if no token is provided', async (done) => {
-	token = ''; 
-
-	//const res = await exec();
-	try{
-	chai.request(server)
-		  .get('/api/users/me')
-		  .set('x-auth-token', token).end((err, res) => {
-		
-				res.should.have.status(401);
-
-				done();
 	});
-	}catch(e){
-		console.log(e);
-	}
+	
+	//after(() => { server.close();});
+  
+	it('should return 401 if no token is provided', (done) => {
+		token = ''; 
+		exec().end((err, res) => {
+			res.should.have.status(401);
+			done();
+		});
+	
 
-   // expect(res.status).toBe(401);
-  });
+	});
+	
+	it('should return 400 if token is invalid', (done) => {
+		token = 'a'; 
+		exec().end((err, res) => {
+			res.should.have.status(400);
+			done();
+		});
+
+	});
+  
+	it('should return 200 if token is valid',(done) => {
+		exec().end((err, res) => {
+			res.should.have.status(200);
+			done();
+		});
+	});
   
   
 
 	
 	
-});
+}); */

@@ -105,11 +105,27 @@ router.put('/:id', auth,async(req,res) => {
 
 // Delete a member
 router.delete('/:id',auth,async(req, res) => {
-    const member = await TeamMember.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
+    /* const member = await TeamMember.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
 
     if (!member) return res.status(404).send('A member with the given ID was not found.');
 
-    res.send('Your membership is terminated');
+    res.send('Your membership is terminated'); */
+	
+	  const member = await TeamMembers.findOne({_id:req.params.id, isDeleted: false});
+    
+    if(!member) res.status(404).send('A team member with the given ID was not found.');
+
+  //  res.send('Update is deleted');
+    const task = new Fawn.Task();
+    try{
+		task.update('teammembers',{_id: member._id},{isDeleted: true})
+		.update('fundraisers',{'teams.id':member._id},{$pull:{'teams': {'id': member._id}}})
+		.run();
+
+		res.send('Your membership is terminated')   
+	}catch(e){
+		res.status(500).send('Something went wrong');
+    }
 });
 
 module.exports = router;

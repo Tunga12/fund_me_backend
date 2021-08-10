@@ -20,7 +20,14 @@ router.get('/', [auth,admin],async(req,res) => {
 });
 
 // Get updates by id
-router.get('/:id', async(req, res) => {
+router.get('/:id',async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('An update with the given ID was not found.');
+	}
+	
+	
     const update = await Update.findOne({_id: req.params.id,isDeleted: false})
     .select('-isDeleted')
    // .populate('fundraiser','title story image organizer')
@@ -42,10 +49,18 @@ router.get('/member/:uid', async(req,res) => {
 
 // Post an update
 router.post('/:fid', auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with the given ID was not found');
+	}
     req.body.userId = req.user._id;
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
+	let fund = await Fundraiser.findById(req.params.fid);
+	if(!fund) return res.status(404).send('A fundraiser with the given ID was not found');
+	
     let update = new Update(req.body);
     const id = mongoose.Types.ObjectId(req.params.fid);
     const task = new Fawn.Task();
@@ -61,7 +76,7 @@ router.post('/:fid', auth,async(req, res) => {
         res.status(500).send('Something went wrong');
     }
 
-        const fund = await Fundraiser.findById(id).populate('donations','userId');
+        fund = await Fundraiser.findById(id).populate('donations','userId');
         var recp = [];
         fund.donations.forEach(donation => {
            
@@ -91,6 +106,11 @@ router.post('/:fid', auth,async(req, res) => {
 
 // Update an update of a fundraiser
 router.put('/:id', auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('An update with the given ID was not found.');
+	}
     req.body.userId = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
@@ -104,9 +124,14 @@ router.put('/:id', auth,async(req, res) => {
 
 // Delete an update
 router.delete('/:id',auth,async(req, res) => {
-    const update = await Update.findById(req.params.id);
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('An update with the given ID was not found.');
+	}
+    const update = await Update.findOne({_id: req.params.id, isDeleted: false});
     
-    if(!update) res.status(404).send('An update with the given ID was not found.');
+    if(!update) return res.status(404).send('An update with the given ID was not found.');
 
   //  res.send('Update is deleted');
     const task = new Fawn.Task();
