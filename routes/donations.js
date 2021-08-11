@@ -24,6 +24,12 @@ router.get('/', [auth,admin],async(req,res) => {
 
 // Get donation by id
 router.get('/:id', async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Donation with the given ID was not found.');
+	}
+	
     const donation = await Donation.findOne({_id: req.params.id,isDeleted: false})
     .select('-isDeleted')
     .populate('userId','firstName lastName email');
@@ -35,14 +41,27 @@ router.get('/:id', async(req, res) => {
 
 //Get donations by memberId
 router.get('/member/:uid', async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.uid)
+	}catch(e){
+		return res.status(200).send([]);
+	}
+	
     const donations = await Donation.find({memberId: req.params.uid,isDeleted: false})
     .select('-isDeleted');
+	
 
     res.send(donations);
 });
 
 // Return all donation made by a single user
 router.get('/donor/:uid',async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.uid)
+	}catch(e){
+		return res.status(200).send([]);
+	}
+	
     const donations = await Donation
     .find({userId: req.params.uid, isDeleted: false})
     .select('-isDeleted');
@@ -53,6 +72,14 @@ router.get('/donor/:uid',async(req,res) => {
 
 // Post a donation
 router.post('/:fid', auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with the given ID was not found');
+	}
+	let fund = await Fundraiser.findById(req.params.fid);
+	if(!fund) return res.status(404).send('A fundraiser with the given ID was not found');
+	
     req.body.userId = req.user._id;
     req.target = req.params.fid;
     const {error} = validate(req.body);
@@ -84,7 +111,7 @@ router.post('/:fid', auth,async(req, res) => {
 	}
         res.status(201).send(donation);
 
-        const fund = await Fundraiser.findById(id);
+       //fund = await Fundraiser.findById(id);
         var recp = [];
         recp.push(fund.organizer);
         const user = await User.findById(donation.userId);
@@ -107,6 +134,11 @@ router.post('/:fid', auth,async(req, res) => {
 
 // Update an donation 
 router.put('/:id',auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Donation with the given ID was not found.');
+	}
     req.body.userId = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
@@ -120,9 +152,14 @@ router.put('/:id',auth,async(req, res) => {
 
 // Delete donation
 router.delete('/:id',auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Donation with the given ID was not found.');
+	}
     const donation = await Donation.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
     
-    if(!donation) res.status(404).send('Donation with the given ID was not found.');
+    if(!donation) return res.status(404).send('Donation with the given ID was not found.');
     
     res.send('Donation is deleted');
     // const task = Fawn.Task();

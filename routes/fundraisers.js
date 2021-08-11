@@ -174,6 +174,7 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 	var recp= [];
 	
 	var content;
+	var title;
 	const accepted = req.body.accepted;
 	
 	if(accepted){
@@ -205,7 +206,7 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 	recp.push(fund.organizer);
 
 	const newNot = new Notification({
-            notificationType:'Team Member',
+            notificationType:'Invitation Acceptance',
             recipients: recp,
             title:`Membership invitation`,
             content: content,
