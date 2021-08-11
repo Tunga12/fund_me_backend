@@ -55,8 +55,12 @@ router.post('/:fid',auth,async(req,res) => {
 	
 	 const id = mongoose.Types.ObjectId(req.params.fid);
 	 
-	const fund = await Fundraiser.findOne({'teams.userId':mem.userId, _id: id});
+	let fund = await Fundraiser.findOne({'teams.userId':mem.userId, _id: id});
 	if(fund)return res.status(400).send('A team member with this email address already exists.');
+	
+	fund = await Fundraiser.findById(req.params.fid);
+	
+	if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 	
     let member = new TeamMember(mem);
    
