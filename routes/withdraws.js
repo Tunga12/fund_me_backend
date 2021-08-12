@@ -17,14 +17,26 @@ router.get('/',[auth,admin],async(req,res) => {
 });
 
 router.get('/:id',auth,async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('A withdrawal with the given ID was not found.');
+	}
     const withdraw = await Withdraw.findById(req.params.id);
+	 if (!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
     res.send(withdraw);
 });
 
 // Post a withdraw
 router.post('/:fid', auth,async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with this id is not found');
+	}
+	
 	const fund = await Fundraiser.findById(req.params.fid);
-	if(!fund) return res.status(400).send('A fundraiser with this id is not found');
+	if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 	
 	if(req.body.isOrganizer === true){
 		req.body.beneficiary = fund.organizer.toString();
@@ -53,10 +65,23 @@ router.post('/:fid', auth,async(req,res) => {
 
 // Update a withdraw
 router.put('/:id',[auth,admin],async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('A withdrawal with the given ID was not found.');
+	}
+	  let withdraw = await Withdraw.findById(req.params.id);
+		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
+		
 	const id = mongoose.Types.ObjectId(req.params.id);
+	
+	if(!req.body.accepted){
+		return res.status(400).send('An empty body is not allowed');
+	}
+	
 	const fund = await Fundraiser.findOne({withdraw: id});
-
-	if(!fund) return res.status(400).send('A fundraiser with this id is not found');
+	
+	if(!fund) return res.status(404).send('A fundraiser with this withdrawal id is not found');
 	
 	var recp=[];
 	recp.push(fund.organizer);
@@ -79,8 +104,8 @@ router.put('/:id',[auth,admin],async(req,res) => {
     }
 	}else{
 
-        const withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
-		if(!withdraw) return res.status(400).send('');
+         withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
+		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
 		res.send('updated');
          content = 'Your withdrawal  request has been accepted';       
     
@@ -100,6 +125,12 @@ router.put('/:id',[auth,admin],async(req,res) => {
 
 // Delete a notification
 router.delete('/:id',auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('A withdrawal with the given ID was not found.');
+	}
+	
     const withdraw = await Withdraw.findById(req.params.id);
     
 

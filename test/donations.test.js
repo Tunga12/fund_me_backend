@@ -1,4 +1,4 @@
-/* process.env.NODE_ENV = 'test';
+ process.env.NODE_ENV = 'test';
 
 const mongoose = require("mongoose");
 const {User} = require('../models/user');
@@ -316,7 +316,7 @@ describe('/api/donations', () => {
 			
 		});
 		
-		it('should return 200 and the donation if the update is updated',(done) => {
+		it('should return 200 and the donation if donation is updated',(done) => {
 			donationn.amount = 2000;
 			exec().end((err, res) => {
 				res.should.have.status(200);
@@ -408,4 +408,4 @@ describe('/api/donations', () => {
 	});
 	
 	
-}); */
+}); 

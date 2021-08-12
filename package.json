@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watchAll --verbose --timeout 10000",
+    "test": "mocha --watchAll --verbose --timeout 20000",
     "start": "node index.js"
   },
   "engines": {

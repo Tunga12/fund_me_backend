@@ -8,6 +8,7 @@ const withdrawSchema = new mongoose.Schema({
 	},
 	bankAccountNo: {
 		type: String,
+		unique:true,
 		required: true
 	},
 	beneficiary: {

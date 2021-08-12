@@ -3,6 +3,7 @@ const express = require('express');
 const router = express();
 const {Donation, validate} = require('../models/donation');
 const {auth} = require('../middleware/auth');
+const config = require('config');
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -27,8 +28,8 @@ router.post('/pay/:fid', auth,(req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/donation/success",
-            "cancel_url": "http://localhost:3000/donation/cancel"
+            "return_url": `${config.get('url')}/donation/success`,
+            "cancel_url": `${config.get('url')}/donation/cancel`
         },
         "transactions": [{
             "donation_list": {
