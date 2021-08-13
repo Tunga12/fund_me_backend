@@ -1,4 +1,5 @@
 const paypal = require('paypal-rest-sdk');
+const winston = require('winston');
 const express = require('express');
 const router = express();
 const {Donation, validate} = require('../models/donation');
@@ -50,7 +51,8 @@ router.post('/pay/:fid', auth,(req, res) => {
 
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
-            throw error;
+			winston.error(error.message,error);
+            //throw error;
         } else {
             for(let i = 0 ;i < payment.links.length;i++){
                 if(payment.links[i].rel === 'approval_url'){
@@ -82,8 +84,9 @@ router.get('/success', (req, res) => {
 
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment){
         if(error){
-            console.log(error.response);
-            throw error;
+			winston.error(error.message,error);
+            //console.log(error.response);
+            //throw error;
         }else{
             res.send(true);
         }
