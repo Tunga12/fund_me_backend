@@ -52,13 +52,14 @@ router.post('/pay/:fid', auth,(req, res) => {
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
 			winston.error(error.message,error);
+			res.status(404).send(error.message);
             //throw error;
         } else {
             for(let i = 0 ;i < payment.links.length;i++){
                 if(payment.links[i].rel === 'approval_url'){
                     total = (parseInt(req.body.amount) + parseInt(req.body.tip)).toString()
                     console.log(payment.links[i].href);
-                    res.redirect(payment.links[i].href);
+                    res.redirect(`${payment.links[i].href}/`);
                     
                     
             
@@ -85,6 +86,7 @@ router.get('/success', (req, res) => {
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment){
         if(error){
 			winston.error(error.message,error);
+			res.status(404).send(error.message);
             //console.log(error.response);
             //throw error;
         }else{
