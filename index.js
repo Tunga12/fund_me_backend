@@ -9,7 +9,7 @@ const io = require('socket.io')(server);
 
 module.exports.io = io;
 //module.exports.server = server
-app.use(cors({origin: '*'}));
+app.use(cors({origin: '*', preflightContinue: false}));
 app.use('/uploads',express.static('uploads'));
 require('./startup/logging')();
 require('./startup/routes')(app);
