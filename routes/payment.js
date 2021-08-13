@@ -59,6 +59,8 @@ router.post('/pay/:fid', auth,(req, res) => {
                 if(payment.links[i].rel === 'approval_url'){
                     total = (parseInt(req.body.amount) + parseInt(req.body.tip)).toString()
                     console.log(payment.links[i].href);
+					res.header("Access-Control-Allow-Origin", "*");
+					res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
                     res.redirect(payment.links[i].href);
                     
                     
