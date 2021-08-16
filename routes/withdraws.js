@@ -46,7 +46,7 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 	
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
-	if(!user) return res.status(400).send('A user with this email address is not found!');
+	if(!user) return res.status(404).send('A user with this email address is not found!');
 	winston.info(config.get('db'));
 	winston.info(config.get('email'));
 	winston.info(config.get('url'));
