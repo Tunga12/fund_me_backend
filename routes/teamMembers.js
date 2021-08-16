@@ -55,12 +55,8 @@ router.post('/:fid',auth,async(req,res) => {
 		return res.status(404).send('A fundraiser with the given ID was not found');
 	}
 	
-	if(!req.body.email){
-		return res.status(400).send('An empty body is not allowed');
-	} 
-	
-	
-   // req.body.userId = req.user._id;
+	if(!req.body.email) return res.status(400).send('An empty body is not allowed');
+	 
     var email = req.body.email;
     const user = await User.findOne({email: email});
 	if(!user) return res.status(400).send('A user with this email address does not exist.');

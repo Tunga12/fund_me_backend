@@ -1,11 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
+const winston = require('winston');
+const config = require('config');
 const {Withdraw,validate} = require('../models/withdraw');
 const {Fundraiser} = require('../models/fundraiser');
+const {User} = require('../models/user');
 const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
 const {Notification} = require('../models/notification');
 const {newNotification} = require('../startup/connection');
+
 const Fawn = require('fawn');
 
 const router = express();
@@ -27,6 +32,94 @@ router.get('/:id',auth,async(req,res) => {
     res.send(withdraw);
 });
 
+router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with the given ID was not found');
+	}
+	
+	if(!req.body.email) return res.status(400).send('An empty body is not allowed');
+	
+	const fund = await Fundraiser.findById(req.params.fid);
+	if(!fund) return res.status(404).send('A fundraiser with the given ID was not found');
+	
+	const email = req.body.email;
+	let user = await User.findOne({email:req.body.email});
+	if(!user) return res.status(400).send('A user with this email address is not found!');
+	winston.info(config.get('db'));
+	winston.info(config.get('email'));
+	winston.info(config.get('url'));
+	const alink = `${config.get('url')}/api/withdrawal/invitation/accept/${req.params.fid}`;
+	const dlink = `${config.get('url')}/api/withdrawal/invitation/deny/${req.params.fid}`;
+	const transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: config.get('email'),
+			pass: config.get('password')
+		}
+	});
+	
+	const mailOption = {
+		from: config.get('email'),
+		to:email,
+		subject:'Withdrawal Request',
+		html: "Hello,<br> You are invited to withdraw the money raised on your behalf. You can <a href="+alink+">accept</a> or <a href="+dlink+">decline</a> the invitation."
+	};
+	
+	transporter.sendMail(mailOption, function(error, info){
+		if(error){
+			winston.error(error.message,error);
+			//throw error;
+			res.status(400).send(error.message);
+		}else{
+			console.log('Email sent: '+ info.response);
+			res.send({id: user._id});
+		}
+	});
+	
+	
+});
+
+router.get('/invitation/accept/:fid', async(req,res) => {
+		const fund = await Fundraiser.findById(req.params.fid);
+		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
+
+		var recp = [];
+		recp.push(fund.organizer);
+		res.send({accepted: true});
+		const newNot = new Notification({
+            notificationType:'Withdrawal',
+            recipients: recp,
+            title:`Withdrawal Request`,
+            content: 'Your beneficiary withdrawal request invitation has been accepted.',
+            target: fund._id
+            
+        });
+ 
+       await newNotification(newNot);
+	
+});
+
+router.get('/invitation/deny/:fid', async(req,res) => {
+		const fund = await Fundraiser.findById(req.params.fid);
+		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
+		
+		var recp=[];
+		recp.push(fund.organizer);
+		res.send({accepted: false});
+		const newNot = new Notification({
+            notificationType:'Withdrawal',
+            recipients: recp,
+            title:`Withdrawal Request`,
+            content: 'Your beneficiary withdrawal request invitation has been declined.',
+            target: fund._id
+            
+        });
+ 
+       await newNotification(newNot);
+	
+});
 // Post a withdraw
 router.post('/:fid', auth,async(req,res) => {
 	try{

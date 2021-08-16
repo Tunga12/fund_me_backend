@@ -98,7 +98,7 @@ router.get('/:id', async(req, res) => {
 	.populate('withdraw')
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
-    .populate({path: 'teams', select:'-userId',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
+    .populate({path: 'teams', select:'id status',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
     .populate({path: 'donations', populate:{path: 'userId', select:'firstName lastName email'}})
     .populate({path:'updates',populate:{path: 'userId', select:'firstName lastName email'}});
     
@@ -150,9 +150,24 @@ router.post('/', auth,async(req, res) => {
     req.body.organizer = req.user._id;
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
+	
+	const team = new TeamMember({userId: req.user._id});
+	let teams = [];
+	teams.push({id: team._id, userId: req.user._id, status: 'accepted'});
+	req.body.teams = teams;
+	
+    const fund = new Fundraiser(req.body);
+    const task = new Fawn.Task();
+		try{
+        task.save('teammembers',team)
+        .save('fundraisers',fund)
+        .run();
 
-    let fund = new Fundraiser(req.body);
-    fund = await fund.save();
+           
+      }catch(e){
+          console.log(e.message);
+          res.status(500).send('Something went wrong');
+      }
 
     res.status(201).send(fund);
 });

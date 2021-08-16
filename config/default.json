@@ -1,6 +1,8 @@
 {
 	"jwtPrivateKey": "crowd_jwtPrivateKey",
 	"db": "mongodb://localhost:27017/crowd",
+	"url": "crowd_url",
 	"email": "crowd_email",
 	"password": "crowd_password"
+	
 }

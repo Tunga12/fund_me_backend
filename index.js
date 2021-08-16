@@ -22,6 +22,6 @@ require('./startup/connection').conn();
 // conn();
 
 const port = process.env.PORT || 3000;
-const serv = app.listen(port, () => winston.info(`Listening on port ${port}...`));
+const serv = server.listen(port, () => winston.info(`Listening on port ${port}...`));
 
 module.exports.server = serv;
