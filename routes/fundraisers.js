@@ -79,7 +79,7 @@ router.get('/beneficiary', auth,async(req, res) => {
         select:'title image totalRaised goalAmount donations likedBy',
         populate: population};
     const funds = await Fundraiser.paginate(query, options);
-    
+  
     res.send(toBeSent(funds));
 });
 
@@ -322,7 +322,7 @@ router.delete('/:id',auth,async(req, res) => {
 });
 
 const population = [
-    {path: 'donations',select: 'date'}
+    {path: 'donations',select: 'date'},
     
 ];
 

@@ -57,11 +57,9 @@ const fundraiserSchema = new mongoose.Schema({
         required: true,
     },
 	withdraw: {
-        type:{
-			id:{ type:mongoose.Schema.Types.ObjectId, ref: 'Withdraw',required:true},
-			beneficary: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true},
-		}
-		
+       
+			id:{ type:mongoose.Schema.Types.ObjectId, ref: 'Withdraw'},
+			beneficiary: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     },
     donations: {
         type:[{type: mongoose.Schema.Types.ObjectId, ref: 'Donation'}],  //Change later
@@ -113,7 +111,7 @@ const fundraiserSchema = new mongoose.Schema({
 
 //fundraiserSchema.plugin(require('mongoose-autopopulate'));
 fundraiserSchema.plugin(require('mongoose-paginate-v2'));
-fundraiserSchema.plugin(require('mongoose-aggregate-paginate-v2'));
+//fundraiserSchema.plugin(require('mongoose-aggregate-paginate-v2'));
 
 const Fundraiser = mongoose.model('Fundraiser', fundraiserSchema);
 
