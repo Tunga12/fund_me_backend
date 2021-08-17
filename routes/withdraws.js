@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const winston = require('winston');
 const config = require('config');
-const {Withdraw,validate} = require('../models/withdraw');
+const {Withdraw,validate,getPagination} = require('../models/withdraw');
 const {Fundraiser} = require('../models/fundraiser');
 const {User} = require('../models/user');
 const {auth} = require('../middleware/auth');
@@ -17,8 +17,36 @@ const router = express();
 
 // Get all withdraws
 router.get('/',[auth,admin],async(req,res) => {
-    const withdraws = await Withdraw.find().sort('date');
-    res.send(withdraws);
+	 const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+    const query = {};
+    const options = {
+        offset:offset,
+        limit:limit,
+        sort:'-date',
+        populate: population};
+        
+    const withdraws = await Withdraw.paginate(query, options);
+    
+    res.send(toBeSent(withdraw));
+  
+});
+
+router.get('/status/:stat',[auth,admin],async(req,res) => {
+     const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+    const query = {status: req.params.stat};
+    const options = {
+        offset:offset,
+        limit:limit,
+        sort:'-date',
+        populate: population};
+        
+    const withdraws = await Withdraw.paginate(query, options);
+    
+    res.send(toBeSent(withdraw));
+
+  
 });
 
 router.get('/:id',auth,async(req,res) => {
@@ -192,7 +220,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 	if(!accepted){
 		const task = new Fawn.Task();
     try{
-        task.update('withdraws',{_id: id},{$set: {status: 'denied'}})
+        task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
         .update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
         .run();
 
@@ -248,5 +276,20 @@ router.delete('/:id',auth,async(req, res) => {
 	}
 
 });
+const population = [
+    {path: 'beneficiary',select: 'firstName lastName email'},
+    
+];
 
+function toBeSent(withdraw){
+   
+    return {
+        totalItems: withdraw.totalDocs,
+        fundraisers: withdraw.docs,
+        totalPages: withdraw.totalPages,
+        currentPage: withdraw.page - 1,
+        hasNextPage: withdraw.hasNextPage,
+        hasPrevPage: withdraw.hasPrevPage
+    };
+}
 module.exports = router;

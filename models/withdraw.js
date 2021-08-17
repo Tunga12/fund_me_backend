@@ -33,7 +33,7 @@ const withdrawSchema = new mongoose.Schema({
     }
 	
 });
-
+withdrawSchema.plugin(require('mongoose-paginate-v2'));
 const Withdraw = mongoose.model('Withdraw',withdrawSchema);
 
 function validateWithdraw(withdraw){
@@ -51,5 +51,13 @@ function validateWithdraw(withdraw){
     return schema.validate(withdraw);
 }
 
+function getPagination (page, size)  {
+    const limit = size ? +size : 10;
+    const offset = page ? page * limit : 0;
+  
+    return { limit, offset };
+};
+
 module.exports.Withdraw = Withdraw;
 module.exports.validate = validateWithdraw;
+module.exports.getPagination = getPagination;
