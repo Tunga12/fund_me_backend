@@ -2078,3 +2078,8 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T13:48:17.644Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T18:46:31.986Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T18:46:33.248Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T18:52:47.287Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T18:52:47.328Z"}
+{"message":"withdraw is not defined","stack":"ReferenceError: withdraw is not defined\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\withdraws.js:47:23","level":"error","timestamp":"2021-08-17T18:54:30.208Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T18:54:57.074Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T18:54:57.124Z"}

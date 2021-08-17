@@ -28,7 +28,7 @@ router.get('/',[auth,admin],async(req,res) => {
         
     const withdraws = await Withdraw.paginate(query, options);
     
-    res.send(toBeSent(withdraw));
+    res.send(toBeSent(withdraws));
   
 });
 
@@ -44,7 +44,7 @@ router.get('/status/:stat',[auth,admin],async(req,res) => {
         
     const withdraws = await Withdraw.paginate(query, options);
     
-    res.send(toBeSent(withdraw));
+    res.send(toBeSent(withdraws));
 
   
 });
