@@ -285,7 +285,7 @@ function toBeSent(withdraw){
    
     return {
         totalItems: withdraw.totalDocs,
-        fundraisers: withdraw.docs,
+        withdrawals: withdraw.docs,
         totalPages: withdraw.totalPages,
         currentPage: withdraw.page - 1,
         hasNextPage: withdraw.hasNextPage,
