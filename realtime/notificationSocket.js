@@ -36,16 +36,19 @@ async function notification(io,notification) {
 async function viewed(io, userId,notificationId) {
 
     if (!mongoose.Types.ObjectId.isValid(notificationId)) {
-        return  io.to(userId).emit('error','Invalid ID');
+        return  io.to(userId).emit('error','A notification with this id is not found.');
     }
 
     const notification = await markAsViewed(notificationId, userId);
 
+	if(!notification) return  io.to(userId).emit('error','A notification with this id is not found.');
+	
     io.to(userId).emit('viewed notification', notification);
 
     const count = await numOfUnreadNotification(userId);
     
     io.to(userId).emit('unread notification count', count);
+	return notification;
 }
 
 async function getUnreadCount(io, socket) {

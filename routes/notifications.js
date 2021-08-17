@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const express = require('express');
+const mongoose = require('mongoose');
 const {Notification,validate} = require('../models/notification');
 const {auth} = require('../middleware/auth');
 const admin = require('../middleware/admin');
@@ -22,7 +23,14 @@ router.get('/user', auth,async(req,res) => {
 });
 
 // Get notification by id
-router.get('/:id',async(req,res) => {
+router.get('/:id',auth,async(req,res) => {
+
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Notification with the given ID was not found.');
+	}
+	
     const notification = await Notification
     .findOne({_id: req.params.id, isDeleted: false})
     .select('-isDeleted')
@@ -67,17 +75,23 @@ router.put('/:id', auth,async(req,res) => {
 
     // res.send(notification);
     //io.emit('viewed',id);
-    await viewedNotification(req.user._id,req.params.id);
-    res.send(true);
+    const not = await viewedNotification(req.user._id,req.params.id);
+
+    res.send(not);
 });
 
 
 // Delete a notification
 router.delete('/:id',auth,async(req, res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Notification with the given ID was not found.');
+	}
     const notification = await Notification.findByIdAndUpdate(req.params.id,
         {$pull: {recipients: req.user._id, viewed: req.user._id}},{new: true});
 
-    if (!notification) return res.status(404).send('A notification with the given ID was not found.');
+    if (!notification) return res.status(404).send('Notification with the given ID was not found.');
 
     res.send('Notification is deleted');
 });

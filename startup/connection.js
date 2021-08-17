@@ -46,8 +46,9 @@ async function newNotification(not){
 }
 
 async function viewedNotification(userId,notificationId){
-    await viewed(io, userId, notificationId);
+    const noti = await viewed(io, userId, notificationId);
     sockets = [];
+	return noti;
 }
 
 module.exports = {
