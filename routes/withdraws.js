@@ -145,7 +145,7 @@ router.post('/:fid', auth,async(req,res) => {
 	const task = new Fawn.Task();
     try{
         task.save('withdraws',withdraw)
-        .update('fundraisers',{_id:id},{$set: {withdraw: withdraw._id}})
+        .update('fundraisers',{_id:id},{$set: {withdraw: {id: withdraw._id, beneficiary: withdraw.beneficiary}})
         .run();
 
         res.status(201).send(withdraw);

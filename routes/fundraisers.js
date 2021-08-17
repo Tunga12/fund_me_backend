@@ -66,6 +66,23 @@ router.get('/user', auth,async(req, res) => {
     res.send(toBeSent(funds));
 });
 
+// Get fundraisers by Id of beneficiary
+router.get('/beneficiary', auth,async(req, res) => {
+    const {page, size } = req.query;
+    const {limit, offset} = getPagination(parseInt(page), parseInt(size));
+
+    const query = {'withdraw.beneficiary': req.user._id,isDeleted: false};
+    const options = {
+        offset:offset,
+        limit:limit,
+        sort:'-dateCreated',
+        select:'title image totalRaised goalAmount donations likedBy',
+        populate: population};
+    const funds = await Fundraiser.paginate(query, options);
+    
+    res.send(toBeSent(funds));
+});
+
 // Get fundraisers by Id of members
 router.get('/member', auth,async(req, res) => {
 	
@@ -85,6 +102,8 @@ router.get('/member', auth,async(req, res) => {
     res.send(toBeSent(funds));
 });
 
+
+
 // Get fundraisers by id
 router.get('/:id', async(req, res) => {
 	try{
@@ -99,7 +118,7 @@ router.get('/:id', async(req, res) => {
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
-	.populate('withdraw')
+	.populate({path: 'withdraw', select:'id',populate:{path: 'id',populate: {path:'beneficiary', select: 'firstName lastName email'}}})
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
     .populate({path: 'teams', select:'id status',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})

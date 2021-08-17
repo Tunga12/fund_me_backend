@@ -57,8 +57,11 @@ const fundraiserSchema = new mongoose.Schema({
         required: true,
     },
 	withdraw: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Withdraw',
+        type:{
+			id:{ type:mongoose.Schema.Types.ObjectId, ref: 'Withdraw',required:true},
+			beneficary: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true},
+		}
+		
     },
     donations: {
         type:[{type: mongoose.Schema.Types.ObjectId, ref: 'Donation'}],  //Change later
@@ -124,7 +127,7 @@ function validateFundraiser(fundraiser){
         location: Joi.object().required(),
         dateCreated: Joi.date(),
         organizer: Joi.objectId().required(),
-		withdraw: Joi.objectId(),
+		withdraw: Joi.object(),
         donations: Joi.array(),
         updates: Joi.array(),
         teams: Joi.array(),
