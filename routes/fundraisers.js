@@ -33,7 +33,6 @@ router.get('/popular', async(req, res) => {
 router.get('/title/:name', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
-	
 	const regex = new RegExp(req.params.name, 'i');
 	const query = {isPublished:true,isDeleted: false,title: {'$regex': regex}};
 	const options = {

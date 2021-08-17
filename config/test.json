@@ -1,4 +1,6 @@
 {
   "jwtPrivateKey": "1234",
-  "db": "mongodb://localhost/crowd_tests"
+  "db": "mongodb://localhost/crowd_tests",
+  "email": "crowd_email",
+  "password": "crowd_password"
 }

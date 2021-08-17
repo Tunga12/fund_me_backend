@@ -47,11 +47,9 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
 	if(!user) return res.status(404).send('A user with this email address is not found!');
-	winston.info(config.get('db'));
-	winston.info(config.get('email'));
-	winston.info(config.get('url'));
+	
 	const alink = `${config.get('url')}/api/withdrawal/invitation/accept/${req.params.fid}`;
-	const dlink = `${config.get('url')}/api/withdrawal/invitation/deny/${req.params.fid}`;
+	const dlink = `${config.get('url')}/api/withdrawal/invitation/decline/${req.params.fid}`;
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -82,6 +80,11 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 });
 
 router.get('/invitation/accept/:fid', async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with this id is not found');
+	}
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 
@@ -101,7 +104,12 @@ router.get('/invitation/accept/:fid', async(req,res) => {
 	
 });
 
-router.get('/invitation/deny/:fid', async(req,res) => {
+router.get('/invitation/decline/:fid', async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.fid)
+	}catch(e){
+		return res.status(404).send('A fundraiser with this id is not found');
+	}
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 		
@@ -172,8 +180,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		return res.status(400).send('An empty body is not allowed');
 	}
 	
-	const fund = await Fundraiser.findOne({withdraw: id});
-	
+	const fund = await Fundraiser.findOne({'withdraw.id': id});
 	if(!fund) return res.status(404).send('A fundraiser with this withdrawal id is not found');
 	
 	var recp=[];

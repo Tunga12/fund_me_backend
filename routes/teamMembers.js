@@ -59,7 +59,7 @@ router.post('/:fid',auth,async(req,res) => {
 	 
     var email = req.body.email;
     const user = await User.findOne({email: email});
-	if(!user) return res.status(400).send('A user with this email address does not exist.');
+	if(!user) return res.status(404).send('A user with this email address does not exist.');
 	
 	const mem = {userId: user._id.toString()};
     const {error} = validate(mem);
