@@ -139,7 +139,7 @@ router.get('/', [auth, admin],async(req, res) => {
         offset:offset,
         limit:limit,
         sort:'-dateCreated',
-        select:'title image totalRaised goalAmount donations',
+        select:'title image totalRaised goalAmount donations dateCreated',
         populate: population};
         
     const funds = await Fundraiser.paginate(query, options);
