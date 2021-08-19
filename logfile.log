@@ -2083,3 +2083,201 @@
 {"message":"withdraw is not defined","stack":"ReferenceError: withdraw is not defined\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\routes\\withdraws.js:47:23","level":"error","timestamp":"2021-08-17T18:54:30.208Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T18:54:57.074Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T18:54:57.124Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:02:54.966Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:02:55.043Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:03:01.566Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:03:01.592Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:03:50.808Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:03:50.837Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:03:56.391Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:03:56.424Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:04:01.600Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:04:01.630Z"}
+{"message":"Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h19sm1476438edt.87 - gsmtp","stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h19sm1476438edt.87 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h19sm1476438edt.87 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:04:05.758Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:04:10.245Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:04:10.273Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:04:14.795Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:04:14.822Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:04:19.498Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:04:19.531Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:16.816Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:16.850Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:31.755Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:31.782Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:36.179Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:36.210Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:40.339Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:40.365Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:48.982Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:49.010Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:05:56.275Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:05:56.304Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:06:01.543Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:06:01.571Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:06:16.690Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:06:16.718Z"}
+{"message":"Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials p5sm1104685ejl.73 - gsmtp","stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials p5sm1104685ejl.73 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials p5sm1104685ejl.73 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:06:18.939Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:06:30.660Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:06:30.687Z"}
+{"message":"Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials jo17sm1113424ejb.40 - gsmtp","stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials jo17sm1113424ejb.40 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials jo17sm1113424ejb.40 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:06:32.162Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:07:23.165Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:07:23.190Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:07:30.388Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:07:30.456Z"}
+{"message":"Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials f12sm1124075ejz.99 - gsmtp","stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials f12sm1124075ejz.99 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials f12sm1124075ejz.99 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:07:37.832Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:08:45.524Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:08:45.548Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:09:38.928Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:09:38.956Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:09:45.727Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:09:45.755Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:09:53.005Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:09:53.031Z"}
+{"message":"Invalid login: 534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor i6sm1107717ejd.57 - gsmtp","stack":"Error: Invalid login: 534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor i6sm1107717ejd.57 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor i6sm1107717ejd.57 - gsmtp","responseCode":534,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:09:55.499Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:10:23.112Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:10:23.161Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:10:28.757Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:10:28.786Z"}
+{"message":"Invalid login: 534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ay20sm1451142edb.91 - gsmtp","stack":"Error: Invalid login: 534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ay20sm1451142edb.91 - gsmtp\n    at SMTPConnection._formatError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:784:19)\n    at SMTPConnection._actionAUTHComplete (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1536:34)\n    at SMTPConnection.<anonymous> (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:540:26)\n    at SMTPConnection._processResponse (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:947:20)\n    at SMTPConnection._onData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:749:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:189:44)\n    at TLSSocket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)\n    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)","code":"EAUTH","response":"534-5.7.9 Application-specific password required. Learn more at\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ay20sm1451142edb.91 - gsmtp","responseCode":534,"command":"AUTH PLAIN","level":"error","timestamp":"2021-08-17T19:10:32.607Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:11:29.744Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:11:29.769Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:11:49.689Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:11:49.753Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-17T19:12:20.990Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-17T19:12:21.027Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:26:40.615Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:26:40.887Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:27:19.645Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:27:19.981Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:27:27.213Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:27:27.257Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:27:58.166Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:27:58.195Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:28:02.172Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:28:02.203Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:28:08.019Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:28:08.052Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:28:12.413Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:28:12.441Z"}
+{"level":"info","message":"http://localhost:3000","timestamp":"2021-08-18T09:28:13.265Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:19.975Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:20.007Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:24.176Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:24.206Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:29.750Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:29.783Z"}
+{"message":"E11000 duplicate key error collection: crowd_tests.users index: email_1 dup key: { email: \"first4@gmail.com\" }","stack":"MongoError: E11000 duplicate key error collection: crowd_tests.users index: email_1 dup key: { email: \"first4@gmail.com\" }\n    at Function.create (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\core\\error.js:57:12)\n    at toError (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\utils.js:130:22)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\operations\\common_functions.js:258:39\n    at handler (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:953:24)\n    at C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\cmap\\connection_pool.js:350:13\n    at handleOperationResult (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\core\\sdam\\server.js:565:5)\n    at MessageStream.messageHandler (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\cmap\\connection.js:281:5)\n    at MessageStream.emit (events.js:315:20)\n    at processIncomingData (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\cmap\\message_stream.js:144:12)\n    at MessageStream._write (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongodb\\lib\\cmap\\message_stream.js:42:5)\n    at writeOrBuffer (internal/streams/writable.js:358:12)\n    at MessageStream.Writable.write (internal/streams/writable.js:303:10)\n    at Socket.ondata (internal/streams/readable.js:719:22)\n    at Socket.emit (events.js:315:20)\n    at addChunk (internal/streams/readable.js:309:12)\n    at readableAddChunk (internal/streams/readable.js:284:9)\n    at Socket.Readable.push (internal/streams/readable.js:223:10)\n    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)","driver":true,"name":"MongoError","index":0,"code":11000,"keyPattern":{"email":1},"keyValue":{"email":"first4@gmail.com"},"level":"error","timestamp":"2021-08-18T09:29:30.044Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:45.650Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:45.680Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:55.126Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:55.156Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:29:59.868Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:29:59.897Z"}
+{"level":"info","message":"http://localhost:3000","timestamp":"2021-08-18T09:30:00.304Z"}
+{"level":"info","message":"http://localhost:3000","timestamp":"2021-08-18T09:30:00.322Z"}
+{"message":"getaddrinfo ENOTFOUND smtp.gmail.com","stack":"Error: getaddrinfo ENOTFOUND smtp.gmail.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)","errno":-3008,"code":"EDNS","syscall":"getaddrinfo","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:30:00.463Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:30:38.131Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:30:38.160Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:30:43.615Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:30:43.644Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:30:43.932Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:30:43.945Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:31:26.593Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:31:26.623Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:31:26.926Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:31:26.937Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:32:15.236Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:32:15.265Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:32:20.105Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:32:20.135Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:32:20.422Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:32:20.433Z"}
+{"message":"queryA ETIMEOUT smtp.gmail.com","stack":"Error: queryA ETIMEOUT smtp.gmail.com\n    at QueryReqWrap.onresolve [as oncomplete] (dns.js:203:19)","code":"EDNS","syscall":"queryA","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:33:36.252Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:34:14.342Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:34:14.370Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:34:19.413Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:34:19.445Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:34:24.549Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:34:24.583Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:34:29.495Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:34:29.523Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:34:29.817Z"}
+{"level":"info","message":"hananmohsin2021@gmail.com","timestamp":"2021-08-18T09:34:29.829Z"}
+{"message":"getaddrinfo ENOTFOUND smtp.gmail.com","stack":"Error: getaddrinfo ENOTFOUND smtp.gmail.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)","errno":-3008,"code":"EDNS","syscall":"getaddrinfo","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:34:29.862Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:35:10.754Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:35:10.833Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:35:11.086Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:35:11.098Z"}
+{"message":"getaddrinfo ENOTFOUND smtp.gmail.com","stack":"Error: getaddrinfo ENOTFOUND smtp.gmail.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)","errno":-3008,"code":"EDNS","syscall":"getaddrinfo","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:35:11.132Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:36:08.313Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:36:08.342Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:36:08.634Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:36:08.648Z"}
+{"message":"getaddrinfo ENOTFOUND smtp.gmail.com","stack":"Error: getaddrinfo ENOTFOUND smtp.gmail.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)","errno":-3008,"code":"EDNS","syscall":"getaddrinfo","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:36:08.680Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:36:47.844Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:36:47.872Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:36:48.165Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:36:48.176Z"}
+{"message":"getaddrinfo ENOTFOUND smtp.gmail.com","stack":"Error: getaddrinfo ENOTFOUND smtp.gmail.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)","errno":-3008,"code":"EDNS","syscall":"getaddrinfo","hostname":"smtp.gmail.com","command":"CONN","level":"error","timestamp":"2021-08-18T09:36:48.210Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:37:36.113Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:37:36.322Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:37:41.172Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:37:41.202Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:44:48.506Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:44:48.534Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:45:01.947Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:45:01.978Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:45:59.462Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:45:59.531Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:47:30.358Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:47:30.425Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:47:44.542Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:47:44.571Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:53:22.605Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:53:22.646Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:53:48.679Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:53:48.711Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:55:12.528Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:55:12.561Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:55:35.689Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:55:35.724Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:56:20.103Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:56:20.150Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:56:24.175Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:56:24.249Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:57:20.115Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:57:20.145Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:57:43.182Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:57:43.242Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:57:43.521Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:57:43.533Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T09:59:25.367Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T09:59:25.397Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:59:25.716Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T09:59:25.728Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:01:04.381Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:01:04.410Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:01:04.708Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:01:04.720Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:01:40.843Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:01:40.871Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:01:41.196Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:01:41.208Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:02:35.670Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:02:35.696Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:02:35.983Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:02:35.996Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:03:36.565Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:03:36.591Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:03:36.901Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:03:36.912Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:11:17.984Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:11:18.028Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:11:18.324Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:11:18.336Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-18T10:11:53.142Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-18T10:11:53.166Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:11:53.443Z"}
+{"level":"info","message":"ufahainyqwrgnrwt","timestamp":"2021-08-18T10:11:53.455Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2021-08-19T15:24:27.342Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-08-19T15:24:36.918Z"}

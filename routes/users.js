@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const express = require('express');
+const mongoose = require('mongoose');
 const winston = require('winston');
 const nodemailer = require('nodemailer');
 const {User,validate} = require('../models/user');
@@ -74,10 +75,10 @@ router.put('/me', auth, async(req, res) => {
 });
 
 router.post('/forget', async(req,res) => {
+	if(!req.body.email) return res.status(400).send('An empty body is not allowed');
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
-	winston.info(config.get('url'));
-	if(!user) return res.status(400).send('A user with this email address is not found!');
+	if(!user) return res.status(404).send('A user with this email address is not found!');
 	const link = `${config.get('url')}/api/users/verify/${user._id}`;
 	
 	const transporter = nodemailer.createTransport({
@@ -102,7 +103,7 @@ router.post('/forget', async(req,res) => {
 			res.status(500).send('Something went wrong');
 		}else{
 			console.log('Email sent: '+ info.response);
-			res.send('sent');
+			res.status(200).send('sent');
 		}
 	});
 	
@@ -111,9 +112,15 @@ router.post('/forget', async(req,res) => {
 
 router.get('/verify/:id', async(req,res) => {
 
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('A user with this email address is not found!');
+	}
+
 	let user = await User.findById(req.params.id);
 	
-	if(!user) return res.status(400).send('A user with this email address is not found!');
+	if(!user) return res.status(404).send('A user with this email address is not found!');
 	
 	res.send({id: req.params.id});
 	
@@ -121,10 +128,18 @@ router.get('/verify/:id', async(req,res) => {
 });
 
 router.put('/reset/:id', async(req,res) => {
+	
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('A user with this id is not found!');
+	}
 	const salt = await bcrypt.genSalt(10);
+	if(!req.body.password) return res.status(400).send('An empty body is not allowed');
 	req.body.password = await bcrypt.hash(req.body.password,salt);
 	
 	const user = await User.findByIdAndUpdate(req.params.id, {password: req.body.password},{new: true});
+	if(!user) return res.status(404).send('A user with this id is not found!');
 	
 	res.send(user);
 	

@@ -1,4 +1,4 @@
-/* process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 const mongoose = require("mongoose");
 const {User} = require('../models/user');
@@ -155,6 +155,61 @@ describe('/api/users', () => {
 		});
   });
   
+  describe('GET /verify:id', () => {
+		let id; 
+		 
+		 const exec = () => {
+			return chai.request(serv)
+			  .get('/api/users/verify/'+id);
+		  
+		}
+		
+		beforeEach((done) => {
+			
+		
+			  
+			const user = new User({ firstName: 'first1' , lastName: 'last1', email: 'first3@gmail.com', password: '12345678',phoneNumber: '09589884488'});
+			
+			id=user._id;
+			user.save().then(done());
+			
+		});
+		
+		it('should return 404 if invalid id is passed',(done) => {
+			
+			id = '1';
+			exec().end((err, res) => {
+				res.should.have.status(404);
+				res.should.have.property('text').eql('A user with this email address is not found!');
+				done();
+			});
+			
+		});
+		
+		it('should return 404 if user with the given id is not found',(done) => {
+			
+			id = mongoose.Types.ObjectId();
+			exec().end((err, res) => {
+				res.should.have.status(404);
+				res.should.have.property('text').eql('A user with this email address is not found!');
+				done();
+			}); 
+		});
+			
+		it('should return 200 and {id: objectid}',(done) => {
+			
+			
+			exec().end((err, res) => {
+				res.should.have.status(200);
+				res.body.should.be.a('object');
+				res.body.should.have.property('id').eql(id.toHexString());
+
+				done();
+			}); 
+			
+		});
+	});
+	
   describe('POST /', () => {
 		let user;
 		 const exec = (user) => {
@@ -240,6 +295,65 @@ describe('/api/users', () => {
 			
 		});
   });
+ 
+  describe('POST /forget', () => {
+		let email;
+		let fund;
+		 const exec = () => {
+		
+     
+		return chai.request(serv)
+		  .post('/api/users/forget')
+		  .send(email);
+		  
+		}
+		
+	 
+		beforeEach((done) => {
+			
+			 user = new User({firstName: 'first1' , lastName: 'last1', email: 'hananmohsin967088@gmail.com',password: '12345678',phoneNumber: '0958994488', isAdmin: true});
+			email = {email: 'hananmohsin967088@gmail.com'};
+			user.save().then(done());	
+		});
+	
+		
+		it('should return 400 if the body is empty',(done) => {
+			
+			email = {};
+			exec().end((err, res) => {
+				res.should.have.status(400);
+				res.should.have.property('error')
+				res.error.should.have.property('text').eql('An empty body is not allowed');
+				done();
+			});
+		});
+		
+		it('should return 404 if a user with the given email address is not found',(done) => {
+			email = {email: 'something@gmail.com'};
+			exec().end((err, res) => {
+				res.should.have.status(404);
+				res.should.have.property('error')
+				res.error.should.have.property('text').eql('A user with this email address is not found!');
+				done();
+			}); 
+			
+		});
+	
+	
+		
+		it('should return 200 and the id of the email address user',(done) => {
+			
+			exec().end((err, res) => {
+				res.should.have.status(200);
+				//res.body.should.be.eql('sent')
+				done();
+			}); 
+			
+		});
+  });
+  
+  
+  
   
 	describe('PUT /me', () => {
 		let userr;
@@ -254,10 +368,6 @@ describe('/api/users', () => {
 		  
 		}
 		
-		before(() => {
-			
-			
-		});
 	 
 		beforeEach((done) => {
 			
@@ -338,6 +448,75 @@ describe('/api/users', () => {
 		
   });
   
+  describe('PUT /reset/:id', () => {
+		let id;
+		let password;
+		let user;
+		
+		 const exec = () => {
+			return chai.request(serv)
+			  .put('/api/users/reset/'+id)
+			  .send(password)
+			  
+		}
+		
+	 
+		beforeEach((done) => {
+			
+			 user = new User({ firstName: 'first1' , lastName: 'last1', email: 'first3@gmail.com', password: '12345678',phoneNumber: '09589884488'});
+			
+			id = user._id;
+			password = {password: '12345678'};
+			user.save().then(done());
+			
+		});
+		
+		it('should return 404 if invalid id is passed',(done) => {
+			
+			id = '1';
+			exec().end((err, res) => {
+				res.should.have.status(404);
+				res.should.have.property('text').eql('A user with this id is not found!');
+				done();
+			});
+			
+		});
+		
+		it('should return 404 if user with the given id is not found',(done) => {
+			id = mongoose.Types.ObjectId();
+			exec().end((err, res) => {
+				res.should.have.status(404);
+				res.should.have.property('text').eql('A user with this id is not found!');
+				done();
+			}); 
+		});
+		
+		it('should return 400 if the body is empty',(done) => {
+			
+			password = {};
+			exec().end((err, res) => {
+				res.should.have.status(400);
+				res.should.have.property('error')
+				res.error.should.have.property('text').eql('An empty body is not allowed');
+				done();
+			});
+		});
+		
+		it('should return 200 and the user',(done) => {
+			
+			
+			exec().end((err, res) => {
+				res.should.have.status(200);
+				res.body.should.be.a('object');
+				res.body.should.have.property('firstName').eql(user.firstName);
+
+				done();
+			}); 
+			
+		});
+		
+  });
+  
   describe('DELETE /me', () => {
 		let token;
 		 const exec = () => {
@@ -400,4 +579,4 @@ describe('/api/users', () => {
 
 	
 	
-}); */
+}); 

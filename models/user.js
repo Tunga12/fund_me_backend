@@ -45,6 +45,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+	date: {
+        type: Date,
+        default: Date.now
+    },
     isAdmin: {
         type: Boolean,
         default: false
@@ -71,6 +75,7 @@ function validateUser(user){
         password: Joi.string().min(8).max(255).required(),
         paymentMethods: Joi.string(),
         emailNotification: Joi.boolean(),
+		date: Joi.date(),
         isDeactivated: Joi.boolean(),
         isAdmin: Joi.boolean(),
         isDeleted: Joi.boolean()

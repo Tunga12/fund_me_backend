@@ -71,7 +71,9 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 	
 	const fund = await Fundraiser.findById(req.params.fid);
 	if(!fund) return res.status(404).send('A fundraiser with the given ID was not found');
-	
+	console.log(config.get('email'));
+	console.log(config.get('password'));
+	console.log(config.get('url'));
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
 	if(!user) return res.status(404).send('A user with this email address is not found!');
