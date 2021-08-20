@@ -205,11 +205,11 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
 		
 	const id = mongoose.Types.ObjectId(req.params.id);
-	
+	/*
 	if(!req.body){
 		return res.status(400).send('An empty body is not allowed');
 	}
-	
+*/	
 	const fund = await Fundraiser.findOne({'withdraw.id': id});
 	if(!fund) return res.status(404).send('A fundraiser with this withdrawal id is not found');
 	

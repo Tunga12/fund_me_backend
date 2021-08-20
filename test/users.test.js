@@ -295,7 +295,7 @@ describe('/api/users', () => {
 			
 		});
   });
- 
+/* 
   describe('POST /forget', () => {
 		let email;
 		let fund;
@@ -354,7 +354,7 @@ describe('/api/users', () => {
   
   
   
-  
+ */ 
 	describe('PUT /me', () => {
 		let userr;
 		let token;
