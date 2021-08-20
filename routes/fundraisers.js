@@ -201,7 +201,7 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 	}catch(e){
 		return res.status(404).send('A fundraiser with the given ID was not found.');
 	}
-	if(!req.body.accepted) return res.status(400).send('An empty body is not allowed');
+	if(!req.body) return res.status(400).send('An empty body is not allowed');
 	const id = mongoose.Types.ObjectId(req.params.fid);
 	const fund = await Fundraiser.findById(req.params.fid);
 	

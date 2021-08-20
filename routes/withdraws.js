@@ -206,7 +206,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		
 	const id = mongoose.Types.ObjectId(req.params.id);
 	
-	if(!req.body.accepted){
+	if(!req.body){
 		return res.status(400).send('An empty body is not allowed');
 	}
 	
