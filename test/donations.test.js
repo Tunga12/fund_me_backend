@@ -157,7 +157,7 @@ describe('/api/donations', () => {
 	 
 		beforeEach((done) => {
 			
-			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first1@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
+			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first2@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
 
 			user.save().then();
 			token = user.generateAuthToken();
@@ -252,7 +252,7 @@ describe('/api/donations', () => {
 	 
 		beforeEach((done) => {
 			
-			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first1@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
+			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first3@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
 
 			user.save().then();
 			token = user.generateAuthToken();
@@ -347,7 +347,7 @@ describe('/api/donations', () => {
 	 
 		beforeEach((done) => {
 			
-			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first1@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
+			const user = new User({firstName: 'first1' , lastName: 'last1', email: 'first4@gmail.com', password: '12345678',phoneNumber: '0958994488', isAdmin: true});
 
 			user.save().then();
 			token = user.generateAuthToken();

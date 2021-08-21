@@ -27,8 +27,7 @@ const fundraiserSchema = new mongoose.Schema({
     },
     story: {
         type: String,
-        minlength: 10,
-        maxlength: 255,
+        minlength: 30,
         required: true
     },
     category: {
@@ -56,10 +55,14 @@ const fundraiserSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
+	beneficiary: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+
+    },
 	withdraw: {
-       
-			id:{ type:mongoose.Schema.Types.ObjectId, ref: 'Withdraw'},
-			beneficiary: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Withdraw',
     },
     donations: {
         type:[{type: mongoose.Schema.Types.ObjectId, ref: 'Donation'}],  //Change later
@@ -120,12 +123,13 @@ function validateFundraiser(fundraiser){
         title: Joi.string().min(5).max(50).required(),
         image: Joi.string().required(),
         goalAmount: Joi.number().required(),
-        story: Joi.string().min(10).max(255).required(),
+        story: Joi.string().min(30).required(),
         category: Joi.objectId().required(),
         location: Joi.object().required(),
         dateCreated: Joi.date(),
         organizer: Joi.objectId().required(),
-		withdraw: Joi.object(),
+		beneficiary: Joi.objectId(),
+		withdraw: Joi.objectId(),
         donations: Joi.array(),
         updates: Joi.array(),
         teams: Joi.array(),

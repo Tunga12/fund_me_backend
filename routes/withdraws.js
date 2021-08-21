@@ -71,15 +71,20 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 	
 	const fund = await Fundraiser.findById(req.params.fid);
 	if(!fund) return res.status(404).send('A fundraiser with the given ID was not found');
+	
 	console.log(config.get('email'));
 	console.log(config.get('password'));
 	console.log(config.get('url'));
+	var recp = [];
+	
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
 	if(!user) return res.status(404).send('A user with this email address is not found!');
 	
-	const alink = `${config.get('url')}/api/withdrawal/invitation/accept/${req.params.fid}`;
-	const dlink = `${config.get('url')}/api/withdrawal/invitation/decline/${req.params.fid}`;
+	recp.push(user._id);
+	
+	const alink = `${config.get('link')}/accept?fundraiser=${req.params.fid}&beneficiary=${user._id}`;
+	const dlink = `${config.get('link')}/decline`;
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -102,9 +107,20 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 			res.status(400).send(error.message);
 		}else{
 			console.log('Email sent: '+ info.response);
-			res.send({id: user._id});
+			res.send('sent');
 		}
 	});
+	
+	const newNot = new Notification({
+				notificationType:'Withdrawal',
+				recipients: recp,
+				title:`Withdrawal request`,
+				content: 'Hello, You are invited to withdraw the money raised on your behalf.',
+				target: fund._id
+				
+			});
+	 
+		   await newNotification(newNot);
 	
 	
 });
@@ -117,7 +133,10 @@ router.get('/invitation/accept/:fid', async(req,res) => {
 	}
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
-
+		
+		/* const withdraw = await Withdraw.findByIdAndUpdate(fund.withdraw.id,{$set: {invitationStatus: 'accepted'}});
+		if(!withdraw) return res.status(404).send('A fundraiser with this id is not found'); */
+		
 		var recp = [];
 		recp.push(fund.organizer);
 		res.send({accepted: true});
@@ -142,6 +161,9 @@ router.get('/invitation/decline/:fid', async(req,res) => {
 	}
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
+		
+		/* const withdraw = await Withdraw.findByIdAndUpdate(fund.withdraw.id,{$set: {invitationStatus: 'declined'}});
+		if(!withdraw) return res.status(404).send('A fundraiser with this id is not found'); */
 		
 		var recp=[];
 		recp.push(fund.organizer);
@@ -169,13 +191,20 @@ router.post('/:fid', auth,async(req,res) => {
 	const fund = await Fundraiser.findById(req.params.fid);
 	if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 	
-	if(req.body.isOrganizer === true){
-		req.body.beneficiary = fund.organizer.toString();
-	}
+	
 	
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
+	if(req.body.isOrganizer === true){
+		if(fund.organizer.toString() != req.user._id.toString()){
+			return res.status(403).send('You are not authorized to submit the withdrawal form.');
+		}
+	}else{
+		if(fund.beneficiary.toString() !== req.user._id.toString()){
+			return res.status(403).send('You are not authorized to submit the withdrawal form.');
+		}
+	}
 	
     const withdraw = new Withdraw(req.body);
 	const id = mongoose.Types.ObjectId(req.params.fid);
@@ -183,7 +212,7 @@ router.post('/:fid', auth,async(req,res) => {
 	const task = new Fawn.Task();
     try{
         task.save('withdraws',withdraw)
-        .update('fundraisers',{_id:id},{$set: {withdraw: {id: withdraw._id,beneficiary: withdraw.beneficiary}}})
+        .update('fundraisers',{_id:id},{$set: {withdraw: withdraw._id}})
         .run();
 
         res.status(201).send(withdraw);
@@ -210,46 +239,54 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		return res.status(400).send('An empty body is not allowed');
 	}
 */	
-	const fund = await Fundraiser.findOne({'withdraw.id': id});
+	const fund = await Fundraiser.findOne({'withdraw': id});
 	if(!fund) return res.status(404).send('A fundraiser with this withdrawal id is not found');
 	
-	var recp=[];
-	recp.push(fund.organizer);
-	var content;
-	
-  const accepted = req.body.accepted;
-	
-	if(!accepted){
-		const task = new Fawn.Task();
-    try{
-        task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
-        .update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
-        .run();
+	if(withdraw.status === 'pending'){
+		var recp=[];
+		if(withdraw.isOrganizer){
+			recp.push(fund.organizer);
+		}else{
+			recp.push(fund.beneficiary);
+		}
+		var content;
+		
+		const accepted = req.body.accepted;
+		
+		if(!accepted){
+			const task = new Fawn.Task();
+		try{
+			task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
+			.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
+			.run();
 
-        res.send('updated');
-        content = 'Your withdrawal  request has been denied.';  
-    }catch(e){
-        console.log(e.message);
-        res.status(500).send('Something went wrong');
-    }
+			res.send('updated');
+			content = 'Your withdrawal  request has been denied.';  
+		}catch(e){
+			console.log(e.message);
+			res.status(500).send('Something went wrong');
+		}
+		}else{
+
+			 withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
+			if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
+			res.send('updated');
+			 content = 'Your withdrawal  request has been accepted';       
+		
+		}
+		const newNot = new Notification({
+				notificationType:'Withdrawal',
+				recipients: recp,
+				title:`Withdrawal request`,
+				content: content,
+				target: fund._id
+				
+			});
+	 
+		   await newNotification(newNot);
 	}else{
-
-         withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
-		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
-		res.send('updated');
-         content = 'Your withdrawal  request has been accepted';       
-    
+		res.status(400).send('This withdrawal request has already been accepted or declined.');
 	}
-	const newNot = new Notification({
-            notificationType:'Withdrawal',
-            recipients: recp,
-            title:`Withdrawal request`,
-            content: content,
-            target: fund._id
-            
-        });
- 
-       await newNotification(newNot);
    
 });
 

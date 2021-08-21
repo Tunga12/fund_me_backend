@@ -70,7 +70,7 @@ router.get('/beneficiary', auth,async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {'withdraw.beneficiary': req.user._id,isDeleted: false};
+    const query = {beneficiary: req.user._id,isDeleted: false};
     const options = {
         offset:offset,
         limit:limit,
@@ -88,7 +88,7 @@ router.get('/member', auth,async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {'teams.userId': req.user._id, 'teams.status': 'accepted',isDeleted: false};
+    const query = {organizer: { $ne: req.user._id},'teams.userId': req.user._id, 'teams.status': 'accepted',isDeleted: false};
     const options = {
         offset:offset,
         limit:limit,

@@ -3,5 +3,6 @@
 	"db": "crowd_db",
 	"email": "crowd_email",
 	"password": "crowd_password",
-	"url": "crowd_url"
+	"url": "crowd_url",
+	"link": "crowd_link"
 }

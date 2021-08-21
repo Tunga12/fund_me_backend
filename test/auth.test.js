@@ -32,16 +32,7 @@ describe('auth middleware', () => {
 		  
 	 }
 
-	beforeEach((done) => {
-	   const user = new User({firstName:'firstName',lastName:'lastName', email:'first@gmail.com', password:'12345678',phoneNumber: '09085849995'});
-	   token = user.generateAuthToken();
-       user.save()
-	   .then(done())
-	   .catch((err) => console.log('Error auth: ',err));
-	  
-	  
 	
-	});
 	
 	//after(() => { server.close();});
   
@@ -65,6 +56,11 @@ describe('auth middleware', () => {
 	});
   
 	it('should return 200 if token is valid',(done) => {
+		const user = new User({firstName:'firstName',lastName:'lastName', email:'firstt@gmail.com', password:'12345678',phoneNumber: '09085849995'});
+	   token = user.generateAuthToken();
+       user.save().then();
+	   
+	   
 		exec().end((err, res) => {
 			res.should.have.status(200);
 			done();
