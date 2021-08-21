@@ -211,8 +211,10 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 	
 	var teamid;
 	fund.teams.forEach((team)=>{
-	if(team.userId.toString() === req.user._id.toString()){
-		teamid = team.id;
+		if(team.userId.toString() === req.user._id.toString()){
+			teamid = team.id;
+			if(team.status !== 'pending') return res.status(404).send('This invitation has already been accepted or declined.');
+					
 		}
 	});
 	

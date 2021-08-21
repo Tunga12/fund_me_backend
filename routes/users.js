@@ -79,7 +79,7 @@ router.post('/forget', async(req,res) => {
 	const email = req.body.email;
 	let user = await User.findOne({email:req.body.email});
 	if(!user) return res.status(404).send('A user with this email address is not found!');
-	const link = `${config.get('url')}/api/users/verify/${user._id}`;
+	const link = `${config.get('link')}/verify/${user._id}`;
 	
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
