@@ -140,7 +140,7 @@ router.get('/', [auth, admin],async(req, res) => {
         limit:limit,
         sort:'-dateCreated',
         select:'title image totalRaised goalAmount donations dateCreated withdraw',
-        populate: population};
+        populate: populationA};
         
     const funds = await Fundraiser.paginate(query, options);
     
@@ -326,6 +326,12 @@ router.delete('/:id',auth,async(req, res) => {
 
 const population = [
     {path: 'donations',select: 'date'},
+    
+];
+
+const populationA = [
+    {path: 'donations',select: 'date'},
+	{path: 'withdraw'}
     
 ];
 
