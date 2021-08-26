@@ -87,6 +87,10 @@ const fundraiserSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+	totalWithdraw: {
+        type: Number,
+        default: 0
+    },
     isPublished: {
         type: Boolean,
         default: false,
@@ -134,6 +138,7 @@ function validateFundraiser(fundraiser){
         updates: Joi.array(),
         teams: Joi.array(),
         totalRaised: Joi.number(),
+		totalWithdraw: Joi.number(),
         isPublished: Joi.boolean(),
         totalShareCount: Joi.number(),
         likeCount: Joi.number(),
