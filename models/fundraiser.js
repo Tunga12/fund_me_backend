@@ -115,8 +115,6 @@ const fundraiserSchema = new mongoose.Schema({
 
 
 
-
-//fundraiserSchema.plugin(require('mongoose-autopopulate'));
 fundraiserSchema.plugin(require('mongoose-paginate-v2'));
 //fundraiserSchema.plugin(require('mongoose-aggregate-paginate-v2'));
 
