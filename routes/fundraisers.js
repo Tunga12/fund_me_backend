@@ -117,7 +117,7 @@ router.get('/:id', async(req, res) => {
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
-	.populate({path: 'withdraw', select:'id',populate:{path: 'id',populate: {path:'beneficiary', select: 'firstName lastName email'}}})
+	.populate('withdraw')
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
     .populate({path: 'teams', select:'id status',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
