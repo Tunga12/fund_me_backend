@@ -14,6 +14,11 @@ const helpSchema = new mongoose.Schema({
         minlength: 10,
         required: true
     },
+	category:{
+        type: String,
+        enum: ['Getting started','Account management','Money management','Donor questions','Common issues','Saftey & security'],
+        required: true,
+    },
 	date: {
         type: Date,
         default: Date.now,
@@ -30,6 +35,7 @@ function validateHelp(help){
     const schema = Joi.object({
         title: Joi.string().min(3).max(255).required(),
 		content: Joi.string().min(10).required(),
+		category: Joi.string().required(),
 		date: Joi.date(),
 		isDeleted: Joi.boolean()
     });

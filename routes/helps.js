@@ -12,6 +12,12 @@ router.get('/', async(req,res) => {
     res.send(helps);
 });
 
+router.get('/:cat', async(req,res) => {
+    const helps = await Help.find({category: req.params.cat,isDeleted: false}).sort('-date').select('-isDeleted');
+    res.send(helps);
+});
+
+
 router.get('/:id', async(req,res) => {
 	 try{
 		mongoose.Types.ObjectId(req.params.id)
