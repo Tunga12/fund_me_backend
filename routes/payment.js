@@ -42,7 +42,7 @@ router.post('/pay/:fid', auth,(req, res) => {
             },
             "amount": {
                 "currency": "USD",
-                "total": (parseInt(donation.amount) + parseInt(donation.tip)).toString()
+                "total": (parseFloat(donation.amount) + parseFloat(donation.tip)).toString()
             },
             "description": "This is the payment for donation."
         }]
