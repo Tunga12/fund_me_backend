@@ -16,7 +16,8 @@ const helpSchema = new mongoose.Schema({
     },
 	category:{
         type: String,
-        enum: ['Getting started','Account management','Money management','Donor questions','Common issues','Saftey & security'],
+        enum: ['getting started','account management','money management','donor questions','common issues','saftey & security'],
+		lowercase: true,
         required: true,
     },
 	date: {
