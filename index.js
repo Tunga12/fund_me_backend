@@ -5,7 +5,7 @@ const cors = require('cors');
 const {Server} = require('socket.io');
 const http = require('http');
 let server = http.createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server,{cors: {origin: '*',}});
 
 module.exports.io = io;
 //module.exports.server = server
