@@ -114,7 +114,7 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 	const newNot = new Notification({
 				notificationType:'Withdrawal',
 				recipients: recp,
-				title:`Withdrawal request`,
+				title:`Beneficiary invitation`,
 				content: 'Hello, You are invited to withdraw the money raised on your behalf.',
 				target: fund._id
 				
