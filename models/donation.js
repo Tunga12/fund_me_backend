@@ -21,6 +21,12 @@ const donationSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+	paymentMethod:{
+        type: String,
+        enum: ['paypal','telebirr'],
+		lowercase: true,
+        required: true,
+    },
     comment: {
         type: String,
     },
@@ -46,6 +52,7 @@ function validateDonation(donation){
         memberId: Joi.objectId(),
         amount: Joi.number().required(),
         tip: Joi.number().required(),
+		paymentMethod: Joi.string().required(),
         comment: Joi.string(),
         date: Joi.date(),
 		isAnonymous: Joi.boolean(),

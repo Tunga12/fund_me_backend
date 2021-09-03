@@ -29,8 +29,8 @@ router.post('/pay/:fid', auth,(req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": `${config.get('url')}/donation/success`,
-            "cancel_url": `${config.get('url')}/donation/cancel`
+            "return_url": `${config.get('url')}/api/donation/success`,
+            "cancel_url": `${config.get('url')}/api/donation/cancel`
         },
         "transactions": [{
             "donation_list": {

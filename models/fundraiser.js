@@ -115,6 +115,10 @@ const fundraiserSchema = new mongoose.Schema({
 		type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
         default: []
 	},
+	isBlocked: {
+        type: Boolean,
+        default: false,
+    },
     isDeleted: {
         type: Boolean,
         default: false,
@@ -149,6 +153,7 @@ function validateFundraiser(fundraiser){
         totalShareCount: Joi.number(),
         likeCount: Joi.number(),
 		likedBy: Joi.array(),
+		isBlocked: Joi.boolean(),
         isDeleted: Joi.boolean(),
     });
 
