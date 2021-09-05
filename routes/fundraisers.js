@@ -16,7 +16,7 @@ const router = express();
 router.get('/popular', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
-    const query = {isPublished:true,isDeleted: false};
+    const query = {isPublished:true,isDeleted: false, isBlocked: false};
     const options = {
         offset:offset,
         limit:limit,
@@ -34,7 +34,7 @@ router.get('/title/:name', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 	const regex = new RegExp(req.params.name, 'i');
-	const query = {isPublished:true,isDeleted: false,title: {'$regex': regex}};
+	const query = {isPublished:true,isDeleted: false,isBlocked: false,title: {'$regex': regex}};
 	const options = {
 		offset:offset,
 		limit:limit,
@@ -113,7 +113,7 @@ router.get('/:id', async(req, res) => {
     const page = parseInt(req.query.page);
     const offset = page ? page : 0;
     const size = 5;
-    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,})
+    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,isBlocked:false})
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
@@ -154,7 +154,7 @@ router.get('/category/:cid', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {category: req.params.cid,isPublished:true,isDeleted: false};
+    const query = {category: req.params.cid,isPublished:true,isDeleted: false,isBlocked:false};
     const options = {
         offset:offset,
         limit:limit,
