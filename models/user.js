@@ -37,7 +37,6 @@ const userSchema = new mongoose.Schema({
 		minlength: 8,
 		maxlength: 1024
 	},
-    paymentMethods: String,
     emailNotification: {
         type: Boolean,
         default: false
@@ -51,6 +50,10 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     },
     isAdmin: {
+        type: Boolean,
+        default: false
+    },
+	isVerified: {
         type: Boolean,
         default: false
     },
@@ -74,11 +77,11 @@ function validateUser(user){
         email: Joi.string().min(5).max(255).required().email(),
 		phoneNumber: Joi.string().min(10),
         password: Joi.string().min(8).max(255).required(),
-        paymentMethods: Joi.string(),
         emailNotification: Joi.boolean(),
 		date: Joi.date(),
         isDeactivated: Joi.boolean(),
         isAdmin: Joi.boolean(),
+		isVerified: Joi.boolean(),
         isDeleted: Joi.boolean()
 
     });

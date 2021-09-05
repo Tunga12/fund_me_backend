@@ -16,7 +16,7 @@ const router = express();
 router.get('/popular', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
-    const query = {isPublished:true,isDeleted: false};
+    const query = {isPublished:true,isDeleted: false, isBlocked: false};
     const options = {
         offset:offset,
         limit:limit,
@@ -34,7 +34,7 @@ router.get('/title/:name', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 	const regex = new RegExp(req.params.name, 'i');
-	const query = {isPublished:true,isDeleted: false,title: {'$regex': regex}};
+	const query = {isPublished:true,isDeleted: false,isBlocked: false,title: {'$regex': regex}};
 	const options = {
 		offset:offset,
 		limit:limit,
@@ -113,11 +113,11 @@ router.get('/:id', async(req, res) => {
     const page = parseInt(req.query.page);
     const offset = page ? page : 0;
     const size = 5;
-    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,})
+    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,isBlocked:false})
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
-	.populate({path: 'withdraw', select:'id',populate:{path: 'id',populate: {path:'beneficiary', select: 'firstName lastName email'}}})
+	.populate('withdraw')
     .populate('organizer','firstName lastName email')
     .populate('beneficiary','firstName lastName email')
     .populate({path: 'teams', select:'id status',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
@@ -139,8 +139,8 @@ router.get('/', [auth, admin],async(req, res) => {
         offset:offset,
         limit:limit,
         sort:'-dateCreated',
-        select:'title image totalRaised goalAmount donations dateCreated',
-        populate: population};
+        select:'title image totalRaised goalAmount donations dateCreated withdraw',
+        populate: populationA};
         
     const funds = await Fundraiser.paginate(query, options);
     
@@ -154,7 +154,7 @@ router.get('/category/:cid', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {category: req.params.cid,isPublished:true,isDeleted: false};
+    const query = {category: req.params.cid,isPublished:true,isDeleted: false,isBlocked:false};
     const options = {
         offset:offset,
         limit:limit,
@@ -326,6 +326,12 @@ router.delete('/:id',auth,async(req, res) => {
 
 const population = [
     {path: 'donations',select: 'date'},
+    
+];
+
+const populationA = [
+    {path: 'donations',select: 'date'},
+	{path: 'withdraw'}
     
 ];
 

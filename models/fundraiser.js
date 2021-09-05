@@ -87,6 +87,18 @@ const fundraiserSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+	totalWithdraw:{
+		type:[{
+			amount:{
+				type: Number
+			},
+			date: {
+				type: Date,
+				default: Date.now,
+			},
+		}],
+		default: []
+	},
     isPublished: {
         type: Boolean,
         default: false,
@@ -103,6 +115,10 @@ const fundraiserSchema = new mongoose.Schema({
 		type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
         default: []
 	},
+	isBlocked: {
+        type: Boolean,
+        default: false,
+    },
     isDeleted: {
         type: Boolean,
         default: false,
@@ -111,8 +127,6 @@ const fundraiserSchema = new mongoose.Schema({
 
 
 
-
-//fundraiserSchema.plugin(require('mongoose-autopopulate'));
 fundraiserSchema.plugin(require('mongoose-paginate-v2'));
 //fundraiserSchema.plugin(require('mongoose-aggregate-paginate-v2'));
 
@@ -134,10 +148,12 @@ function validateFundraiser(fundraiser){
         updates: Joi.array(),
         teams: Joi.array(),
         totalRaised: Joi.number(),
+		totalWithdraw: Joi.array(),
         isPublished: Joi.boolean(),
         totalShareCount: Joi.number(),
         likeCount: Joi.number(),
 		likedBy: Joi.array(),
+		isBlocked: Joi.boolean(),
         isDeleted: Joi.boolean(),
     });
 
