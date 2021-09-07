@@ -113,7 +113,7 @@ router.get('/:id', async(req, res) => {
     const page = parseInt(req.query.page);
     const offset = page ? page : 0;
     const size = 5;
-    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,isBlocked:false})
+    const fund = await Fundraiser.findOne({_id:req.params.id,isDeleted: false,isBlocked: false})
     .select('-isDeleted')
     .slice('donations',[offset * size,size])
     .populate('category','name')
@@ -154,7 +154,7 @@ router.get('/category/:cid', async(req, res) => {
     const {page, size } = req.query;
     const {limit, offset} = getPagination(parseInt(page), parseInt(size));
 
-    const query = {category: req.params.cid,isPublished:true,isDeleted: false,isBlocked:false};
+    const query = {category: req.params.cid,isPublished:true,isDeleted: false, isBlocked:false};
     const options = {
         offset:offset,
         limit:limit,

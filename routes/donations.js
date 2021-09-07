@@ -112,7 +112,7 @@ router.post('/:fid', auth,async(req, res) => {
         res.status(201).send(donation);
 
        //fund = await Fundraiser.findById(id);
-        var recp = [];
+       /*  var recp = [];
         recp.push(fund.organizer);
         const user = await User.findById(donation.userId);
 
@@ -125,7 +125,7 @@ router.post('/:fid', auth,async(req, res) => {
             
         });
       //  newNot.target =  'jkkkkkkkkkkkkkkkkkjkjkkk';
-       await newNotification(newNot);
+       await newNotification(newNot); */
        // io.emit('notification',newNot);
         
            
@@ -157,21 +157,21 @@ router.delete('/:id',auth,async(req, res) => {
 	}catch(e){
 		return res.status(404).send('Donation with the given ID was not found.');
 	}
-    const donation = await Donation.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
+    const donation = await Donation.findOne({_id: req.params.id, isDeleted: false});
     
     if(!donation) return res.status(404).send('Donation with the given ID was not found.');
-    
-    res.send('Donation is deleted');
-    // const task = Fawn.Task();
-    // try{
-    //     task.update('donations',{_id: donation._id},{isDeleted: true})
-    //     .update('fundraisers',{_id:donation.fundraiser},{$pull: {donations: { $in: [donation._id] }}})
-    //     .run();
 
-    //     res.send('Donation is deleted')   
-    //   }catch(e){
-    //       res.status(500).send('Something went wrong');
-    //   }
+  //  res.send('Update is deleted');
+    const task = new Fawn.Task();
+    try{
+		task.update('donation',{_id: donation._id},{isDeleted: true})
+		.update('fundraisers',{donations:donation._id},{$pull:{'donations': donation._id}})
+		.run();
+
+		res.send('Donation is deleted')   
+	}catch(e){
+		res.status(500).send('Something went wrong');
+    }
 });
 
 
