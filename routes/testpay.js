@@ -57,7 +57,7 @@ router.post('/',async(req,ress) => {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
 		   winston.info('c');
-		  rdata += chuck;
+		  rdata = chunk;
          // winston.error('Response: ' + chunk);
       });
 	  res.on('end', () => {

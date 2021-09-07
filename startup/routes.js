@@ -26,7 +26,7 @@ module.exports = function(app){
     app.use('/api/members', teamMembers);
     app.use('/api/notifications', notifications);
     app.use('/api/donation', payment);
-	 app.use('/api/payment', tpayment);
+	app.use('/api/payment', tpayment);
 	app.use('/api/withdrawal', withdraw);
 	app.use('/api/help', helps);
 	app.use('/api/report', reports);
