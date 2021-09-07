@@ -36,9 +36,9 @@ const data = qs.stringify({
 });
 
 var options = {
-      host: 'closure-compiler.appspot.com',
-      port: '80',
-      path: '/compile',
+      host: '196.188.120.3',
+      port: '11443',
+      path: '/ammapi/service-openup/toTradeWebPay',
       method: 'POST',
       headers: {
          'Content-Type': 'application/json;charset=utf-8',
