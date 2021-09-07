@@ -79,7 +79,6 @@ var options = {
  request.post(options, (err, res, body) => {
 	 winston.info('b');
     if (err) {
-		winston.info(`Status: ${res.statusCode}`);
         return winston.error(err);
     }
    winston.info(`Status: ${res.statusCode}`);
