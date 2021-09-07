@@ -42,7 +42,7 @@ var options = {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json;charset=utf-8',
-          'Content-Length': Buffer.byteLength(data)
+          'Content-Length': data.length
       }
   };
   
@@ -52,11 +52,19 @@ var options = {
 router.post('/',async(req,res) => {
     
      var post_req = http.request(options, function(res) {
+		 let rdata;
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
-          console.log('Response: ' + chunk);
+		  rdata += chuck;
+         // winston.error('Response: ' + chunk);
       });
-  });
+	  res.on('end', () => {
+        winston.info('Body: ', JSON.parse(rdata));
+    });
+  }).on("error", (err) => {
+    winston.error("Error: ", err.message);
+	});
+	
   post_req.write(data);
  post_req.end();
 });
