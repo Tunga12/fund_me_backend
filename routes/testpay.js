@@ -49,17 +49,20 @@ var options = {
 
 
 // Post a help
-router.post('/',async(req,res) => {
-    
+router.post('/',async(req,ress) => {
+    winston.info('a');
      var post_req = http.request(options, function(res) {
+		  winston.info('b');
 		 let rdata;
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
+		   winston.info('c');
 		  rdata += chuck;
          // winston.error('Response: ' + chunk);
       });
 	  res.on('end', () => {
         winston.info('Body: ', JSON.parse(rdata));
+		ress.send(JSON.parse(rdata));
     });
   }).on("error", (err) => {
     winston.error("Error: ", err.message);
@@ -67,6 +70,7 @@ router.post('/',async(req,res) => {
 	
   post_req.write(data);
  post_req.end();
+
 });
 
 
