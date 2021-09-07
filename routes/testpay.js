@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const http = require('http');
+const request = require('request');
 const qs = require('querystring');
 const crypto = require('crypto');
 const NodeRSA = require('node-rsa')
@@ -29,13 +30,12 @@ const key= new NodeRSA(
 						
 const ussd = key.encrypt('{"appId":"4347b88db6e64e0baa9e588acd42d50c","nonce":"8a743de3ae3346e9920ecc46200226dd","notifyUrl":"http://www.google.com","outTradeNo":"426af391569b4e39b449d24b30bef93b","receiveName":"Org Name","returnUrl":"http://www.google.com","shortCode":"410028","subject":"Goods Name","timeoutExpress":"30","timestamp":"1624546517701","totalAmount":"10"}','base64');
 
-const data = qs.stringify({
+const data = {
     appid: '4347b88db6e64e0baa9e588acd42d50c',
     sign: sign.toUpperCase(),
 	ussd:ussd
-});
-
-var options = {
+};
+/* var options = {
       host: '196.188.120.3',
       port: '11443',
       path: '/ammapi/service-openup/toTradeWebPay',
@@ -44,14 +44,19 @@ var options = {
          'Content-Type': 'application/json;charset=utf-8',
           'Content-Length': data.length
       }
-  };
+  }; */
   
-
+var options = {
+	url: 'http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay',
+	json: true,
+	body: data
+	
+};
 
 // Post a help
-router.post('/',async(req,ress) => {
+ router.post('/',async(req,ress) => {
     winston.info('a');
-     var post_req = http.request(options, function(res) {
+    /* var post_req = http.request(options, function(res) {
 		  winston.info('b');
 		 let rdata;
       res.setEncoding('utf8');
@@ -69,7 +74,17 @@ router.post('/',async(req,ress) => {
 	});
 	
   post_req.write(data);
- post_req.end();
+ post_req.end(); */
+ 
+ request.post(options, (err, res, body) => {
+	 winston.info('b');
+    if (err) {
+        return winston.error(err);
+    }
+   winston.info(`Status: ${res.statusCode}`);
+    winston.info('Body',body);
+	ress.send(body);
+});
 
 });
 

@@ -2759,3 +2759,29 @@
 {"level":"info","message":"b","timestamp":"2021-09-07T19:37:53.295Z"}
 {"level":"info","message":"c","timestamp":"2021-09-07T19:37:53.298Z"}
 {"code":400,"data":null,"message":"Body: ","dateTime":1631042959639,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T19:37:53.303Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-07T19:51:13.497Z"}
+{"level":"info","message":"a","timestamp":"2021-09-07T19:51:30.671Z"}
+{"level":"info","message":"b","timestamp":"2021-09-07T19:51:31.097Z"}
+{"level":"info","message":"c","timestamp":"2021-09-07T19:51:31.098Z"}
+{"code":400,"data":null,"message":"Body: ","dateTime":1631043777511,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T19:51:31.100Z"}
+{"level":"info","message":"a","timestamp":"2021-09-07T19:52:31.481Z"}
+{"level":"info","message":"b","timestamp":"2021-09-07T19:52:31.990Z"}
+{"level":"info","message":"c","timestamp":"2021-09-07T19:52:31.994Z"}
+{"code":400,"data":null,"message":"Body: ","dateTime":1631043838315,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T19:52:31.997Z"}
+{"level":"info","message":"a","timestamp":"2021-09-07T19:52:34.590Z"}
+{"level":"info","message":"b","timestamp":"2021-09-07T19:52:34.665Z"}
+{"level":"info","message":"c","timestamp":"2021-09-07T19:52:34.666Z"}
+{"code":400,"data":null,"message":"Body: ","dateTime":1631043841435,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T19:52:34.669Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-07T21:44:46.199Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-07T21:44:46.305Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1631050573062,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T21:44:46.309Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-07T21:45:48.347Z"}
+{"level":"info","message":"a","timestamp":"2021-09-07T21:46:03.705Z"}
+{"level":"info","message":"b","timestamp":"2021-09-07T21:46:03.793Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-07T21:46:03.794Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1631050650560,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T21:46:03.796Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-07T21:47:27.353Z"}
+{"level":"info","message":"a","timestamp":"2021-09-07T21:47:31.249Z"}
+{"level":"info","message":"b","timestamp":"2021-09-07T21:47:31.320Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-07T21:47:31.321Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1631050738080,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T21:47:31.322Z"}
