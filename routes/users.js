@@ -74,6 +74,7 @@ router.put('/me', auth, async(req, res) => {
     res.send(user);
 });
 
+
 router.post('/forget', async(req,res) => {
 	if(!req.body.email) return res.status(400).send('An empty body is not allowed');
 	const email = req.body.email;
@@ -143,6 +144,22 @@ router.put('/reset/:id', async(req,res) => {
 	
 	res.send(user);
 	
+});
+
+router.put('/:id',[auth,admin],async(req,res) => {
+	try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('User with the given ID was not found.');
+	}
+    const {error} = validate(req.body);
+	if(error) return res.status(400).send(error.details[0].message);
+
+    const user = await User.findByIdAndUpdate(req.params.id,req.body,{new: true});
+
+    if (!user) return res.status(404).send('User with the given ID was not found.');
+
+    res.send(user);
 });
 
 // Delete user
