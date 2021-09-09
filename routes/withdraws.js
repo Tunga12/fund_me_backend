@@ -257,7 +257,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 			const task = new Fawn.Task();
 		try{
 			task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
-			.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
+			//.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
 			.run();
 
 			res.send('updated');

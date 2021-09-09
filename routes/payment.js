@@ -29,8 +29,8 @@ router.post('/pay/:fid', auth,(req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": `${config.get('url')}/donation/success`,
-            "cancel_url": `${config.get('url')}/donation/cancel`
+            "return_url": `${config.get('url')}/api/donation/success`,
+            "cancel_url": `${config.get('url')}/api/donation/cancel`
         },
         "transactions": [{
             "donation_list": {
@@ -42,7 +42,7 @@ router.post('/pay/:fid', auth,(req, res) => {
             },
             "amount": {
                 "currency": "USD",
-                "total": (parseInt(donation.amount) + parseInt(donation.tip)).toString()
+                "total": (parseFloat(donation.amount) + parseFloat(donation.tip)).toString()
             },
             "description": "This is the payment for donation."
         }]
@@ -57,7 +57,7 @@ router.post('/pay/:fid', auth,(req, res) => {
         } else {
             for(let i = 0 ;i < payment.links.length;i++){
                 if(payment.links[i].rel === 'approval_url'){
-                    total = (parseInt(req.body.amount) + parseInt(req.body.tip)).toString()
+                    total = (parseFloat(req.body.amount) + parseFloat(req.body.tip)).toString()
                     console.log(payment.links[i].href);
 					res.header("Access-Control-Allow-Origin", "*");
 					res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
