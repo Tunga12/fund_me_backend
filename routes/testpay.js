@@ -78,6 +78,7 @@ var options = {
  
  request.post(options, (err, res, body) => {
 	 winston.info('b');
+	 
     if (err) {
         return winston.error(err);
     }
