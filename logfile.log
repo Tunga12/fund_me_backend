@@ -2786,3 +2786,4 @@
 {"level":"info","message":"Status: 404","timestamp":"2021-09-07T21:47:31.321Z"}
 {"code":400,"data":null,"message":"Body","dateTime":1631050738080,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-07T21:47:31.322Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-09T20:06:15.914Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-09T20:45:50.551Z"}

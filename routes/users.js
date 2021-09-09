@@ -152,10 +152,16 @@ router.put('/:id',[auth,admin],async(req,res) => {
 	}catch(e){
 		return res.status(404).send('User with the given ID was not found.');
 	}
+	
+	 let user = await User.findById(req.params.id);
+	if(!user) return res.status(404).send('The user with the given ID was not found.');
+	
+	req.body.password = user.password;
+	
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
-    const user = await User.findByIdAndUpdate(req.params.id,req.body,{new: true});
+     user = await User.findByIdAndUpdate(req.params.id,req.body,{new: true});
 
     if (!user) return res.status(404).send('User with the given ID was not found.');
 
