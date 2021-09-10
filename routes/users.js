@@ -68,6 +68,12 @@ router.put('/me', auth, async(req, res) => {
 		const {error} = validate(req.body);
 		if(error) return res.status(400).send(error.details[0].message);
 	}
+	
+	user = await User.findOne({email: req.body.email});
+	if(user){
+		if(user._id.toString() !== req.user._id.toString())return res.status(400).send('User with this email address already exists!');
+	}
+	
     user = await User.findByIdAndUpdate(req.user._id,req.body,{new: true}).select('-password -isDeleted');
 
     if (!user) return res.status(404).send('The user with the given ID was not found.');
