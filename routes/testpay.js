@@ -84,7 +84,7 @@ var options = {
     }
    winston.info(`Status: ${res.statusCode}`);
     winston.info('Body',body);
-	ress.send(body);
+	ress.send(body.toString());
 });
 
 });
