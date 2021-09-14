@@ -82,7 +82,7 @@ var options = {
     /* if (err) {
         return winston.error(err);
     } */
-   winston.info(`Status: ${res.statusCode}`);
+   winston.info(`Status: ${res}`);
     winston.info('Body',body);
 	ress.send(body.toString());
 });
