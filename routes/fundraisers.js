@@ -118,7 +118,7 @@ router.get('/:id', async(req, res) => {
     .slice('donations',[offset * size,size])
     .populate('category','name')
 	.populate('withdraw')
-    .populate('organizer','firstName lastName email')
+    .populate('organizer','firstName lastName email isVerified')
     .populate('beneficiary','firstName lastName email')
     .populate({path: 'teams', select:'id status',populate:{path: 'id', select:'hasRaised shareCount status userId',populate: {path:'userId', select: 'firstName lastName email'}}})
     .populate({path: 'donations', populate:{path: 'userId', select:'firstName lastName email'}})
@@ -326,6 +326,7 @@ router.delete('/:id',auth,async(req, res) => {
 
 const population = [
     {path: 'donations',select: 'date'},
+	{path: 'organizer', select: 'isVerified'}
     
 ];
 

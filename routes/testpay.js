@@ -41,7 +41,7 @@ const data = {
       path: '/ammapi/service-openup/toTradeWebPay',
       method: 'POST',
       headers: {
-         'Content-Type': 'application/json;charset=utf-8',
+         'Content-Type': 'text/html',
           'Content-Length': data.length
       }
   }; */
@@ -78,13 +78,12 @@ var options = {
  
  request.post(options, (err, res, body) => {
 	 winston.info('b');
-	 
-    /* if (err) {
+    if (err) {
         return winston.error(err);
-    } */
-   winston.info(`Status: ${res}`);
+    }
+   winston.info(`Status: ${res.statusCode}`);
     winston.info('Body',body);
-	ress.send(body.toString());
+	ress.status(res.statusCode).send(body);
 });
 
 });
