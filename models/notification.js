@@ -84,6 +84,13 @@ async function numOfUnreadNotification(userId){
     return count;
 }
 
+async function allNotification(userId){
+
+    const notifications = await Notification.find({recipients: userId});
+
+    return notifications;
+}
+
 async function markAsViewed(notificationId, userId){
     const notification = await Notification.findOneAndUpdate(
 		{_id:notificationId,viewed: { $ne: userId}},
@@ -98,7 +105,8 @@ async function markAsViewed(notificationId, userId){
      validate: validateNotification,
      createNotification: createNotification,
      numOfUnreadNotification: numOfUnreadNotification,
-     markAsViewed: markAsViewed 
+     markAsViewed: markAsViewed ,
+	 allNotification: allNotification
 
  }
 

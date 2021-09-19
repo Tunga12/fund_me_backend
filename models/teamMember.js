@@ -10,8 +10,14 @@ const teamMemberSchema = new mongoose.Schema({
         //autopopulate: true
     },
     hasRaised: {
-        type: Number,
-        default: 0,
+        dollar: {
+			type: Number,
+			default: 0
+		},
+		birr: {
+			type: Number,
+			default: 0
+		}
     },
     shareCount: {
         type: Number,
@@ -29,9 +35,8 @@ const TeamMember = mongoose.model('TeamMember', teamMemberSchema);
 function validateTeamMember(member){
     const schema = Joi.object({
         userId: Joi.objectId().required(),
-        hasRaised: Joi.number(),
+        hasRaised: Joi.object(),
         shareCount: Joi.number(),
-		status: Joi.string(),
         isDeleted: Joi.boolean()
     });
 

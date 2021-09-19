@@ -13,9 +13,8 @@ const reportSchema = new mongoose.Schema({
         required: true,
     },
 	reason:{
-        type: String,
-       // enum: [],
-		//lowercase: true,
+       type: mongoose.Schema.Types.ObjectId,
+        ref: 'ReportReason',
         required: true,
     },
 	date: {
@@ -34,7 +33,7 @@ function validateReport(report){
     const schema = Joi.object({
         userId: Joi.objectId().required(),
 		fundraiserId: Joi.objectId().required(),
-		reason: Joi.string().required(),
+		reason: Joi.objectId().required(),
 		date: Joi.date(),
 		isDeleted: Joi.boolean()
     });

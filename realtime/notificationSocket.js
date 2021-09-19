@@ -1,4 +1,4 @@
-const { createNotification, numOfUnreadNotification, markAsViewed } = require('../models/notification');
+const { createNotification, numOfUnreadNotification, markAsViewed, allNotification } = require('../models/notification');
 const validate= require('../models/notification').validate;
 const mongoose = require('mongoose');
 
@@ -28,7 +28,10 @@ async function notification(io,notification) {
 
         // send number of unread notification to user
         const count = await numOfUnreadNotification(recipientId.toString());
+		const notifications = await allNotification(socket.user._id);
+		
         io.to(recipientId.toString()).emit('unread notification count', count);
+		io.to(recipientId.toString()).emit('all notification', notifications);
     });
 
 };
@@ -46,16 +49,20 @@ async function viewed(io, userId,notificationId) {
     io.to(userId).emit('viewed notification', notification);
 
     const count = await numOfUnreadNotification(userId);
-    
+    const notifications = await allNotification(userId);
+	
     io.to(userId).emit('unread notification count', count);
+	io.to(userId).emit('all notification', notifications);
 	return notification;
 }
 
 async function getUnreadCount(io, socket) {
     
     const count = await numOfUnreadNotification(socket.user._id);
-
+	const notifications = await allNotification(socket.user._id);
+	
     io.to(socket.user._id).emit('unread notification count', count);
+	io.to(socket.user._id).emit('all notification', notifications);
 }
 
 

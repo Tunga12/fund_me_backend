@@ -242,7 +242,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 	const fund = await Fundraiser.findOne({'withdraw': id});
 	if(!fund) return res.status(404).send('A fundraiser with this withdrawal id is not found');
 	
-	if(withdraw.status === 'pending'){
+
 		var recp=[];
 		if(withdraw.isOrganizer){
 			recp.push(fund.organizer);
@@ -254,24 +254,31 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		const accepted = req.body.accepted;
 		
 		if(!accepted){
-			const task = new Fawn.Task();
-		try{
-			task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
-			//.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
-			.run();
+			if(withdraw.status.toLowerCase() !== 'declined'){
+					const task = new Fawn.Task();
+				try{
+					task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
+					//.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
+					.run();
 
-			res.send('updated');
-			content = 'Your withdrawal  request has been denied.';  
-		}catch(e){
-			console.log(e.message);
-			res.status(500).send('Something went wrong');
-		}
+					res.send('updated');
+					content = 'Your withdrawal  request has been denied.';  
+				}catch(e){
+					console.log(e.message);
+					res.status(500).send('Something went wrong');
+				}
+			}else{
+				res.status(400).send('This withdrawal request has already been declined.');
+			}
 		}else{
-
-			 withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
-			if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
-			res.send('updated');
-			 content = 'Your withdrawal  request has been accepted';       
+			if(withdraw.status.toLowerCase() !== 'accepted'){
+				withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
+				if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
+				res.send('updated');
+				 content = 'Your withdrawal  request has been accepted';
+			}else{
+				res.status(400).send('This withdrawal request has already been accepted.');
+			}				
 		
 		}
 		const newNot = new Notification({
@@ -284,9 +291,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 			});
 	 
 		   await newNotification(newNot);
-	}else{
-		res.status(400).send('This withdrawal request has already been accepted or declined.');
-	}
+	
    
 });
 

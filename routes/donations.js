@@ -89,25 +89,29 @@ router.post('/:fid', auth,async(req, res) => {
 	
     const id = mongoose.Types.ObjectId(req.params.fid);
     const task = new Fawn.Task();
-	if(donation.memberId){
-    try{
-        task.save('donations',donation)
-        .update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {totalRaised: donation.amount}})
-        .update('teammembers', {_id: donation.memberId}, {$inc: {hasRaised: donation.amount}})
-        .run();
+	if(donation.paymentMethod.toLowerCase() === 'telebirr'){
+		try{
+		
+			task.save('donations',donation)
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.birr': donation.amount}})
+			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.birr': donation.amount}})
+			.run();
         }catch(e){
             console.log(e.message);
             res.status(500).send('Something went wrong');
         }
 	}else{
-		 try{
-        task.save('donations',donation)
-        .update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {totalRaised: donation.amount}})
-        .run();
+		try{
+		
+			task.save('donations',donation)
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.dollar': donation.amount}})
+			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.dollar': donation.amount}})
+			.run();
         }catch(e){
             console.log(e.message);
             res.status(500).send('Something went wrong');
         }
+		
 	}
         res.status(201).send(donation);
 

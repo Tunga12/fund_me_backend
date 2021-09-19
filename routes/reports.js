@@ -9,7 +9,9 @@ const router = express();
 //help
 // Get all reports
 router.get('/', [auth,admin],async(req,res) => {
-    const reports = await Report.find({isDeleted: false}).sort('-date').select('-isDeleted');
+    const reports = await Report.find({isDeleted: false})
+	.sort('-date').select('-isDeleted')
+	.populate('reason','name');
     res.send(reports);
 });
 
@@ -20,7 +22,9 @@ router.get('/:id',[auth,admin],async(req,res) => {
 	}catch(e){
 		return res.status(404).send('Report with the given ID was not found.');
 	} 
-    const report = await Report.findOne({_id: req.params.id, isDeleted:false}).select('-isDeleted');
+    const report = await Report.findOne({_id: req.params.id, isDeleted:false})
+	.select('-isDeleted')
+	.populate('reason','name');
 	if(!report) return res.status(404).send('Report with the given ID was not found.');
     res.send(report);
 });

@@ -2858,3 +2858,15 @@
 {"code":400,"data":null,"message":"Body","dateTime":1631624123947,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-14T13:04:04.216Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-14T13:42:42.426Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-18T15:07:05.763Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T11:28:24.684Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-19T11:28:25.259Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T16:26:45.399Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-19T16:26:45.583Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-09-19T16:26:57.879Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T16:27:56.328Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-19T16:27:56.450Z"}
+{"level":"info","message":"Connected from server!","timestamp":"2021-09-19T16:27:59.306Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T16:35:02.842Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-19T16:35:02.865Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T17:31:54.880Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-19T17:34:56.342Z"}

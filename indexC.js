@@ -1,7 +1,7 @@
 var io = require('socket.io-client');
 const winston = require('winston');
 const {Notification} = require('./models/notification');
-socket = io.connect('http://localhost:3000',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFhN2IwOTliODhjZDFmNjQ5YmMwYWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzA4NDkyNTV9.nFdvjyWVrCvUvVPNSoa9qnxNIlSfA--fIuSNpTsxS1w"},{
+socket = io.connect('http://localhost:5000',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFhN2IwOTliODhjZDFmNjQ5YmMwYWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzA4NDkyNTV9.nFdvjyWVrCvUvVPNSoa9qnxNIlSfA--fIuSNpTsxS1w"},{
    // reconnection: true,
   //  reconnectionDelay: 10000
   });
@@ -15,6 +15,14 @@ socket.on('connect', function (sockett) {
         const not = new Notification(msg);
         winston.info('notification: '+ not);
     });
+	
+	socket.on('all notification', (notifications) =>{
+        notifications.forEach(not => {
+			let nots = new Notification(not);
+			 winston.info('notification: '+ nots);
+		});
+    });
+	
     socket.on('unread notification count', (msg) =>{
         winston.info('unread count '+msg);
     });

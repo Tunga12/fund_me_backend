@@ -1,6 +1,7 @@
 const express = require('express');
 const users = require('../routes/users');
 const categories = require('../routes/categories');
+const reasons = require('../routes/reportReasons');
 const fundraisers = require('../routes/fundraisers');
 const updates = require('../routes/updates');
 const donations = require('../routes/donations');
@@ -20,6 +21,7 @@ module.exports = function(app){
 	app.use(express.json());
     //app.use('/donation', status);
     app.use('/api/categories',categories);
+	app.use('/api/reasons',reasons);
     app.use('/api/fundraisers',fundraisers);
     app.use('/api/updates', updates);
     app.use('/api/donations', donations);
