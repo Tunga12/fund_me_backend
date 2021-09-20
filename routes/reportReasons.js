@@ -43,11 +43,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 });
 
 router.delete('/:id', async(req,res) => {
-	 try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Reason with the given ID was not found.');
-	} 
+	
     const reason = await Reason.findByIdAndRemove(req.params.id);
 	if(!reason) return res.status(404).send('Reason with the given ID was not found.');
     res.send('Reason is deleted!');
