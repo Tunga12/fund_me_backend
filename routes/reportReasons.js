@@ -13,12 +13,8 @@ router.get('/', async(req,res) => {
 });
 
 router.get('/:id', async(req,res) => {
-	 try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Reason with the given ID was not found.');
-	} 
-    const reason = await Reason.findById(req.params.id);
+	 
+const reason = await Reason.findOne({_id:req.params.id});
 	if(!reason) return res.status(404).send('Reason with the given ID was not found.');
     res.send(reason);
 });

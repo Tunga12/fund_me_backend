@@ -13,12 +13,9 @@ router.get('/', async(req,res) => {
 });
 
 router.get('/:id', async(req,res) => {
-	 try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Category with the given ID was not found.');
-	} 
-    const category = await Category.findById(req.params.id);
+	
+	
+    const category = await Category.findOne({_id:req.params.id});
 	if(!category) return res.status(404).send('Category with the given ID was not found.');
     res.send(category);
 });
