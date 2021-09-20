@@ -12,6 +12,17 @@ router.get('/', async(req,res) => {
     res.send(reasons);
 });
 
+router.get('/:id', async(req,res) => {
+	 try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Reason with the given ID was not found.');
+	} 
+    const reason = await Reason.findById(req.params.id);
+	if(!reason) return res.status(404).send('Reason with the given ID was not found.');
+    res.send(reason);
+});
+
 // Post a category
 router.post('/', [auth,admin],async(req,res) => {
     const {error} = validate(req.body);
@@ -35,6 +46,15 @@ router.put('/:id',[auth,admin],async(req,res) => {
     res.send(reason);
 });
 
-
+router.delete('/:id', async(req,res) => {
+	 try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Reason with the given ID was not found.');
+	} 
+    const reason = await Reason.findByIdAndRemove(req.params.id);
+	if(!reason) return res.status(404).send('Reason with the given ID was not found.');
+    res.send('Reason is deleted!');
+});
 
 module.exports = router;

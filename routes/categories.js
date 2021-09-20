@@ -12,6 +12,17 @@ router.get('/', async(req,res) => {
     res.send(categories);
 });
 
+router.get('/:id', async(req,res) => {
+	 try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Category with the given ID was not found.');
+	} 
+    const category = await Category.findById(req.params.id);
+	if(!category) return res.status(404).send('Category with the given ID was not found.');
+    res.send(category);
+});
+
 // Post a category
 router.post('/', [auth,admin],async(req,res) => {
     const {error} = validate(req.body);
@@ -33,6 +44,17 @@ router.put('/:id',[auth,admin],async(req,res) => {
     if (!category) return res.status(404).send('The category with the given ID was not found.');
 
     res.send(category);
+});
+
+router.delete('/:id', async(req,res) => {
+	 try{
+		mongoose.Types.ObjectId(req.params.id)
+	}catch(e){
+		return res.status(404).send('Category with the given ID was not found.');
+	} 
+    const category = await Category.findByIdAndRemove(req.params.id);
+	if(!category) return res.status(404).send('Category with the given ID was not found.');
+    res.send('Category is deleted!');
 });
 
 module.exports = router;
