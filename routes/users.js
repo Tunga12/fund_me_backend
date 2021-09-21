@@ -119,11 +119,6 @@ router.post('/forget', async(req,res) => {
 
 router.get('/verify/:id', async(req,res) => {
 
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A user with this email address is not found!');
-	}
 
 	let user = await User.findById(req.params.id);
 	
@@ -136,11 +131,7 @@ router.get('/verify/:id', async(req,res) => {
 
 router.put('/reset/:id', async(req,res) => {
 	
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A user with this id is not found!');
-	}
+	
 	const salt = await bcrypt.genSalt(10);
 	if(!req.body.password) return res.status(400).send('An empty body is not allowed');
 	req.body.password = await bcrypt.hash(req.body.password,salt);
@@ -153,11 +144,7 @@ router.put('/reset/:id', async(req,res) => {
 });
 
 router.put('/:id',[auth,admin],async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('User with the given ID was not found.');
-	}
+	
 	
 	 let user = await User.findById(req.params.id);
 	if(!user) return res.status(404).send('The user with the given ID was not found.');

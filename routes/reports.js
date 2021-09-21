@@ -17,11 +17,7 @@ router.get('/', [auth,admin],async(req,res) => {
 
 
 router.get('/:id',[auth,admin],async(req,res) => {
-	 try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Report with the given ID was not found.');
-	} 
+	 
     const report = await Report.findOne({_id: req.params.id, isDeleted:false})
 	.select('-isDeleted')
 	.populate('reason','name');
@@ -43,11 +39,7 @@ router.post('/', auth,async(req,res) => {
 
 // Update a report
 router.put('/:id',auth,async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Report with the given ID was not found.');
-	}
+	
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
@@ -59,11 +51,7 @@ router.put('/:id',auth,async(req,res) => {
 });
 
 router.delete('/:id',auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Report with the given ID was not found.');
-	}
+	
     const report = await Report.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
 
     if (!report) return res.status(404).send('Report with the given ID was not found.');

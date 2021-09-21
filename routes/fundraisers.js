@@ -105,11 +105,7 @@ router.get('/member', auth,async(req, res) => {
 
 // Get fundraisers by id
 router.get('/:id', async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A fundraiser with the given ID was not found.');
-	}
+	
     const page = parseInt(req.query.page);
     const offset = page ? page : 0;
     const size = 5;
@@ -196,11 +192,7 @@ router.post('/', auth,async(req, res) => {
 });
 
 router.put('/invitation/:fid', auth, async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.fid)
-	}catch(e){
-		return res.status(404).send('A fundraiser with the given ID was not found.');
-	}
+	
 	/*
 	if(req.body == {}) return res.status(400).send('An empty body is not allowed');
 	*/
@@ -267,11 +259,7 @@ router.put('/invitation/:fid', auth, async(req,res) => {
 
 // Update a fundraiser
 router.put('/:id', auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A fundraiser with the given ID was not found.');
-	}
+	
     //req.body.organizer = req.user._id;
 	const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message); 
@@ -298,11 +286,7 @@ router.put('/:id', auth,async(req, res) => {
 
 // Delete fundraiser
 router.delete('/:id',auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A fundraiser with the given ID was not found.');
-	}
+	
     const fund = await Fundraiser.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
 
     if (!fund) return res.status(404).send('A fundraiser with the given ID was not found.');

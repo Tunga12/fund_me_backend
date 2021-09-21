@@ -50,22 +50,14 @@ router.get('/status/:stat',[auth,admin],async(req,res) => {
 });
 
 router.get('/:id',auth,async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A withdrawal with the given ID was not found.');
-	}
+	
     const withdraw = await Withdraw.findById(req.params.id);
 	 if (!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
     res.send(withdraw);
 });
 
 router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.fid)
-	}catch(e){
-		return res.status(404).send('A fundraiser with the given ID was not found');
-	}
+	
 	
 	if(!req.body.email) return res.status(400).send('An empty body is not allowed');
 	
@@ -126,11 +118,7 @@ router.post('/beneficiary/invitation/:fid', auth, async(req,res) => {
 });
 
 router.get('/invitation/accept/:fid', async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.fid)
-	}catch(e){
-		return res.status(404).send('A fundraiser with this id is not found');
-	}
+
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 		
@@ -154,11 +142,7 @@ router.get('/invitation/accept/:fid', async(req,res) => {
 });
 
 router.get('/invitation/decline/:fid', async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.fid)
-	}catch(e){
-		return res.status(404).send('A fundraiser with this id is not found');
-	}
+	
 		const fund = await Fundraiser.findById(req.params.fid);
 		if(!fund) return res.status(404).send('A fundraiser with this id is not found');
 		
@@ -182,11 +166,7 @@ router.get('/invitation/decline/:fid', async(req,res) => {
 });
 // Post a withdraw
 router.post('/:fid', auth,async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.fid)
-	}catch(e){
-		return res.status(404).send('A fundraiser with this id is not found');
-	}
+	
 	
 	const fund = await Fundraiser.findById(req.params.fid);
 	if(!fund) return res.status(404).send('A fundraiser with this id is not found');
@@ -225,11 +205,7 @@ router.post('/:fid', auth,async(req,res) => {
 
 // Update a withdraw
 router.put('/:id',[auth,admin],async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A withdrawal with the given ID was not found.');
-	}
+	
 	  let withdraw = await Withdraw.findById(req.params.id);
 		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
 		
@@ -297,11 +273,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 
 // Delete a notification
 router.delete('/:id',auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('A withdrawal with the given ID was not found.');
-	}
+	
 	
     const withdraw = await Withdraw.findById(req.params.id);
     

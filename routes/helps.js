@@ -18,11 +18,7 @@ router.get('/category/:cat', async(req,res) => {
 });
 
 router.get('/:id', async(req,res) => {
-	 try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Help with the given ID was not found.');
-	} 
+	
     const help = await Help.findOne({_id: req.params.id, isDeleted:false}).select('-isDeleted');
 	if(!help) return res.status(404).send('Help with the given ID was not found.');
     res.send(help);
@@ -41,11 +37,7 @@ router.post('/', [auth,admin],async(req,res) => {
 
 // Update a help
 router.put('/:id',[auth,admin],async(req,res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Help with the given ID was not found.');
-	}
+	
     const {error} = validate(req.body);
 	if(error) return res.status(400).send(error.details[0].message);
 
@@ -57,11 +49,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 });
 
 router.delete('/:id',auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Help with the given ID was not found.');
-	}
+	
     const help = await Help.findByIdAndUpdate(req.params.id,{isDeleted: true},{new: true});
 
     if (!help) return res.status(404).send('Help with the given ID was not found.');

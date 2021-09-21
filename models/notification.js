@@ -97,6 +97,8 @@ async function markAsViewed(notificationId, userId){
         { $push: { viewed: userId } },
         { new: true }
     );
+	
+	if(!notification) return res.status(404).send('Notification with this id is not found');
     return notification;
  }
 

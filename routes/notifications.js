@@ -25,11 +25,8 @@ router.get('/user', auth,async(req,res) => {
 // Get notification by id
 router.get('/:id',auth,async(req,res) => {
 
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Notification with the given ID was not found.');
-	}
+	
+	
 	
     const notification = await Notification
     .findOne({_id: req.params.id, isDeleted: false})
@@ -83,11 +80,7 @@ router.put('/:id', auth,async(req,res) => {
 
 // Delete a notification
 router.delete('/:id',auth,async(req, res) => {
-	try{
-		mongoose.Types.ObjectId(req.params.id)
-	}catch(e){
-		return res.status(404).send('Notification with the given ID was not found.');
-	}
+	
     const notification = await Notification.findByIdAndUpdate(req.params.id,
         {$pull: {recipients: req.user._id, viewed: req.user._id}},{new: true});
 
