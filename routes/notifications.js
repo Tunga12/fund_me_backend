@@ -84,7 +84,7 @@ router.delete('/:id',auth,async(req, res) => {
     const notification = await Notification.findByIdAndUpdate(req.params.id,
         {$pull: {recipients: req.user._id, viewed: req.user._id}},{new: true});
 
-    if (!notification) return res.status(404).send('Notification with the given ID was not found.');
+    if (!notification) return res.status(404).send('Notification with the given ID was not found or it is already viewed.');
 
     res.send('Notification is deleted');
 });
