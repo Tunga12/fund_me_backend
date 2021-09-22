@@ -25,7 +25,7 @@ router.post('/', [auth,admin],async(req,res) => {
 	if(error) return res.status(400).send(error.details[0].message);
 
     let reason = new Reason(_.pick(req.body,['name']));
-    reason = await Reason.save();
+    reason = await reason.save();
 
     res.send(reason);
 });
