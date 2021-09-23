@@ -203,8 +203,10 @@ router.post('/:fid', auth,async(req,res) => {
     }
 });
 
+
+
 // Update a withdraw
-router.put('/:id',[auth,admin],async(req,res) => {
+router.put('status/:id',[auth,admin],async(req,res) => {
 	
 	  let withdraw = await Withdraw.findById(req.params.id);
 		if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
@@ -269,6 +271,17 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		   await newNotification(newNot);
 	
    
+});
+
+router.put('/:id',[auth,admin],async(req,res) => {
+    const {error} = validate(req.body);
+	if(error) return res.status(400).send(error.details[0].message);
+
+    const withdraw = await Withdraw.findByIdAndUpdate(req.params.id,req.body,{new: true});
+
+    if (!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
+
+    res.send(withdraw);
 });
 
 // Delete a notification
