@@ -28,7 +28,7 @@ async function notification(io,notification) {
 
         // send number of unread notification to user
         const count = await numOfUnreadNotification(recipientId.toString());
-		const notifications = await allNotification(socket.user._id);
+		const notifications = await allNotification(recipientId.toString());
 		
         io.to(recipientId.toString()).emit('unread notification count', count);
 		io.to(recipientId.toString()).emit('all notification', notifications);
