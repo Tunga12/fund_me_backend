@@ -233,9 +233,12 @@ router.put('status/:id',[auth,admin],async(req,res) => {
 		
 		if(!accepted){
 			if(withdraw.status.toLowerCase() !== 'declined'){
+				if(!req.body.reason){
+					res.status(400).send('A reason is required when declining a withdrawal request.');
+				}else{
 					const task = new Fawn.Task();
 				try{
-					task.update('withdraws',{_id: id},{$set: {status: 'declined'}})
+					task.update('withdraws',{_id: id},{$set: {status: 'declined',reason: req.body.reason}})
 					//.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
 					.run();
 
@@ -244,6 +247,7 @@ router.put('status/:id',[auth,admin],async(req,res) => {
 				}catch(e){
 					console.log(e.message);
 					res.status(500).send('Something went wrong');
+				}
 				}
 			}else{
 				res.status(400).send('This withdrawal request has already been declined.');
