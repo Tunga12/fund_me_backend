@@ -239,7 +239,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 					withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'declined',reason: req.body.reason});
 				if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
 				res.send('declined');
-				 content = 'Your withdrawal  request has been declined.';
+				 content = 'Your withdrawal request has been declined.';
 				}
 			}else{
 				return res.status(400).send('This withdrawal request has already been declined.');
@@ -249,7 +249,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 				withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
 				if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
 				res.send('accepted');
-				 content = 'Your withdrawal  request has been accepted.';
+				 content = 'Your withdrawal request has been accepted.';
 			}else{
 				return res.status(400).send('This withdrawal request has already been accepted.');
 			}				
