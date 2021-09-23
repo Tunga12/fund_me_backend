@@ -236,18 +236,10 @@ router.put('/:id',[auth,admin],async(req,res) => {
 				if(!req.body.reason){
 					return res.status(400).send('A reason is required when declining a withdrawal request.');
 				}else{
-					const task = new Fawn.Task();
-				try{
-					task.update('withdraws',{_id: id},{$set: {status: 'declined',reason: req.body.reason}})
-					//.update('fundraisers',{_id:fund._id},{$unset: {withdraw: ''}})
-					.run();
-
-					res.send('updated');
-					content = 'Your withdrawal  request has been denied.';  
-				}catch(e){
-					console.log(e.message);
-					return res.status(500).send('Something went wrong');
-				}
+					withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'declined',reason: req.body.reason});
+				if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
+				res.send('declined');
+				 content = 'Your withdrawal  request has been declined.';
 				}
 			}else{
 				return res.status(400).send('This withdrawal request has already been declined.');
@@ -256,8 +248,8 @@ router.put('/:id',[auth,admin],async(req,res) => {
 			if(withdraw.status.toLowerCase() !== 'accepted'){
 				withdraw = await Withdraw.findByIdAndUpdate(id,{status: 'accepted'});
 				if(!withdraw) return res.status(404).send('A withdrawal with the given ID was not found.');
-				res.send('updated');
-				 content = 'Your withdrawal  request has been accepted';
+				res.send('accepted');
+				 content = 'Your withdrawal  request has been accepted.';
 			}else{
 				return res.status(400).send('This withdrawal request has already been accepted.');
 			}				
