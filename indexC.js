@@ -1,12 +1,14 @@
 var io = require('socket.io-client');
 const winston = require('winston');
 const {Notification} = require('./models/notification');
-socket = io.connect('http://localhost:5000',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFhN2IwOTliODhjZDFmNjQ5YmMwYWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzA4NDkyNTV9.nFdvjyWVrCvUvVPNSoa9qnxNIlSfA--fIuSNpTsxS1w"},{
+socket = io.connect('http://178.62.55.81',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZWMzOGIzYTZjNTAwMTUzODQwZWYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjMyMzMyNzU3fQ.1tBz4H1y52Oa5ga7dAFZoON2RNsdYtkJl2gIryUWCC0"},{
    // reconnection: true,
   //  reconnectionDelay: 10000
   });
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGViMzEyMWYwOGRjNjFmNzhlYzc4NjciLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjI3NjM//1ODA4fQ.miPyOAQ9To0JTpmQEW_LtjoRskm3lDtx0YJHGFZ4008
 // Add a connect listener
+
+/*http://178.62.55.81?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZWMzOGIzYTZjNTAwMTUzODQwZWYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjMyMzMyNzU3fQ.1tBz4H1y52Oa5ga7dAFZoON2RNsdYtkJl2gIryUWCC0*/
 socket.on('connect', function (sockett) {
     winston.info('Connected from client!');
    

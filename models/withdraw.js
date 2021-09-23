@@ -19,6 +19,9 @@ const withdrawSchema = new mongoose.Schema({
 		type: String,
 		default: 'pending'
 	},
+	reason: {
+		type: String
+	},
 	date: {
 		type: Date,
         default: Date.now,
@@ -38,6 +41,7 @@ function validateWithdraw(withdraw){
         bankAccountNo: Joi.string().required(),
 		isOrganizer: Joi.boolean().required(),
 		status: Joi.string(),
+		reason: Joi.string(),
 		date: Joi.date(),
         isDeleted: Joi.boolean()
 
