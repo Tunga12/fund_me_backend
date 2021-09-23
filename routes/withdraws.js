@@ -234,7 +234,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 		if(!accepted){
 			if(withdraw.status.toLowerCase() !== 'declined'){
 				if(!req.body.reason){
-					res.status(400).send('A reason is required when declining a withdrawal request.');
+					return res.status(400).send('A reason is required when declining a withdrawal request.');
 				}else{
 					const task = new Fawn.Task();
 				try{
@@ -246,11 +246,11 @@ router.put('/:id',[auth,admin],async(req,res) => {
 					content = 'Your withdrawal  request has been denied.';  
 				}catch(e){
 					console.log(e.message);
-					res.status(500).send('Something went wrong');
+					return res.status(500).send('Something went wrong');
 				}
 				}
 			}else{
-				res.status(400).send('This withdrawal request has already been declined.');
+				return res.status(400).send('This withdrawal request has already been declined.');
 			}
 		}else{
 			if(withdraw.status.toLowerCase() !== 'accepted'){
@@ -259,7 +259,7 @@ router.put('/:id',[auth,admin],async(req,res) => {
 				res.send('updated');
 				 content = 'Your withdrawal  request has been accepted';
 			}else{
-				res.status(400).send('This withdrawal request has already been accepted.');
+				return res.status(400).send('This withdrawal request has already been accepted.');
 			}				
 		
 		}
