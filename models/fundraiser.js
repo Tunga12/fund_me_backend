@@ -160,7 +160,7 @@ function validateFundraiser(fundraiser){
         donations: Joi.array(),
         updates: Joi.array(),
         teams: Joi.array(),
-        totalRaised: Joi.objecct(),
+        totalRaised: Joi.object(),
 		totalWithdraw: Joi.array(),
         isPublished: Joi.boolean(),
         totalShareCount: Joi.number(),
