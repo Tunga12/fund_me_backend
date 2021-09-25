@@ -1,7 +1,7 @@
 var io = require('socket.io-client');
 const winston = require('winston');
 const {Notification} = require('./models/notification');
-socket = io.connect('http://178.62.55.81',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiOGIzM2MyNTY5NDJkN2ExYmQ0OWMiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjMyNDExNDUzfQ.WO43XIYxhncVqy_0yobV3rYXvzob2dobreEgiwCLm6E"},{
+socket = io.connect('http://178.62.55.81',  {query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRmMDEwNjRlYjg5NWU3NzU0ZTM0OWEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjMyNTY3NTU4fQ.4iSdBoVMJWulvY8gjUFCtkUlNSnu3j9ByicLAa6RB_E"},{
     reconnection: true,
    reconnectionDelay: 10000,
     reconnectionAttempts: "Infinity"
