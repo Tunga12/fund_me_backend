@@ -13,7 +13,6 @@ const io = require('socket.io')(server,{cors: {origin: '*',}});
 module.exports.io = io;
 //module.exports.server = server
 app.use(cors({origin: '*'}));
-require('./startup/connection').conn(); 
 app.use('/uploads',express.static('uploads'));
 require('./startup/logging')();
 require('./startup/routes')(app);
@@ -23,7 +22,7 @@ require('./startup/validation')();
 const {scheduler} = require('./startup/scheduler');
 const job = nodeCron.schedule("0 55 23 * * *",scheduler);
 require('./startup/prod')(app);
- 
+require('./startup/connection').conn();  
 // const {conn} = require('./startup/notification');
 // conn();
 /* const key= new NodeRSA(

@@ -8,7 +8,8 @@ const {newNotification} = require('../startup/connection');
 
 async function scheduler(){
 
-	var totalRaised = 0;
+	var totalRaisedB = 0;
+	var totalRaisedD=0;
 	var counter = 0;
 	let funds = await Fundraiser.find({isDeleted:false, isPublished: true});
 
@@ -20,7 +21,11 @@ async function scheduler(){
 			var date2 = new Date().setHours(0,0,0,0);
 			counter ++;
 			if(date1.valueOf() === date2.valueOf()){
-				totalRaised += donat.amount;
+				if(donat.paymentMethod.toLowerCase() ==- 'paypal'){ 
+					totalRaisedD += donat.amount;
+				}else{
+					totalRaisedB += donat.amount;
+				}
 			}
 			
 			if(counter == fund.donations.length){
@@ -33,7 +38,7 @@ async function scheduler(){
 						notificationType:'Donation',
 						recipients: recp,
 						title:`${fund.title}[Donation]`,
-						content: `A total amount of money donated today is ${totalRaised}birr.'`,
+						content: `A total amount of money donated today is ${totalRaisedD}dollar and ${totalRaisedB}birr.'`,
 						target: fund._id
 						
 					});
