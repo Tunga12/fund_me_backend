@@ -3027,3 +3027,12 @@
 {"level":"info","message":"b","timestamp":"2021-09-28T12:05:29.673Z"}
 {"level":"info","message":"Status: 404","timestamp":"2021-09-28T12:05:29.674Z"}
 {"code":400,"data":null,"message":"Body","dateTime":1632830195150,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T12:05:29.674Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T12:16:42.753Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T12:16:58.908Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T12:16:59.226Z"}
+{"message":"write EPROTO 7712:error:1408F10B:SSL routines:ssl3_get_record:wrong version number:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\ssl3_record.c:332:\n","stack":"Error: write EPROTO 7712:error:1408F10B:SSL routines:ssl3_get_record:wrong version number:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\ssl3_record.c:332:\n\n    at WriteWrap.onWriteComplete [as oncomplete] (internal/stream_base_commons.js:94:16)","errno":-4046,"code":"EPROTO","syscall":"write","level":"error","timestamp":"2021-09-28T12:16:59.228Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T12:17:40.554Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T12:17:44.574Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T12:17:44.644Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T12:17:44.646Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632830930113,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T12:17:44.650Z"}

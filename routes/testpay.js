@@ -48,7 +48,6 @@ const data = {
   }; */ 
   
  var options = {
-	proxy: 'http://196.188.120.3:11443',
 	url: 'http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay',
 	json: true,
 	body: data,

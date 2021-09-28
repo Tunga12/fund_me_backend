@@ -77,7 +77,7 @@ router.post('/:fid', auth,async(req, res) => {
 		try{
 		
 			task.save('donations',donation)
-			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.birr': donation.amount,'totalTip.birr': donation.tip}})
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.birr': donation.amount}})
 			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.birr': donation.amount}})
 			.run();
         }catch(e){
@@ -88,7 +88,7 @@ router.post('/:fid', auth,async(req, res) => {
 		try{
 		
 			task.save('donations',donation)
-			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.dollar': donation.amount, 'totalTip.dollar': donation.tip}})
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.dollar': donation.amount}})
 			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.dollar': donation.amount}})
 			.run();
         }catch(e){
