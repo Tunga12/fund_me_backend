@@ -35,32 +35,38 @@ const data = {
     sign: sign.toUpperCase(),
 	ussd:ussd
 };
-var options = {
+/* var options = {
       host: '196.188.120.3',
       port: '11443',
       path: '/ammapi/service-openup/toTradeWebPay',
       method: 'POST',
       headers: {
-         'Content-Type': 'application/json',
-          'Content-Length': data.length,
+         'Content-Type': 'text/html',
+      
 		  'Access-Control-Allow-Origin': '*'
       }
-  }; 
+  }; */ 
   
-/* var options = {
+ var options = {
 	url: 'http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay',
 	json: true,
-	body: data
+	body: data,
+	method: 'POST',
+	headers: {
+         'Content-Type': 'application/json',
+      
+		  'Access-Control-Allow-Origin': '*'
+      }
 	
-}; */
+}; 
 
 // Post a help
  router.post('/',async(req,ress) => {
     winston.info('a');
-     var post_req = http.request(options, function(res) {
+     /* var post_req = http.request(options, function(res) {
 		  winston.info('b');
 		 let rdata;
-      res.setEncoding('utf8');
+      //res.setEncoding('utf8');
       res.on('data', function (chunk) {
 		   winston.info('c');
 		  rdata = chunk;
@@ -75,8 +81,8 @@ var options = {
 	});
 	
   post_req.write(data);
- post_req.end(); 
- /*
+ post_req.end();  */
+ 
  request.post(options, (err, res, body) => {
 	 winston.info('b');
     if (err) {
@@ -85,7 +91,7 @@ var options = {
    winston.info(`Status: ${res.statusCode}`);
     winston.info('Body',body);
 	ress.status(res.statusCode).send(body);
-});*/
+});
 
 });
 
