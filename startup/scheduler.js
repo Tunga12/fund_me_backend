@@ -30,7 +30,7 @@ async function scheduler(){
 			
 			if(counter == fund.donations.length){
 				counter = 0;
-				if(totalRaised !== 0){
+				if(totalRaisedD !== 0 || totalRaisedB !==0){
 					var recp = [];
 					recp.push(fund.organizer);
 				  

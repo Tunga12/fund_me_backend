@@ -2920,3 +2920,5 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-09-26T12:54:07.012Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-26T13:05:00.546Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-09-26T13:05:00.678Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-26T13:08:24.560Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-26T13:08:24.581Z"}
