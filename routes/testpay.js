@@ -62,6 +62,7 @@ const data = {
 
 // Post a help
  router.post('/',async(req,ress) => {
+	  req.headers['Access-Control-Allow-Origin'] = '*'
     winston.info('a');
      /* var post_req = http.request(options, function(res) {
 		  winston.info('b');

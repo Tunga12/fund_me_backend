@@ -2986,3 +2986,8 @@
 {"level":"info","message":"b","timestamp":"2021-09-28T09:18:45.634Z"}
 {"level":"info","message":"Status: 404","timestamp":"2021-09-28T09:18:45.634Z"}
 {"code":400,"data":null,"message":"Body","dateTime":1632820190766,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T09:18:45.635Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T09:30:44.681Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T09:30:48.386Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T09:30:48.462Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T09:30:48.463Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632820913579,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T09:30:48.464Z"}
