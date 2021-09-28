@@ -93,7 +93,17 @@ const fundraiserSchema = new mongoose.Schema({
 			default: 0
 		}
     },
-	
+	totalTip: {
+		dollar: {
+			type: Number,
+			default: 0
+		},
+		birr: {
+			type: Number,
+			default: 0
+		}
+		
+	},
 	totalWithdraw:{
 		type:[{
 			amount:{
@@ -161,6 +171,7 @@ function validateFundraiser(fundraiser){
         updates: Joi.array(),
         teams: Joi.array(),
         totalRaised: Joi.object(),
+		totalTip: Joi.object(),
 		totalWithdraw: Joi.array(),
         isPublished: Joi.boolean(),
         totalShareCount: Joi.number(),

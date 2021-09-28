@@ -2922,3 +2922,21 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2021-09-26T13:05:00.678Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-26T13:08:24.560Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2021-09-26T13:08:24.581Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T08:32:05.163Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T08:32:58.516Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T08:32:59.612Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T08:32:59.613Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632817444870,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T08:32:59.614Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T08:33:30.779Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T08:33:30.841Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T08:33:30.842Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632817476102,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T08:33:30.843Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T08:33:36.550Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T08:33:36.619Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T08:33:36.620Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632817481880,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T08:33:36.621Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T08:33:40.565Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T08:33:40.626Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T08:33:40.627Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632817485887,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T08:33:40.628Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T09:03:05.151Z"}
