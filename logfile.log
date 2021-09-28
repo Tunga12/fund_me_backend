@@ -3022,3 +3022,8 @@
 {"level":"info","message":"b","timestamp":"2021-09-28T12:03:03.685Z"}
 {"level":"info","message":"Status: 404","timestamp":"2021-09-28T12:03:03.687Z"}
 {"level":"info","message":"Body <html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.18.0 (Ubuntu)</center>\r\n</body>\r\n</html>\r\n","timestamp":"2021-09-28T12:03:03.690Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T12:05:16.719Z"}
+{"level":"info","message":"a","timestamp":"2021-09-28T12:05:29.604Z"}
+{"level":"info","message":"b","timestamp":"2021-09-28T12:05:29.673Z"}
+{"level":"info","message":"Status: 404","timestamp":"2021-09-28T12:05:29.674Z"}
+{"code":400,"data":null,"message":"Body","dateTime":1632830195150,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T12:05:29.674Z"}
