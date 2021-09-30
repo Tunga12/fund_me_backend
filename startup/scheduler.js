@@ -7,7 +7,6 @@ const {Notification} = require('../models/notification');
 const {newNotification} = require('../startup/connection');
 
 async function scheduler(){
-winston.info("in 0");
 	var totalRaisedB = 0;
 	var totalRaisedD=0;
 	var counter = 0;
@@ -23,10 +22,8 @@ winston.info("in 0");
 			if(date1.valueOf() === date2.valueOf()){
 				
 				if(donat.paymentMethod.toLowerCase() === 'paypal'){ 
-				winston.info("in 1",donat.amount);
 					totalRaisedD += donat.amount;
 				}else{
-					winston.info("in 2",donat.amount);
 					totalRaisedB += donat.amount;
 				}
 			}
@@ -35,7 +32,6 @@ winston.info("in 0");
 			
 				counter = 0;
 				if(totalRaisedD !== 0 || totalRaisedB !==0){
-					winston.info("in 4");
 					var recp = [];
 					recp.push(fund.organizer);
 				  
