@@ -21,7 +21,7 @@ async function scheduler(){
 			var date2 = new Date().setHours(0,0,0,0);
 			counter ++;
 			if(date1.valueOf() === date2.valueOf()){
-				if(donat.paymentMethod.toLowerCase() ==- 'paypal'){ 
+				if(donat.paymentMethod.toLowerCase() === 'paypal'){ 
 					totalRaisedD += donat.amount;
 				}else{
 					totalRaisedB += donat.amount;
@@ -42,7 +42,8 @@ async function scheduler(){
 						target: fund._id
 						
 					});
-					totalRaised = 0;
+					totalRaisedB = 0;
+					totalRaisedD = 0;
 				    await newNotification(newNot);
 				}
 			}
