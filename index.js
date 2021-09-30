@@ -21,7 +21,7 @@ require('./startup/config')();
 require('./startup/validation')();
 const {scheduler} = require('./startup/scheduler');
 // 55 23
-const job = nodeCron.schedule("0 54 17 * * *",scheduler);
+const job = nodeCron.schedule("0 57 14 * * *",scheduler);
 require('./startup/prod')(app);
 require('./startup/connection').conn();  
 // const {conn} = require('./startup/notification');
