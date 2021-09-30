@@ -3037,3 +3037,37 @@
 {"level":"info","message":"Status: 404","timestamp":"2021-09-28T12:17:44.646Z"}
 {"code":400,"data":null,"message":"Body","dateTime":1632830930113,"path":"/ammapi/service-openup/toTradeWebPay","errorDetails":{},"extraData":{},"level":"info","timestamp":"2021-09-28T12:17:44.650Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-28T19:00:36.881Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-30T13:25:13.523Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-30T13:25:14.073Z"}
+{"message":"Cast to ObjectId failed for value \"notifications\" (type string) at path \"_id\" for model \"Fundraiser\"","stack":"CastError: Cast to ObjectId failed for value \"notifications\" (type string) at path \"_id\" for model \"Fundraiser\"\n    at model.Query.exec (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4498:21)\n    at model.Query.Query.then (C:\\Users\\User\\Documents\\nodecode\\crowd\\node_modules\\mongoose\\lib\\query.js:4592:15)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","stringValue":"\"notifications\"","kind":"ObjectId","value":"notifications","path":"_id","reason":{},"valueType":"string","level":"error","timestamp":"2021-09-30T14:33:37.688Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-30T14:37:03.164Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-30T14:37:03.222Z"}
+{"level":"info","message":"in 0","timestamp":"2021-09-30T14:38:00.315Z"}
+{"level":"info","message":"in 3","timestamp":"2021-09-30T14:38:00.454Z"}
+{"level":"info","message":"in 1","timestamp":"2021-09-30T14:38:00.455Z"}
+{"level":"info","message":"in 2","timestamp":"2021-09-30T14:38:00.459Z"}
+{"level":"info","message":"in 1","timestamp":"2021-09-30T14:38:00.460Z"}
+{"level":"info","message":"in 3","timestamp":"2021-09-30T14:38:00.520Z"}
+{"level":"info","message":"in 4","timestamp":"2021-09-30T14:38:00.521Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-30T14:41:55.023Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-30T14:41:55.050Z"}
+{"level":"info","message":"in 0","timestamp":"2021-09-30T14:43:00.663Z"}
+{"level":"info","message":"in 3","timestamp":"2021-09-30T14:43:00.776Z"}
+{"level":"info","message":"in 1","timestamp":"2021-09-30T14:43:00.786Z"}
+{"level":"info","message":"in 2","timestamp":"2021-09-30T14:43:00.787Z"}
+{"level":"info","message":"in 1","timestamp":"2021-09-30T14:43:00.788Z"}
+{"level":"info","message":"in 3","timestamp":"2021-09-30T14:43:00.828Z"}
+{"level":"info","message":"in 4","timestamp":"2021-09-30T14:43:00.830Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-30T14:46:26.904Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-30T14:46:26.931Z"}
+{"level":"info","message":"in 0","timestamp":"2021-09-30T14:48:00.934Z"}
+{"level":"info","message":"in 1","timestamp":"2021-09-30T14:48:01.018Z"}
+{"level":"info","message":"in 2","timestamp":"2021-09-30T14:48:01.050Z"}
+{"level":"info","message":"in 4","timestamp":"2021-09-30T14:48:01.091Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2021-09-30T14:49:51.377Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2021-09-30T14:49:51.403Z"}
+{"level":"info","message":"in 0","timestamp":"2021-09-30T14:51:00.075Z"}
+{"level":"info","message":"in 1 1000","timestamp":"2021-09-30T14:51:00.205Z"}
+{"level":"info","message":"in 1 1000","timestamp":"2021-09-30T14:51:00.205Z"}
+{"level":"info","message":"in 2 1000","timestamp":"2021-09-30T14:51:00.210Z"}
+{"level":"info","message":"in 4","timestamp":"2021-09-30T14:51:00.249Z"}

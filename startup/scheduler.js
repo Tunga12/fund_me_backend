@@ -21,17 +21,18 @@ winston.info("in 0");
 			var date2 = new Date().setHours(0,0,0,0);
 			counter ++;
 			if(date1.valueOf() === date2.valueOf()){
-				winston.info("in 1");
+				
 				if(donat.paymentMethod.toLowerCase() === 'paypal'){ 
-				winston.info("in 2");
+				winston.info("in 1",donat.amount);
 					totalRaisedD += donat.amount;
 				}else{
+					winston.info("in 2",donat.amount);
 					totalRaisedB += donat.amount;
 				}
 			}
 			
 			if(counter == fund.donations.length){
-				winston.info("in 3");
+			
 				counter = 0;
 				if(totalRaisedD !== 0 || totalRaisedB !==0){
 					winston.info("in 4");
