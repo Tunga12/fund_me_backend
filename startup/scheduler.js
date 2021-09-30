@@ -7,7 +7,7 @@ const {Notification} = require('../models/notification');
 const {newNotification} = require('../startup/connection');
 
 async function scheduler(){
-
+winston.info("in 0");
 	var totalRaisedB = 0;
 	var totalRaisedD=0;
 	var counter = 0;
