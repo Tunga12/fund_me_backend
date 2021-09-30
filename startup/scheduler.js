@@ -22,6 +22,7 @@ async function scheduler(){
 			if(date1.valueOf() === date2.valueOf()){
 				
 				if(donat.paymentMethod.toLowerCase() === 'paypal'){ 
+				winston.info("grgrg");
 					totalRaisedD += donat.amount;
 				}else{
 					totalRaisedB += donat.amount;
