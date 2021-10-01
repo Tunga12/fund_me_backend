@@ -73,7 +73,6 @@ router.put('/:id', auth,async(req,res) => {
     // res.send(notification);
     //io.emit('viewed',id);
     const not = await viewedNotification(req.user._id,req.params.id);
-
     res.send(not);
 });
 
@@ -84,7 +83,7 @@ router.delete('/:id',auth,async(req, res) => {
     const notification = await Notification.findByIdAndUpdate(req.params.id,
         {$pull: {recipients: req.user._id, viewed: req.user._id}},{new: true});
 
-    if (!notification) return res.status(404).send('Notification with the given ID was not found or it is already viewed.');
+    if (!notification) return res.status(404).send('Notification with the given ID was not found.');
 
     res.send('Notification is deleted');
 });
