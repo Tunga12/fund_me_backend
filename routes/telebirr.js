@@ -10,7 +10,7 @@ router.post('/pay', (req, res) => {
     // validate request
 
     // send request to telebirr server
-    axios.post("http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay",
+    let telebirrCall =  await axios.post("http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay",
         {
             "appId": "4347b88db6e64e0baa9e588acd42d50c",
             "timestamp": timestamp.now(),
@@ -24,7 +24,9 @@ router.post('/pay', (req, res) => {
             "shortCode": "410028",
             "receiveName": "Highlight Software Design",
         },
-    )
+    );
+
+    res.send(telebirrCall);
 
 
 })
