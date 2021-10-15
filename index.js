@@ -6,8 +6,8 @@ const NodeRSA = require('node-rsa')
 const app = express();
 const cors = require('cors');
 const {Server} = require('socket.io');
-const http = require('http');
-let server = http.createServer(app);
+// const http = require('http');
+// let server = http.createServer(app);
 const io = require('socket.io')(server,{cors: {origin: '*',}});
 
 module.exports.io = io;
@@ -42,6 +42,6 @@ require('./startup/connection').conn();
 						
 //console.log(crypto.createHash('sha256').update('when are you').digest('base64'));
 const port = 5000;
-const serv = server.listen(port, () => winston.info(`Listening on port ${port}...`));
+const serv = app.listen(port, () => winston.info(`Listening on port ${port}...`));
 
 module.exports.server = serv;
