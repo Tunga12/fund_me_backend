@@ -5,7 +5,7 @@ const timestamp = require('unix-timestamp');
 const { v4: uuidv4 } = require('uuid');
 
 // sent form web app
-router.post('/pay', (req, res) => {
+router.post('/pay', async (req, res) => {
 
     // validate request
 
