@@ -5,12 +5,12 @@ const timestamp = require('unix-timestamp');
 const { v4: uuidv4 } = require('uuid');
 
 // sent form web app
-router.post('/pay', async (req, res) => {
+router.post('/pay', (req, res) => {
 
     // validate request
 
     // send request to telebirr server
-    let telebirrCall =  await axios.post("http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay",
+    axios.post("http://196.188.120.3:11443/ammapi/service-openup/toTradeWebPay",
         {
             "appId": "4347b88db6e64e0baa9e588acd42d50c",
             "timestamp": timestamp.now(),
@@ -24,9 +24,11 @@ router.post('/pay', async (req, res) => {
             "shortCode": "410028",
             "receiveName": "Highlight Software Design",
         },
-    );
-
-    res.send(telebirrCall);
+    ).then((response) => {
+        res.send(response.data)
+    }).catch((error) => {
+        res.send(error)
+    });
 
 
 })
