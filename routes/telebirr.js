@@ -96,6 +96,7 @@ router.post('/pay', async(req, res) => {
 // sent from telebirr server
 router.post('/result', (req, res) => {
 
+    console.log(`result: ${req.body}`)
     res.send(req.body)
 })
 
