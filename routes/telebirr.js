@@ -61,7 +61,7 @@ router.post('/pay', async(req, res) => {
     //     res.send(error)
     // })
 
-    console.log(`pay: ${req.body}`)
+    console.log(`pay: ${JSON.stringify(req.body)}`)
 
 
     const body = {
