@@ -61,6 +61,7 @@ router.post('/pay', async(req, res) => {
     //     res.send(error)
     // })
 
+    console.log(`pay: ${req.body}`)
 
 
     const body = {
@@ -68,7 +69,7 @@ router.post('/pay', async(req, res) => {
         "timestamp": timestamp.now().toString(),
         "nonce": uuidv4(),
         "returnUrl": req.body.returnUrl,
-        "notifyUrl": "highlight-group.com/api/telebirr/result",
+        "notifyUrl": "highlight-group.com/api/telebirr/pay",
         "subject": req.body.subject,
         "outTradeNo": uuidv4(),
         "timeoutExpress": "5",
