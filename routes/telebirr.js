@@ -28,7 +28,7 @@ router.post('/pay', async (req, res) => {
         "returnUrl": req.body.returnUrl,
         "shortCode": "410028",
         "subject": req.body.subject,
-        "timeoutExpress": "5",
+        "timeoutExpress": "30",
         "timestamp": timestamp.now().toString(),
         "totalAmount": req.body.totalAmount,
         "receiveName": "Highlight Software Design",
@@ -47,6 +47,8 @@ router.post('/pay', async (req, res) => {
     let ussd = rsa_encrypt(ussdjson, publicKey);
 
     let requestMessage = { appid: signObj.appId, sign: sign, ussd: ussd };
+
+    console.log(`request: ${JSON.stringify(requestMessage) }`);
 
 
     try {
