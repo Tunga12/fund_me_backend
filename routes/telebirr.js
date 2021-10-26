@@ -36,11 +36,15 @@ router.post('/pay', async (req, res) => {
     signObj.appKey = appKey;
     let stringA = jsonSort(signObj);
 
+    console.log(`stringA: ${stringA}`)
+
     let stringB = sha256(stringA);
 
     let sign = stringB.toUpperCase()
 
     let ussdjson = JSON.stringify(signObj);
+
+    console.log(`ussdJson: ${ussdjson}`)
 
     let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
 
@@ -54,10 +58,12 @@ router.post('/pay', async (req, res) => {
     try {
         const response = await fetch("http://196.188.120.3:11443/service-openup/toTradeWebPay", {
             method: 'post',
-            body: requestMessage,
+            body: JSON.stringify(requestMessage),
             headers: { 'Content-Type': 'application/json' }
         });
+
         const data = await response.json();
+        console.log(`response: ${data}`)
 
         res.send(data);
     } catch (error) {
