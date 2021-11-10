@@ -9,11 +9,12 @@ const {Server} = require('socket.io');
 const http = require('http');
 let server = http.createServer(app);
 const io = require('socket.io')(server,{cors: {origin: '*',}});
+const path = require('path');
 
 module.exports.io = io;
 //module.exports.server = server
 app.use(cors({origin: '*'}));
-app.use('/uploads',express.static('uploads'));
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 require('./startup/logging')();
 require('./startup/routes')(app);
 require('./startup/db')();
