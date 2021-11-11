@@ -22,7 +22,7 @@ router.post('/pay', async (req, res) => {
     let signObj = {
         "appId": "4347b88db6e64e0baa9e588acd42d50c",
         "nonce": uuidv4(),
-        "notifyUrl": "highlight-group.com/api/telebirr/pay",
+        "notifyUrl": "178.62.55.81/api/telebirr/result",
         "outTradeNo": uuidv4(),
         "returnUrl": req.body.returnUrl,
         "shortCode": "410028",
@@ -144,6 +144,7 @@ router.post('/result', (req, res) => {
 
     console.log(`result: ${req.body}`)
     res.send(req.body)
+    // must create donation object here
 })
 
 

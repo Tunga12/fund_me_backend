@@ -3,6 +3,6 @@
 	"db": "crowd_db",
 	"email": "crowd_email",
 	"password": "crowd_password",
-	"url": "crowd_url",
+	"url": "http://178.62.55.81",
 	"link": "crowd_link"
 }
