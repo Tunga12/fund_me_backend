@@ -85,7 +85,7 @@ router.post('/payMobile', async (req, res) => {
     let signObj = {
         "appId": "4347b88db6e64e0baa9e588acd42d50c",
         "nonce": uuidv4(),
-        "notifyUrl": "http://highlight-group.com/api/telebirr/pay",
+        "notifyUrl": "http://highlight-group.com/api/telebirr/result",
         "outTradeNo": uuidv4(),
         "shortCode": "410028",
         "subject": req.body.subject,
