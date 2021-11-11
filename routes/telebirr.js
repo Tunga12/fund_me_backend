@@ -22,7 +22,7 @@ router.post('/pay', async (req, res) => {
     let signObj = {
         "appId": "4347b88db6e64e0baa9e588acd42d50c",
         "nonce": uuidv4(),
-        "notifyUrl": "178.62.55.81/api/telebirr/result",
+        "notifyUrl": req.body.returnUrl.replace('fundraiser-detail', 'donate'),
         "outTradeNo": uuidv4(),
         "returnUrl": req.body.returnUrl,
         "shortCode": "410028",
