@@ -142,7 +142,7 @@ router.post('/payMobile', async (req, res) => {
 // sent from telebirr server
 router.post('/result', (req, res) => {
 
-    console.log(`result: ${JSON.stringify(req.body)}`)
+    console.log(`result: ${JSON.stringify(req)}`)
     res.status(200)
     // must create donation object here
 })
