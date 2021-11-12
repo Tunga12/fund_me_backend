@@ -144,8 +144,7 @@ router.post('/result', (req, res) => {
 
     console.log(`result: ${req}`)
     console.log(req.body)
-    console.log(req)
-    res.status(200)
+    res.sendStatus(200)
     // must create donation object here
 })
 
