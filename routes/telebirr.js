@@ -144,7 +144,11 @@ router.post('/result', (req, res) => {
 
     console.log(`result: ${req}`)
     console.log(req.body)
-    res.sendStatus(200)
+    if(Object.keys(req.body).length === 0){
+        res.send('No data sent')
+    }else{
+        res.sendStatus(200)
+    }
     // must create donation object here
 })
 
