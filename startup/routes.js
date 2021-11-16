@@ -19,7 +19,8 @@ const error = require('../middleware/error');
 
 
 module.exports = function(app){
-	app.use(express.json());
+    app.use(express.json());
+    app.use(express.text());
     //app.use('/donation', status);
     app.use('/api/categories',categories);
 	app.use('/api/reasons',reasons);
