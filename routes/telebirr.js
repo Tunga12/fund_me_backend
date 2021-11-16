@@ -142,8 +142,8 @@ router.post('/payMobile', async (req, res) => {
 // sent from telebirr server
 router.post('/result', (req, res) => {
 
-    console.log(`result: ${req}`)
-    console.log(req.body)
+    // console.log(`result: ${req}`)
+    // console.log(req.body)
     if(Object.keys(req.body).length === 0){
         res.send('No data sent')
     }else{
