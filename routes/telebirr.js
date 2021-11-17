@@ -43,7 +43,7 @@ router.post('/pay', async (req, res) => {
         "subject": req.body.subject,
         "timeoutExpress": "30",
         "timestamp": timestamp.now().toString(),
-        "totalAmount": (req.body.donation.amount + req.body.donation.tip) / 100,
+        "totalAmount": req.body.donation.amount + (req.body.donation.amount * req.body.donation.tip) / 100,
         "receiveName": "Highlight Software Design",
     };
     signObj.appKey = appKey;
