@@ -53,7 +53,7 @@ function validateDonation(donation){
         memberId: Joi.objectId().required(),
         amount: Joi.number().required(),
         tip: Joi.number().required(),
-		paymentMethod: Joi.string().required(),
+		paymentMethod: Joi.string().valid('paypal', 'telebirr').required(),
         comment: Joi.string(),
         date: Joi.date(),
 		isAnonymous: Joi.boolean(),

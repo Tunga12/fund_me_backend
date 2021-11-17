@@ -1,35 +1,49 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios').default;
 const timestamp = require('unix-timestamp');
 const { v4: uuidv4 } = require('uuid');
 
-const http = require('http')
 const fetch = require('node-fetch');
 const crypto = require('crypto')
-const fs = require('fs')
 const NodeRSA = require('node-rsa');
 
+const {PendingDonation, validatePayReq} = require('../models/pending_donation');
+const Fawn = require('fawn');
+const {Donation} = require('../models/donation');
+
+
+
+
+let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
 
 // sent form web app
 router.post('/pay', async (req, res) => {
 
-    // validate request
-
     console.log(`pay: ${JSON.stringify(req.body)}`)
+
+    // validate request
+    const {error} = validatePayReq(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
+
+    // // create 'pending' donation
+    // const {error} = validate(req.body.donation);
+    // if(error) return res.status(400).send(error.details[0].message);
+    
+    let pendingDonation = new PendingDonation(req.body.donation);
+    pendingDonation = await pendingDonation.save();
 
     const appKey = 'ffbf324b21974d778cec063f17aa1367';
     let signObj = {
         "appId": "4347b88db6e64e0baa9e588acd42d50c",
         "nonce": uuidv4(),
         "notifyUrl": "http://178.62.55.81/api/telebirr/result",
-        "outTradeNo": uuidv4(),
+        "outTradeNo": pendingDonation._id,
         "returnUrl": req.body.returnUrl,
         "shortCode": "410028",
         "subject": req.body.subject,
         "timeoutExpress": "30",
         "timestamp": timestamp.now().toString(),
-        "totalAmount": req.body.totalAmount,
+        "totalAmount": (req.body.donation.amount + req.body.donation.tip) / 100,
         "receiveName": "Highlight Software Design",
     };
     signObj.appKey = appKey;
@@ -45,7 +59,7 @@ router.post('/pay', async (req, res) => {
 
     console.log(`ussdJson: ${ussdjson}`)
 
-    let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
+    // let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
 
     let ussd = rsa_encrypt(ussdjson, publicKey);
 
@@ -140,12 +154,58 @@ router.post('/payMobile', async (req, res) => {
 
 
 // sent from telebirr server
-router.post('/result', (req, res) => {
+router.post('/result', async (req, res) => {
 
     console.log(`result: ${req.body}`)
-    res.send(req.body)
+
+    let result = rsa_decrypt(req.body, publicKey);
+
+    console.log(`decrypted result: ${result}`)
+
+    let pendingDonation = await PendingDonation.findById(result.outTradeNo);
+
+    createDonation(pendingDonation)
+
+    res.send({ "code":0, "msg":"success" })
+
 
 })
+
+
+function createDonation(pendingDonation){
+
+    const id = mongoose.Types.ObjectId(pendingDonation.fundId);
+
+    delete pendingDonation.fundId;
+    
+    let donation = new Donation(pendingDonation);
+	
+    const task = new Fawn.Task();
+	if(donation.paymentMethod.toLowerCase() === 'telebirr'){
+		try{
+		
+			task.save('donations',donation)
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.birr': donation.amount}})
+			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.birr': donation.amount}})
+			.run();
+        }catch(e){
+            console.log(e.message);
+            res.status(500).send('Something went wrong');
+        }
+	}else{
+		try{
+		
+			task.save('donations',donation)
+			.update('fundraisers',{_id:id},{$push: {donations:{$each:[donation._id], $sort:-1}},$inc: {'totalRaised.dollar': donation.amount}})
+			.update('teammembers', {_id: donation.memberId}, {$inc: {'hasRaised.dollar': donation.amount}})
+			.run();
+        }catch(e){
+            console.log(e.message);
+            res.status(500).send('Something went wrong');
+        }
+		
+	}
+}
 
 
 //*************helper functions */
@@ -181,6 +241,13 @@ const rsa_encrypt = (data, publicKey) => {
     key.setOptions({ encryptionScheme: 'pkcs1' });
     let encryptKey = key.encrypt(data, 'base64');
     return encryptKey;
+}
+
+const rsa_decrypt = (data, publicKey) => {
+    let key = new NodeRSA(getPublicKey(publicKey));
+    key.setOptions({ encryptionScheme: 'pkcs1' });
+    let decryptKey = key.decryptPublic(data, 'utf8');
+    return decryptKey;
 }
 
 function insertStr(str, insertStr, sn) {
