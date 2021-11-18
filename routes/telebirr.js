@@ -173,6 +173,8 @@ router.post('/result', async (req, res) => {
 
 function createDonation(pendingDonation){
 
+    console.log(`createDonation: ${pendingDonation}`)
+
     const id = mongoose.Types.ObjectId(pendingDonation.fundId);
 
     delete pendingDonation.fundId;
