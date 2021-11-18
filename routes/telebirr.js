@@ -9,6 +9,7 @@ const NodeRSA = require('node-rsa');
 
 const {PendingDonation, validatePayReq} = require('../models/pending_donation');
 const Fawn = require('fawn');
+const mongoose = require('mongoose');
 const {Donation} = require('../models/donation');
 const {auth} = require('../middleware/auth');
 
