@@ -158,15 +158,19 @@ router.post('/result', async (req, res) => {
     console.log(`result: ${req.body}`)
 
     let result = rsa_decrypt(req.body, publicKey);
+    result = JSON.parse(result);
 
     console.log(`decrypted result: ${result}`)
 
     let pendingDonation = await PendingDonation.findById(result.outTradeNo);
 
-    createDonation(pendingDonation)
+    if(pendingDonation){
+        createDonation(pendingDonation)
+        res.send({ "code":0, "msg":"success" })
 
-    res.send({ "code":0, "msg":"success" })
-
+    }else{
+        res.send("pending donation doesn't exist")
+    }
 
 })
 
