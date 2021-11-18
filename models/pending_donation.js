@@ -61,7 +61,7 @@ function validatePaymentRequest(pay){
             amount: Joi.number().required(),
             tip: Joi.number().required(),
             paymentMethod: Joi.string().valid('paypal', 'telebirr').required(),
-            comment: Joi.string(),
+            comment: Joi.string().allow(''),
             date: Joi.date(),
             isAnonymous: Joi.boolean(),
         })
