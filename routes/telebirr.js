@@ -165,8 +165,9 @@ router.post('/result', async (req, res) => {
     let pendingDonation = await PendingDonation.findById(result.outTradeNo);
 
     if(pendingDonation){
-        createDonation(pendingDonation)
         console.log(`pendingDonation._id: ${pendingDonation}`);
+
+        createDonation(pendingDonation)
         await PendingDonation.deleteOne(pendingDonation._id)
         res.send({ "code":0, "msg":"success" })
 
