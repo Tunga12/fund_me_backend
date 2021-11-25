@@ -182,7 +182,8 @@ function createDonation(pendingDonation){
 
     console.log(`createDonation: ${pendingDonation}`)
 
-    const id = mongoose.Types.ObjectId(pendingDonation.fundId);
+    // const id = mongoose.Types.ObjectId(pendingDonation.fundId);
+    const id = pendingDonation.fundId;
 
     delete pendingDonation.fundId;
     
