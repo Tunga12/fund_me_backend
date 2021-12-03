@@ -87,7 +87,7 @@ router.post('/pay', [auth], async (req, res) => {
 
 
 // sent form web app
-router.post('/payMobile', async (req, res) => {
+router.post('/payMobile', [auth], async (req, res) => {
 
     // validate request
 
