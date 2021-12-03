@@ -71,6 +71,27 @@ function validatePaymentRequest(pay){
 
 }
 
+function validatePaymentMobile(pay){
+    const schema = Joi.object({
+        subject: Joi.string().required(),
+        donation: Joi.object({
+            userId: Joi.objectId().required(),
+            memberId: Joi.objectId().required(),
+            fundId: Joi.objectId().required(),
+            amount: Joi.number().required(),
+            tip: Joi.number().required(),
+            paymentMethod: Joi.string().valid('paypal', 'telebirr').required(),
+            comment: Joi.string().allow(''),
+            date: Joi.date(),
+            isAnonymous: Joi.boolean(),
+        })
+    });
+
+    return schema.validate(pay);
+
+}
+
 module.exports.PendingDonation = PendingDonation;
 module.exports.validatePayReq = validatePaymentRequest;
+module.exports.validatePaymentMobile = validatePaymentMobile;
 

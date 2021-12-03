@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 const crypto = require('crypto')
 const NodeRSA = require('node-rsa');
 
-const {PendingDonation, validatePayReq} = require('../models/pending_donation');
+const {PendingDonation, validatePayReq, validatePaymentMobile} = require('../models/pending_donation');
 const Fawn = require('fawn');
 const mongoose = require('mongoose');
 const {Donation} = require('../models/donation');
@@ -93,18 +93,27 @@ router.post('/payMobile', async (req, res) => {
 
     console.log(`pay: ${JSON.stringify(req.body)}`)
 
+    req.body.donation.userId = req.user._id;
+    // validate request
+    const {error} = validatePaymentMobile(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
+    
+    let pendingDonation = new PendingDonation(req.body.donation);
+    pendingDonation = await pendingDonation.save();
+
+
 
     const appKey = 'ffbf324b21974d778cec063f17aa1367';
     let signObj = {
         "appId": "4347b88db6e64e0baa9e588acd42d50c",
         "nonce": uuidv4(),
         "notifyUrl": "http://178.62.55.81/api/telebirr/result",
-        "outTradeNo": uuidv4(),
+        "outTradeNo": pendingDonation._id,
         "shortCode": "410028",
         "subject": req.body.subject,
         "timeoutExpress": "30",
         "timestamp": timestamp.now().toString(),
-        "totalAmount": req.body.totalAmount,
+        "totalAmount": req.body.donation.amount + (req.body.donation.amount * req.body.donation.tip) / 100,
         "receiveName": "Highlight Software Design",
         // "returnApp": { "PackageName": "cn.tydic.ethiopay", "Activity": "cn.tydic.ethiopay.PayForOtherAppActivity" }
         "returnApp": "com.example.crowd_funding_app"
