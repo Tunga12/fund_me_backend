@@ -113,7 +113,7 @@ router.post('/payMobile', [auth], async (req, res) => {
         "subject": req.body.subject,
         "timeoutExpress": "30",
         "timestamp": timestamp.now().toString(),
-        "totalAmount": req.body.donation.amount + (req.body.donation.amount * req.body.donation.tip) / 100,
+        "totalAmount": req.body.donation.amount + req.body.donation.tip,
         "receiveName": "Highlight Software Design",
         // "returnApp": { "PackageName": "cn.tydic.ethiopay", "Activity": "cn.tydic.ethiopay.PayForOtherAppActivity" }
         "returnApp": "com.example.crowd_funding_app"
