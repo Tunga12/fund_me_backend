@@ -107,7 +107,7 @@ router.post('/payMobile', async (req, res) => {
         "totalAmount": req.body.totalAmount,
         "receiveName": "Highlight Software Design",
         // "returnApp": { "PackageName": "cn.tydic.ethiopay", "Activity": "cn.tydic.ethiopay.PayForOtherAppActivity" }
-        "returnApp": "com.legas.app"
+        "returnApp": "com.example.crowd_funding_app"
     };
     signObj.appKey = appKey;
     let stringA = jsonSort(signObj);
