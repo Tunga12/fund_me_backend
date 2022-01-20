@@ -8,15 +8,29 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const http = require("http");
 let server = http.createServer(app);
-const io = require("socket.io")(server, {
+const io = require("socket.io")(server);
+const path = require("path");
+
+/*
+{
   origins: [
     "*:*",
     "http://highlight-group.com",
     "http://localhost:4200",
     "http://178.62.55.81",
   ],
-});
-const path = require("path");
+
+  handlePreflightRequest: (req, res) => {
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "https://example.com",
+      "Access-Control-Allow-Methods": "GET,POST",
+      "Access-Control-Allow-Headers": "my-custom-header",
+      "Access-Control-Allow-Credentials": true,
+    });
+    res.end();
+  },
+}
+*/
 
 module.exports.io = io;
 //module.exports.server = server
