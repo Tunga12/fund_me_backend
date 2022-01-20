@@ -168,7 +168,7 @@ router.post("/result", async (req, res) => {
 
   // remove double quotes from first and last index
   //result.outTradeNo = result.outTradeNo.replaceAll("^\"|\"$", "");
-  result.outTradeNo = result.outTradeNo.split('"').join("");
+  result.outTradeNo = result.outTradeNo.split('\"').join("");
 
   let pendingDonation = await PendingDonation.findById(result.outTradeNo);
 
