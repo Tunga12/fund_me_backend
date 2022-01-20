@@ -8,7 +8,13 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const http = require("http");
 let server = http.createServer(app);
-const io = require("socket.io")(server, { cors: { origin: "*:*" } });
+const io = require("socket.io")(server, {
+  cors: {
+    origin: ["*:*", "http://highlight-group.com", "http://localhost:4200"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 const path = require("path");
 
 module.exports.io = io;
