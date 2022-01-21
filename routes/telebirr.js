@@ -168,7 +168,7 @@ router.post("/result", async (req, res) => {
 
   // remove double quotes from first and last index
   //result.outTradeNo = result.outTradeNo.replaceAll("^\"|\"$", "");
-  result.outTradeNo = result.outTradeNo.split('\"').join("");
+  result.outTradeNo = result.outTradeNo.split('"').join("");
 
   let pendingDonation = await PendingDonation.findById(result.outTradeNo);
 
@@ -213,7 +213,7 @@ function createDonation(pendingDonation) {
           { _id: donation.memberId },
           { $inc: { "hasRaised.birr": donation.amount } }
         )
-        .run();
+        .run({ useMongoose: true });
     } catch (e) {
       console.log(e.message);
       res.status(500).send("Something went wrong");
