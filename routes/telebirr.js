@@ -192,7 +192,8 @@ function createDonation(pendingDonation) {
 
   delete pendingDonation.fundId;
 
-  let donation = new Donation(pendingDonation);
+  let donation = pendingDonation;
+  // let donation = new Donation(pendingDonation);
 
   const task = new Fawn.Task();
   if (donation.paymentMethod.toLowerCase() === "telebirr") {
