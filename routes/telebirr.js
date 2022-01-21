@@ -196,7 +196,7 @@ function createDonation(pendingDonation) {
   // let donation = new Donation(pendingDonation);
 
   const task = new Fawn.Task();
-  if (donation.paymentMethod.toLowerCase() === "telebirr") {
+  if (donation.paymentMethod.toLowerCase() == "telebirr") {
     try {
       task
         .save("donations", donation)
@@ -215,8 +215,8 @@ function createDonation(pendingDonation) {
         )
         .run({ useMongoose: true });
     } catch (e) {
-      console.log(e.message);
-      res.status(500).send("Something went wrong");
+      console.log(e);
+      // res.status(500).send("Something went wrong");
     }
   } else {
     try {
@@ -237,8 +237,8 @@ function createDonation(pendingDonation) {
         )
         .run();
     } catch (e) {
-      console.log(e.message);
-      res.status(500).send("Something went wrong");
+      console.log(e);
+      // res.status(500).send("Something went wrong");
     }
   }
 }
