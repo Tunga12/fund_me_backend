@@ -200,7 +200,7 @@ function createDonation(pendingDonation) {
     try {
       task
         .save("donations", donation)
-        .update(
+        .updateOne(
           "fundraisers",
           { _id: id },
           {
@@ -208,7 +208,7 @@ function createDonation(pendingDonation) {
             $inc: { "totalRaised.birr": donation.amount },
           }
         )
-        .update(
+        .updateOne(
           "teammembers",
           { _id: donation.memberId },
           { $inc: { "hasRaised.birr": donation.amount } }
