@@ -185,6 +185,10 @@ router.post("/result", async (req, res) => {
     let donation = pendingDonation;
     // let donation = new Donation(pendingDonation);
 
+    if (Donation.findById(donation._id)) {
+      return;
+    }
+
     const task = new Fawn.Task();
     if (donation.paymentMethod.toLowerCase() == "telebirr") {
       task
@@ -213,7 +217,7 @@ router.post("/result", async (req, res) => {
           console.log(err);
         });
     } else {
-      console.logo("Payment method is not telebirr!!!");
+      console.log("Payment method is not telebirr!!!");
     }
   } else {
     console.log("pending donation doesn't exist");
