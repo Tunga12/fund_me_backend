@@ -175,21 +175,9 @@ router.post("/result", async (req, res) => {
   if (pendingDonation) {
     console.log(`pendingDonation._id: ${pendingDonation}`);
 
-    await createDonation(pendingDonation);
+    // createDonation(pendingDonation);
     // await PendingDonation.deleteOne(pendingDonation._id)
-    res.send({ code: 0, msg: "success" });
-  } else {
-    console.log("pending donation doesn't exist");
-    res.send("pending donation doesn't exist");
-  }
-});
 
-Promise <
-  Boolean >
-  function createDonation(pendingDonation) {
-    console.log(`createDonation: ${pendingDonation}`);
-
-    // const id = mongoose.Types.ObjectId(pendingDonation.fundId);
     const id = pendingDonation.fundId;
 
     delete pendingDonation.fundId;
@@ -199,55 +187,103 @@ Promise <
 
     const task = new Fawn.Task();
     if (donation.paymentMethod.toLowerCase() == "telebirr") {
-      try {
-        task
-          .save("donations", donation)
-          .update(
-            "fundraisers",
-            { _id: id },
-            {
-              $push: { donations: { $each: [donation._id], $sort: -1 } },
-              $inc: { "totalRaised.birr": donation.amount },
-            }
-          )
-          .update(
-            "teammembers",
-            { _id: donation.memberId },
-            { $inc: { "hasRaised.birr": donation.amount } }
-          )
-          .run({ useMongoose: true });
+      task
+        .save("donations", donation)
+        .update(
+          "fundraisers",
+          { _id: id },
+          {
+            $push: { donations: { $each: [donation._id], $sort: -1 } },
+            $inc: { "totalRaised.birr": donation.amount },
+          }
+        )
+        .update(
+          "teammembers",
+          { _id: donation.memberId },
+          { $inc: { "hasRaised.birr": donation.amount } }
+        )
+        .run({ useMongoose: true })
+        .then(function (results) {
+          res.send({ code: 0, msg: "success" });
+        })
+        .catch(function (err) {
+          // Everything has been rolled back.
 
-        return true;
-      } catch (e) {
-        console.log(e);
-        // res.status(500).send("Something went wrong");
-      }
+          // log the error which caused the failure
+          console.log(err);
+        });
     } else {
-      try {
-        task
-          .save("donations", donation)
-          .update(
-            "fundraisers",
-            { _id: id },
-            {
-              $push: { donations: { $each: [donation._id], $sort: -1 } },
-              $inc: { "totalRaised.dollar": donation.amount },
-            }
-          )
-          .update(
-            "teammembers",
-            { _id: donation.memberId },
-            { $inc: { "hasRaised.dollar": donation.amount } }
-          )
-          .run({ useMongoose: true });
-
-        return true;
-      } catch (e) {
-        console.log(e);
-        // res.status(500).send("Something went wrong");
-      }
+      console.logo("Payment method is not telebirr!!!");
     }
-  };
+  } else {
+    console.log("pending donation doesn't exist");
+    res.send("pending donation doesn't exist");
+  }
+});
+
+function createDonation(pendingDonation) {
+  console.log(`createDonation: ${pendingDonation}`);
+
+  // const id = mongoose.Types.ObjectId(pendingDonation.fundId);
+  const id = pendingDonation.fundId;
+
+  delete pendingDonation.fundId;
+
+  let donation = pendingDonation;
+  // let donation = new Donation(pendingDonation);
+
+  const task = new Fawn.Task();
+  if (donation.paymentMethod.toLowerCase() == "telebirr") {
+    try {
+      task
+        .save("donations", donation)
+        .update(
+          "fundraisers",
+          { _id: id },
+          {
+            $push: { donations: { $each: [donation._id], $sort: -1 } },
+            $inc: { "totalRaised.birr": donation.amount },
+          }
+        )
+        .update(
+          "teammembers",
+          { _id: donation.memberId },
+          { $inc: { "hasRaised.birr": donation.amount } }
+        )
+        .run({ useMongoose: true })
+        .then(function (results) {});
+
+      return true;
+    } catch (e) {
+      console.log(e);
+      // res.status(500).send("Something went wrong");
+    }
+  } else {
+    try {
+      task
+        .save("donations", donation)
+        .update(
+          "fundraisers",
+          { _id: id },
+          {
+            $push: { donations: { $each: [donation._id], $sort: -1 } },
+            $inc: { "totalRaised.dollar": donation.amount },
+          }
+        )
+        .update(
+          "teammembers",
+          { _id: donation.memberId },
+          { $inc: { "hasRaised.dollar": donation.amount } }
+        )
+        .run({ useMongoose: true });
+
+      return true;
+    } catch (e) {
+      console.log(e);
+      // res.status(500).send("Something went wrong");
+    }
+  }
+}
 
 //*************helper functions */
 
