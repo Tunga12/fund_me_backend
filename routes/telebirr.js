@@ -186,6 +186,7 @@ router.post("/result", async (req, res) => {
     // let donation = new Donation(pendingDonation);
 
     if (Donation.findById(donation._id)) {
+      console.log("donation exists!!!")
       return;
     }
 
