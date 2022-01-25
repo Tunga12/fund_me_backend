@@ -10,11 +10,7 @@ const http = require("http");
 let server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: [
-      "http://highlight-group.com",
-      "https://highlight-group.com",
-      "http://localhost:4200",
-    ],
+    origin: ["highlight-group.com", "localhost:4200"],
     credentials: true,
   },
 });
