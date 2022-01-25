@@ -176,11 +176,12 @@ router.put("/changePassword", auth, async (req, res) => {
   if (!validPassword) return res.status(400).send("Incorrect password");
 
   const newUser = await User.findByIdAndUpdate(
-    req.params.id,
+    req.user._id,
     { password: req.body.newPassword },
     { new: true }
   );
-  if (!user) return res.status(404).send("A user with this id is not found!");
+  if (!newUser)
+    return res.status(404).send("A user with this id is not found!");
 
   res.send(newUser);
 });
