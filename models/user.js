@@ -95,7 +95,7 @@ function validatePasswords(req) {
     newPassword: Joi.string().min(8).max(255).required(),
   });
 
-  return schema.validate(user);
+  return schema.validate(req);
 }
 
 module.exports.User = User;
