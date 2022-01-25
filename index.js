@@ -12,9 +12,10 @@ const io = require("socket.io")(server, {
   cors: {
     origin: [
       "http://highlight-group.com",
-      "https://highlight-group.com.com",
+      "https://highlight-group.com",
       "http://localhost:4200",
     ],
+    credentials: true,
   },
 });
 const path = require("path");
