@@ -38,7 +38,7 @@ const path = require("path");
 */
 module.exports.io = io;
 //module.exports.server = server
-app.use(cors({ origin: "*" }));
+app.use(cors());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 require("./startup/logging")();
 require("./startup/routes")(app);
