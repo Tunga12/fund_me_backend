@@ -72,7 +72,7 @@ router.post("/pay", [auth], async (req, res) => {
       "https://app.ethiomobilemoney.et:2121/ammapi/payment/service-openup/toTradeWebPay",
       {
         method: "post",
-        body: JSON.stringify(requestMessage),
+        body: requestMessage,
         headers: { "Content-Type": "application/json" },
       }
     );
