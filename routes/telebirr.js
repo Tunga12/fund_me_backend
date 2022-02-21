@@ -46,7 +46,7 @@ router.post("/pay", [auth], async (req, res) => {
     totalAmount:
       req.body.donation.amount +
       (req.body.donation.amount * req.body.donation.tip) / 100,
-    receiveName: "Legas Fund",
+    receiveName: "Highlight software",
   };
   signObj.appKey = appKey;
   let stringA = jsonSort(signObj);
