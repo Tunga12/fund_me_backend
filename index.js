@@ -38,7 +38,16 @@ const path = require("path");
 */
 module.exports.io = io;
 //module.exports.server = server
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    allowedHeaders:
+      "Origin, Content-Type, Accept, Authorization, X-Request-With, x-auth-token",
+  })
+);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 require("./startup/logging")();
 require("./startup/routes")(app);
