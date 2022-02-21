@@ -18,7 +18,7 @@ const { Donation } = require("../models/donation");
 const { auth } = require("../middleware/auth");
 
 let publicKey =
-  "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
+  "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjVUzAaCSeM2C+1Bw9BK2QE9Z5PkdAgY4IuojenkbmitYtBYbN3fvuFBn/8/KlT1DtgFxuclfeYN+zngTQMezF9W7nFy5Yr4R3asaU30PyLYOS+sMbnorwsJemZ6aJi4OXp5srCFdSOk3zt+hHRzBcVDwBq5b1hEWDW21W5KkO0SrCabUiN8JS4K63De9X41OO4HAtoZgfqOz0RWJN3RcM/q2y0i86+ektaVKdyxmo2cEOjX0gYLEvm2mmehBoT3nKDrbZdRkP43iWp6VoBjd1DEqYxbjECqtclRK/eXt+I9DrXGos3HmIn5nh1PsNzB3N4PsSfvD2m6LBjBp8RyXlQIDAQAB";
 
 // sent form web app
 router.post("/pay", [auth], async (req, res) => {
@@ -32,21 +32,21 @@ router.post("/pay", [auth], async (req, res) => {
   let pendingDonation = new PendingDonation(req.body.donation);
   pendingDonation = await pendingDonation.save();
 
-  const appKey = "ffbf324b21974d778cec063f17aa1367";
+  const appKey = "3a533a5b9fac46be80a2bc59adeb29e2";
   let signObj = {
-    appId: "4347b88db6e64e0baa9e588acd42d50c",
+    appId: "c1bf3deacf954f05aba1ea7ee7fd4bbc",
     nonce: uuidv4(),
     notifyUrl: "http://178.62.55.81/api/telebirr/result",
     outTradeNo: pendingDonation._id,
     returnUrl: req.body.returnUrl,
-    shortCode: "410028",
+    shortCode: "500332",
     subject: req.body.subject,
     timeoutExpress: "30",
     timestamp: timestamp.now().toString(),
     totalAmount:
       req.body.donation.amount +
       (req.body.donation.amount * req.body.donation.tip) / 100,
-    receiveName: "Highlight Software Design",
+    receiveName: "Legas Fund",
   };
   signObj.appKey = appKey;
   let stringA = jsonSort(signObj);
@@ -61,8 +61,6 @@ router.post("/pay", [auth], async (req, res) => {
 
   console.log(`ussdJson: ${ussdjson}`);
 
-  // let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
-
   let ussd = rsa_encrypt(ussdjson, publicKey);
 
   let requestMessage = { appid: signObj.appId, sign: sign, ussd: ussd };
@@ -71,7 +69,7 @@ router.post("/pay", [auth], async (req, res) => {
 
   try {
     const response = await fetch(
-      "http://196.188.120.3:11443/service-openup/toTradeWebPay",
+      "https://app.ethiomobilemoney.et:2121/ammapi/payment/service-openup/toTradeWebPay",
       {
         method: "post",
         body: JSON.stringify(requestMessage),
@@ -103,58 +101,6 @@ router.post("/payMobile", [auth], async (req, res) => {
   pendingDonation = await pendingDonation.save();
 
   res.send(pendingDonation._id);
-
-  // const appKey = 'ffbf324b21974d778cec063f17aa1367';
-  // let signObj = {
-  //     "appId": "4347b88db6e64e0baa9e588acd42d50c",
-  //     "nonce": uuidv4(),
-  //     "notifyUrl": "http://178.62.55.81/api/telebirr/result",
-  //     "outTradeNo": pendingDonation._id,
-  //     "shortCode": "410028",
-  //     "subject": req.body.subject,
-  //     "timeoutExpress": "30",
-  //     "timestamp": timestamp.now().toString(),
-  //     "totalAmount": req.body.donation.amount + req.body.donation.tip,
-  //     "receiveName": "Highlight Software Design",
-  //     // "returnApp": { "PackageName": "cn.tydic.ethiopay", "Activity": "cn.tydic.ethiopay.PayForOtherAppActivity" }
-  //     "returnApp": "com.example.crowd_funding_app"
-  // };
-  // signObj.appKey = appKey;
-  // let stringA = jsonSort(signObj);
-
-  // console.log(`stringA: ${stringA}`)
-  // console.log(`returnApp= { "PackageName": "cn.tydic.ethiopay", "Activity": "cn.tydic.ethiopay.PayForOtherAppActivity" }`)
-
-  // let stringB = sha256(stringA);
-
-  // let sign = stringB.toUpperCase()
-
-  // let ussdjson = JSON.stringify(signObj);
-
-  // console.log(`ussdJson: ${ussdjson}`)
-
-  // let publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrmVHBX/5tMupOtOlInGEzmHspLSL+O5k5vFrdG3QVo7mZIH5U70hv50K/NVPP6HHBRkZkRkJkf9ZlxSbsU2/NnRpLEaa2V4xMqpJTANEg1BgIblGXDr6LaFLUI5/BSl1DYhEB5UQht1vYisokU2QPFV+9t8doSVe3woLnUKvx+QS9bAvvlEn1p9x7tMNSyb8afPWoN7LLBbey5PJdLV+GLELTi6vQl3h5vV97kmIJqAQYjKT/VagjbKos6hHjZIoNLt48Ohzt2dBqNFcqBRp86HWKu8mz+Mk5x+SRRdiIOlyrYnKq79FqFlbwzmLEiKKciXshyecPFGZV/TRpOD3QIDAQAB";
-
-  // let ussd = rsa_encrypt(ussdjson, publicKey);
-
-  // let requestMessage = { appid: signObj.appId, sign: sign, ussd: ussd };
-
-  // console.log(`request: ${JSON.stringify(requestMessage)}`);
-
-  // try {
-  //     const response = await fetch("http://196.188.120.3:11443/service-openup/toTradeMobielPay", {
-  //         method: 'post',
-  //         body: JSON.stringify(requestMessage),
-  //         headers: { 'Content-Type': 'application/json' }
-  //     });
-
-  //     const data = await response.json();
-  //     console.log(`response: ${data}`)
-
-  //     res.send(data);
-  // } catch (error) {
-  //     res.send(`Error: ${error}`)
-  // }
 });
 
 // sent from telebirr server
