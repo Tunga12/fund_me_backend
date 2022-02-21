@@ -77,8 +77,8 @@ router.post("/pay", [auth], async (req, res) => {
       }
     );
 
-    const data = await response.text();
-    console.log(`response: ${data}`);
+    const data = await response.json();
+    console.log(`response: ${JSON.stringify(data)}`);
 
     res.send(data);
   } catch (error) {
