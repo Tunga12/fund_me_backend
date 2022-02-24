@@ -20,7 +20,7 @@ function authSocket(socket,next){
 		const token = socket.handshake.query['token'];
 		jwt.verify(token,config.get('jwtPrivateKey'),function(err, decoded){
 			if(err){
-				console.log(err);
+				//console.log(err);
 				return next(new Error('Authentication error'));
 			}
 			socket.user = decoded;
