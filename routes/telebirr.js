@@ -110,7 +110,7 @@ router.post("/result", async (req, res) => {
   let result = rsa_decrypt(req.body, publicKey);
   result = JSON.parse(result);
 
-  console.log(`decrypted result: ${result.toString()}`);
+  console.log(`decrypted result: ${JSON.stringify(result)}`);
 
   // remove double quotes from first and last index
   //result.outTradeNo = result.outTradeNo.replaceAll("^\"|\"$", "");
