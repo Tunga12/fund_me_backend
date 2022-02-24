@@ -3541,3 +3541,5 @@
 {"message":"Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:526:11)\n    at ServerResponse.header (C:\\Users\\user\\Desktop\\fund_me_backend-main\\node_modules\\express\\lib\\response.js:771:10)\n    at ServerResponse.send (C:\\Users\\user\\Desktop\\fund_me_backend-main\\node_modules\\express\\lib\\response.js:170:12)\n    at C:\\Users\\user\\Desktop\\fund_me_backend-main\\routes\\telebirr.js:184:9","code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2022-02-24T09:28:33.077Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2022-02-24T10:06:38.615Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2022-02-24T10:06:38.677Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2022-02-24T10:18:47.151Z"}
+{"level":"info","message":"Connected to the database...","timestamp":"2022-02-24T10:18:47.211Z"}

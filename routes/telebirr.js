@@ -123,9 +123,11 @@ router.post("/result", async (req, res) => {
     // tradeStatus = 4
     if (result.tradeStatus == 4) {
       console.log("Payment is cancelled");
+      res.send({ code: 0, msg: "success" });
       return;
     } else {
       console.log("Payment not successful. Check phone message");
+      res.send({ code: 0, msg: "success" });
       return;
     }
   }
