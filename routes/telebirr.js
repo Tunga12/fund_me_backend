@@ -117,7 +117,9 @@ router.post("/result", async (req, res) => {
   result.outTradeNo = result.outTradeNo.split('"').join("");
 
   // whether the payment is sucessfull or not is indicated by the tradeStatus
+  console.log(`tradeStatus: ${result.tradeStatus}`);
   if (result.tradeStatus != 2) {
+    console.log("in tradeStatus if");
     // tradeStatus = 4
     if (result.tradeStatus == 4) {
       res.send("Payment is cancelled");

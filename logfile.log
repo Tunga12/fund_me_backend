@@ -3535,3 +3535,4 @@
 {"level":"info","message":"Connected to the database...","timestamp":"2022-02-21T11:55:10.192Z"}
 {"level":"info","message":"Listening on port 5000...","timestamp":"2022-02-21T11:56:19.551Z"}
 {"level":"info","message":"Connected to the database...","timestamp":"2022-02-21T11:56:19.617Z"}
+{"level":"info","message":"Listening on port 5000...","timestamp":"2022-02-24T09:26:38.555Z"}
