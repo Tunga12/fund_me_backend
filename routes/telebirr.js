@@ -170,6 +170,7 @@ router.post("/result", async (req, res) => {
           { _id: donation.memberId },
           { $inc: { "hasRaised.birr": donation.amount } }
         )
+        .remove("pendingDonation", { _id: pendingDonation._id })
         .run({ useMongoose: true })
         .then(function (results) {
           res.send({ code: 0, msg: "success" });
