@@ -116,6 +116,16 @@ router.post("/result", async (req, res) => {
   //result.outTradeNo = result.outTradeNo.replaceAll("^\"|\"$", "");
   result.outTradeNo = result.outTradeNo.split('"').join("");
 
+  // whether the payment is sucessfull or not is indicated by the tradeStatus
+  if (result.tradeStatus != 2) {
+    // tradeStatus = 4
+    if (result.tradeStatus == 4) {
+      res.send("Payment is cancelled");
+    } else {
+      res.send("Payment not successful. Check phone message");
+    }
+  }
+
   let pendingDonation = await PendingDonation.findById(result.outTradeNo);
 
   if (pendingDonation) {
