@@ -247,4 +247,22 @@ router.delete("/me", auth, async (req, res) => {
   //}
 });
 
+// Get user number in date range (for admin)
+router.post("/count", [auth, admin], async (req, res) => {
+  let startDate = req.body.startDate;
+  let endDate = req.body.endDate;
+
+  console.log(startDate);
+  console.log(endDate);
+
+  const count = await User.find({
+    date: {
+      $gte: new Date(startDate),
+      $lte: new Date(endDate),
+    },
+  }).countDocuments();
+
+  res.send({ count: count });
+});
+
 module.exports = router;
