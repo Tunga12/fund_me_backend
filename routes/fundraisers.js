@@ -369,9 +369,9 @@ router.post("/count", [auth, admin], async (req, res) => {
       $gte: new Date(startDate),
       $lte: new Date(endDate),
     },
-  }).count();
+  }).countDocuments();
 
-  res.send(count);
+  res.send({ count: count });
 });
 
 const population = [
