@@ -121,8 +121,8 @@ router.post("/totalRaised", [auth, admin], async (req, res) => {
   console.log(countDollar);
 
   res.send({
-    countBirr: countBirr[0].total,
-    countDollar: countDollar[0].total,
+    countBirr: countBirr.length != 0 ? countBirr[0].total : 0,
+    countDollar: countDollar.length != 0 ? countDollar[0].total : 0,
   });
 });
 
@@ -170,8 +170,8 @@ router.post("/totalTip", [auth, admin], async (req, res) => {
   ]);
 
   res.send({
-    countBirr: countBirr[0].total,
-    countDollar: countDollar[0].total,
+    countBirr: countBirr.length != 0 ? countBirr[0].total : 0,
+    countDollar: countDollar.length != 0 ? countDollar[0].total : 0,
   });
 });
 
