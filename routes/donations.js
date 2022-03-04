@@ -57,6 +57,24 @@ router.get("/donor/:uid", async (req, res) => {
   res.send(donations);
 });
 
+// Get donation number in date range (for admin)
+router.post("/count", [auth, admin], async (req, res) => {
+  let startDate = req.body.startDate;
+  let endDate = req.body.endDate;
+
+  console.log(startDate);
+  console.log(endDate);
+
+  const count = await Donation.find({
+    date: {
+      $gte: new Date(startDate),
+      $lte: new Date(endDate),
+    },
+  }).countDocuments();
+
+  res.send({ count: count });
+});
+
 // Post a donation
 router.post("/:fid", auth, async (req, res) => {
   let fund = await Fundraiser.findById(req.params.fid);
@@ -179,24 +197,6 @@ router.delete("/:id", auth, async (req, res) => {
   } catch (e) {
     res.status(500).send("Something went wrong");
   }
-});
-
-// Get donation number in date range (for admin)
-router.post("/count", [auth, admin], async (req, res) => {
-  let startDate = req.body.startDate;
-  let endDate = req.body.endDate;
-
-  console.log(startDate);
-  console.log(endDate);
-
-  const count = await Donation.find({
-    date: {
-      $gte: new Date(startDate),
-      $lte: new Date(endDate),
-    },
-  }).countDocuments();
-
-  res.send({ count: count });
 });
 
 module.exports = router;
