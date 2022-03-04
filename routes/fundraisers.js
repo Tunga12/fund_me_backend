@@ -366,8 +366,8 @@ router.post("/count", [auth, admin], async (req, res) => {
 
   const count = await Fundraiser.find({
     dateCreated: {
-      $gte: ISODate(startDate),
-      $lte: ISODate(endDate),
+      $gte: new Date(startDate),
+      $lte: new Date(endDate),
     },
   }).count();
 
