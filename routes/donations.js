@@ -118,7 +118,7 @@ router.post("/totalRaised", [auth, admin], async (req, res) => {
     },
   ]);
 
-  res.send({ countBirr: countBirr, countDollar: countDollar });
+  res.send({ countBirr: countBirr.total, countDollar: countDollar.total });
 });
 
 // Post a donation
