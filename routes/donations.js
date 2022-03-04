@@ -118,6 +118,8 @@ router.post("/totalRaised", [auth, admin], async (req, res) => {
     },
   ]);
 
+  console.log(countDollar);
+
   res.send({
     countBirr: countBirr[0].total,
     countDollar: countDollar[0].total,
