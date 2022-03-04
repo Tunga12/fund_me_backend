@@ -121,6 +121,52 @@ router.post("/totalRaised", [auth, admin], async (req, res) => {
   res.send({ countBirr: countBirr.total, countDollar: countDollar.total });
 });
 
+// Get total raised in date range (for admin)
+router.post("/totalTip", [auth, admin], async (req, res) => {
+  let startDate = req.body.startDate;
+  let endDate = req.body.endDate;
+
+  const countBirr = await Donation.aggregate([
+    {
+      $match: {
+        $and: [
+          { paymentMethod: "telebirr" },
+          { date: { $gte: new Date(startDate), $lte: new Date(endDate) } },
+        ],
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: "$tip",
+        },
+      },
+    },
+  ]);
+
+  const countDollar = await Donation.aggregate([
+    {
+      $match: {
+        $and: [
+          { paymentMethod: "paypal" },
+          { date: { $gte: new Date(startDate), $lte: new Date(endDate) } },
+        ],
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: "$tip",
+        },
+      },
+    },
+  ]);
+
+  res.send({ countBirr: countBirr.total, countDollar: countDollar.total });
+});
+
 // Post a donation
 router.post("/:fid", auth, async (req, res) => {
   let fund = await Fundraiser.findById(req.params.fid);
