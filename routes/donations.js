@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 const admin = require("../middleware/admin");
 
 //Fawn.init(mongoose);
-const router = express();
+const router = express.Router();
 
 // Get all donations (for admin)
 router.get("/", [auth, admin], async (req, res) => {

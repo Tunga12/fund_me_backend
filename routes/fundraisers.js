@@ -10,7 +10,7 @@ const { auth } = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const Fawn = require("fawn");
 
-const router = express();
+const router = express.Router();
 
 // Get popular fundraisers
 router.get("/popular", async (req, res) => {
