@@ -118,7 +118,10 @@ router.post("/totalRaised", [auth, admin], async (req, res) => {
     },
   ]);
 
-  res.send({ countBirr: countBirr.total, countDollar: countDollar.total });
+  res.send({
+    countBirr: countBirr[0].total,
+    countDollar: countDollar[0].total,
+  });
 });
 
 // Get total raised in date range (for admin)
@@ -164,7 +167,10 @@ router.post("/totalTip", [auth, admin], async (req, res) => {
     },
   ]);
 
-  res.send({ countBirr: countBirr.total, countDollar: countDollar.total });
+  res.send({
+    countBirr: countBirr[0].total,
+    countDollar: countDollar[0].total,
+  });
 });
 
 // Post a donation
