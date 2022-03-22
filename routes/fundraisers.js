@@ -374,6 +374,26 @@ router.post("/count", [auth, admin], async (req, res) => {
   res.send({ count: count });
 });
 
+// Get fundraisers with payments to make
+router.get("/payBirr", [auth, admin], async (req, res) => {
+  const toBePayed = await Fundraiser.find({
+    $where: "this.donations.length>0",
+    $where: "this.totalRaised.birr - this.totalPayed.birr > 0",
+  });
+
+  res.send(toBePayed);
+});
+
+// Get fundraisers with payments to make
+router.get("/payDollar", [auth, admin], async (req, res) => {
+  const toBePayed = await Fundraiser.find({
+    $where: "this.donations.length>0",
+    $where: "this.totalRaised.dollar - this.totalPayed.dollar > 0",
+  });
+
+  res.send(toBePayed);
+});
+
 const population = [
   { path: "donations", select: "date" },
   { path: "organizer", select: "isVerified" },

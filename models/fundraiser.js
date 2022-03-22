@@ -93,6 +93,17 @@ const fundraiserSchema = new mongoose.Schema({
 			default: 0
 		}
     },
+
+    totalPayed: {
+        dollar: {
+			type: Number,
+			default: 0
+		},
+		birr: {
+			type: Number,
+			default: 0
+		}
+    },
 	totalWithdraw:{
 		type:[{
 			amount:{

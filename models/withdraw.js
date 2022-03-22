@@ -29,6 +29,12 @@ const withdrawSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // add user because we need to see user name on admin side, i can get fundraiser.organizer / .beneficiary
+  // add fundraiser because we need fundraiser link on admin side
+  fundraiser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Fundraiser",
+  },
 });
 withdrawSchema.plugin(require("mongoose-paginate-v2"));
 const Withdraw = mongoose.model("Withdraw", withdrawSchema);
@@ -42,6 +48,7 @@ function validateWithdraw(withdraw) {
     reason: Joi.string(),
     date: Joi.date(),
     isDeleted: Joi.boolean(),
+    fundraiser: Joi.objectId().required(),
   });
 
   return schema.validate(withdraw);
