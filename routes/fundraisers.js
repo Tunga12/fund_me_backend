@@ -123,7 +123,7 @@ router.get("/payBirr", [auth, admin], async (req, res) => {
     .populate("organizer", "firstName lastName email isVerified");
 
   // only if withdrawal is accepted
-  var toBePayed = toBePayed.filter(function (el) {
+  toBePayed = toBePayed.filter(function (el) {
     return el.withdraw.status == "accepted";
   });
 
@@ -140,7 +140,7 @@ router.get("/payDollar", [auth, admin], async (req, res) => {
     .populate("organizer", "firstName lastName email isVerified");
 
   // only if withdrawal is accepted
-  var toBePayed = toBePayed.filter(function (el) {
+  toBePayed = toBePayed.filter(function (el) {
     return el.withdraw.status == "accepted";
   });
 
