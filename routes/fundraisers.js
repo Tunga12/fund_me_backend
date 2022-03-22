@@ -115,7 +115,7 @@ router.get("/member", auth, async (req, res) => {
 
 // Get fundraisers with payments to make
 router.get("/payBirr", [auth, admin], async (req, res) => {
-  const toBePayed = await Fundraiser.find({
+  let toBePayed = await Fundraiser.find({
     $where: "this.donations.length>0",
     $where: "this.totalRaised.birr - this.totalPayed.birr > 0",
   })
@@ -133,7 +133,7 @@ router.get("/payBirr", [auth, admin], async (req, res) => {
 
 // Get fundraisers with payments to make
 router.get("/payDollar", [auth, admin], async (req, res) => {
-  const toBePayed = await Fundraiser.find({
+  let toBePayed = await Fundraiser.find({
     $where: "this.donations.length>0",
     $where: "this.totalRaised.dollar - this.totalPayed.dollar > 0",
   })
