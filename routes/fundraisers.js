@@ -122,6 +122,11 @@ router.get("/payBirr", [auth, admin], async (req, res) => {
     .populate("withdraw")
     .populate("organizer", "firstName lastName email isVerified");
 
+  // only if withdrawal is accepted
+  var toBePayed = toBePayed.filter(function (el) {
+    return el.withdraw.status == "accepted";
+  });
+
   res.send(toBePayed);
 });
 
@@ -133,6 +138,11 @@ router.get("/payDollar", [auth, admin], async (req, res) => {
   })
     .populate("withdraw")
     .populate("organizer", "firstName lastName email isVerified");
+
+  // only if withdrawal is accepted
+  var toBePayed = toBePayed.filter(function (el) {
+    return el.withdraw.status == "accepted";
+  });
 
   res.send(toBePayed);
 });
