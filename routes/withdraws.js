@@ -171,12 +171,12 @@ router.get("/invitation/decline/:fid", async (req, res) => {
 });
 // Post a withdraw
 router.post("/", auth, async (req, res) => {
-  const fund = await Fundraiser.findById(req.params.fid);
-  if (!fund)
-    return res.status(404).send("A fundraiser with this id is not found");
-
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+
+  const fund = await Fundraiser.findById(req.body.fundraiser);
+  if (!fund)
+    return res.status(404).send("A fundraiser with this id is not found");
 
   if (req.body.isOrganizer === true) {
     if (fund.organizer.toString() != req.user._id.toString()) {
@@ -315,6 +315,7 @@ router.delete("/:id", auth, async (req, res) => {
 });
 const population = [
   { path: "beneficiary", select: "firstName lastName email" },
+  { path: "fundraiser", select: "organizer" },
 ];
 
 function toBeSent(withdraw) {
