@@ -124,7 +124,8 @@ router.get("/payBirr", [auth, admin], async (req, res) => {
 
   // only if withdrawal is accepted
   toBePayed = toBePayed.filter(function (el) {
-    return el.withdraw.status == "accepted";
+    // the first condition is to check that it is not undefined
+    return el.withdraw && el.withdraw.status == "accepted";
   });
 
   res.send(toBePayed);
@@ -141,7 +142,8 @@ router.get("/payDollar", [auth, admin], async (req, res) => {
 
   // only if withdrawal is accepted
   toBePayed = toBePayed.filter(function (el) {
-    return el.withdraw.status == "accepted";
+    // the first condition is to check that it is not undefined
+    return el.withdraw && el.withdraw.status == "accepted";
   });
 
   res.send(toBePayed);
