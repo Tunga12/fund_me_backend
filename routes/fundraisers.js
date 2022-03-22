@@ -118,7 +118,9 @@ router.get("/payBirr", [auth, admin], async (req, res) => {
   const toBePayed = await Fundraiser.find({
     $where: "this.donations.length>0",
     $where: "this.totalRaised.birr - this.totalPayed.birr > 0",
-  });
+  })
+    .populate("withdraw")
+    .populate("organizer", "firstName lastName email isVerified");
 
   res.send(toBePayed);
 });
@@ -128,7 +130,9 @@ router.get("/payDollar", [auth, admin], async (req, res) => {
   const toBePayed = await Fundraiser.find({
     $where: "this.donations.length>0",
     $where: "this.totalRaised.dollar - this.totalPayed.dollar > 0",
-  });
+  })
+    .populate("withdraw")
+    .populate("organizer", "firstName lastName email isVerified");
 
   res.send(toBePayed);
 });
