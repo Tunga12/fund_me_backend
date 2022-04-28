@@ -43,9 +43,7 @@ router.post("/pay", [auth], async (req, res) => {
     subject: req.body.subject,
     timeoutExpress: "30",
     timestamp: timestamp.now().toString(),
-    totalAmount:
-      req.body.donation.amount +
-      (req.body.donation.amount * req.body.donation.tip) / 100,
+    totalAmount: req.body.donation.amount + req.body.donation.tip,
     receiveName: "Legas",
   };
   signObj.appKey = appKey;
