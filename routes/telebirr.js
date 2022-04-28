@@ -39,14 +39,14 @@ router.post("/pay", [auth], async (req, res) => {
     notifyUrl: "http://178.62.55.81/api/telebirr/result",
     outTradeNo: pendingDonation._id,
     returnUrl: req.body.returnUrl,
-    shortCode: "500332",
+    shortCode: "500383",
     subject: req.body.subject,
     timeoutExpress: "30",
     timestamp: timestamp.now().toString(),
     totalAmount:
       req.body.donation.amount +
       (req.body.donation.amount * req.body.donation.tip) / 100,
-    receiveName: "Highlight software",
+    receiveName: "Legas",
   };
   signObj.appKey = appKey;
   let stringA = jsonSort(signObj);
