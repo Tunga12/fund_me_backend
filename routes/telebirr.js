@@ -15,6 +15,7 @@ const {
 const Fawn = require("fawn");
 const mongoose = require("mongoose");
 const { Donation } = require("../models/donation");
+const { PaymentInfo } = require("../models/paymentInfo");
 const { auth } = require("../middleware/auth");
 
 let publicKey =
@@ -32,19 +33,25 @@ router.post("/pay", [auth], async (req, res) => {
   let pendingDonation = new PendingDonation(req.body.donation);
   pendingDonation = await pendingDonation.save();
 
-  const appKey = "3a533a5b9fac46be80a2bc59adeb29e2";
+  // fetch paymentInfo
+  let paymentInfo = await PaymentInfo.findById(req.body.paymentInfo);
+
+  // const appKey = "3a533a5b9fac46be80a2bc59adeb29e2";
+  const appKey = paymentInfo.appKeyTelebirr;
   let signObj = {
-    appId: "c1bf3deacf954f05aba1ea7ee7fd4bbc",
+    appId: paymentInfo.appIdTelebirr,
+    // appId: "c1bf3deacf954f05aba1ea7ee7fd4bbc",
     nonce: uuidv4(),
     notifyUrl: "http://178.62.55.81/api/telebirr/result",
     outTradeNo: pendingDonation._id,
     returnUrl: req.body.returnUrl,
-    shortCode: "500383",
+    shortCode: paymentInfo.shortcodeTelebirr,
+    // shortCode: "500383",
     subject: req.body.subject,
     timeoutExpress: "30",
     timestamp: timestamp.now().toString(),
-    totalAmount: req.body.donation.amount + req.body.donation.tip,
-    receiveName: "Legas",
+    totalAmount: req.body.donation.amount,
+    receiveName: "Legas Fund",
   };
   signObj.appKey = appKey;
   let stringA = jsonSort(signObj);
