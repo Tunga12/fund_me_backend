@@ -30,8 +30,8 @@ router.get("/search/:shortcode", async (req, res) => {
   const paymentInfo = await PaymentInfo.findOne({
     shortcodeTelebirr: req.params.shortcode,
   });
-  if (!paymentInfo)
-    return res.status(404).send("PaymentInfo with the given ID was not found.");
+  // if (!paymentInfo)
+  //   return res.status(404).send("PaymentInfo with the given ID was not found.");
   res.send(paymentInfo);
 });
 
