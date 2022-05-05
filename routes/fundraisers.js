@@ -165,6 +165,7 @@ router.get("/:id", async (req, res) => {
     .populate("withdraw")
     .populate("organizer", "firstName lastName email isVerified")
     .populate("beneficiary", "firstName lastName email")
+    .populate("paymentInfo", "name")
     .populate({
       path: "teams",
       select: "id status",
