@@ -1,6 +1,6 @@
 const _ = require("lodash");
 const express = require("express");
-const { PaymentInfo, validate } = require("../models/PaymentInfo");
+const { PaymentInfo, validate } = require("../models/paymentInfo");
 const { auth } = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const mongoose = require("mongoose");
