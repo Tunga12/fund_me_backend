@@ -184,6 +184,7 @@ function validateFundraiser(fundraiser) {
     updates: Joi.array(),
     teams: Joi.array(),
     totalRaised: Joi.object(),
+    totalPayed: Joi.object(),
     totalWithdraw: Joi.array(),
     isPublished: Joi.boolean(),
     totalShareCount: Joi.number(),
@@ -196,6 +197,35 @@ function validateFundraiser(fundraiser) {
 
   return schema.validate(fundraiser);
 }
+
+// function validateUpdate(fundraiser) {
+//   const schema = Joi.object({
+//     title: Joi.string().min(5).max(50).required(),
+//     image: Joi.string().required(),
+//     goalAmount: Joi.number().required(),
+//     story: Joi.string().min(30).required(),
+//     category: Joi.objectId().required(),
+//     // location: Joi.object().required(),
+//     // dateCreated: Joi.date(),
+//     // organizer: Joi.objectId().required(),
+//     beneficiary: Joi.objectId(),
+//     withdraw: Joi.objectId(),
+//     // donations: Joi.array(),
+//     // updates: Joi.array(),
+//     teams: Joi.array(),
+//     // totalRaised: Joi.object(),
+//     // totalWithdraw: Joi.array(),
+//     isPublished: Joi.boolean(),
+//     totalShareCount: Joi.number(),
+//     likeCount: Joi.number(),
+//     likedBy: Joi.array(),
+//     isBlocked: Joi.boolean(),
+//     isDeleted: Joi.boolean(),
+//     // paymentInfo: Joi.objectId().required(),
+//   });
+
+//   return schema.validate(fundraiser);
+// }
 
 function getPagination(page, size) {
   const limit = size ? +size : 10;
