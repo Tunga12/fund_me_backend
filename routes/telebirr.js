@@ -47,11 +47,11 @@ router.post("/pay", [auth], async (req, res) => {
     returnUrl: req.body.returnUrl,
     shortCode: paymentInfo.shortcodeTelebirr,
     // shortCode: "500383",
-    subject: req.body.subject,
+    subject: `Donating for ${paymentInfo.name}`,
     timeoutExpress: "30",
     timestamp: timestamp.now().toString(),
     totalAmount: req.body.donation.amount,
-    receiveName: "Legas Fund",
+    receiveName: paymentInfo.name,
   };
   signObj.appKey = appKey;
   let stringA = jsonSort(signObj);
