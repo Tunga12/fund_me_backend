@@ -21,6 +21,61 @@ router.get("/", [auth, admin], async (req, res) => {
   res.send(donations);
 });
 
+// for fundraiser donations
+
+// get first donation of fundraiser
+router.get("/first/:fundId", async (req, res) => {
+  // check fundId
+
+  const donation = await Donation.find({
+    fundId: req.params.fundId,
+  })
+    .sort({ date: 1 })
+    .limit(1);
+
+  res.send(donation);
+});
+
+// get top donation of fundraiser
+router.get("/top/:fundId", async (req, res) => {
+  const donation = await Donation.find({
+    fundId: req.params.fundId,
+  })
+    .sort({ amount: -1 })
+    .limit(1);
+
+  res.send(donation);
+});
+
+//get donations with comment 5 at a time
+router.get("/withComments/:fundId", async (req, res) => {
+  const pageNumber = req.query.pageNumber;
+  const pageSize = 5;
+
+  const donations = await Donation.find({
+    fundId: req.params.fundId,
+    comment: { $ne: "" },
+  })
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize);
+
+  res.send(donations);
+});
+
+// get any donation (with or without comment) 5 at a time
+router.get("/all/:fundId", async (req, res) => {
+  const pageNumber = req.query.pageNumber;
+  const pageSize = 5;
+
+  const donations = await Donation.find({
+    fundId: req.params.fundId,
+  })
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize);
+
+  res.send(donations);
+});
+
 // Get donation by id
 router.get("/:id", async (req, res) => {
   const donation = await Donation.findOne({
@@ -297,61 +352,6 @@ router.delete("/:id", auth, async (req, res) => {
   } catch (e) {
     res.status(500).send("Something went wrong");
   }
-});
-
-// for fundraiser donations
-
-// get first donation of fundraiser
-router.get("/first/:fundId", async (req, res) => {
-  // check fundId
-
-  const donation = await Donation.find({
-    fundId: req.params.fundId,
-  })
-    .sort({ date: 1 })
-    .limit(1);
-
-  res.send(donation);
-});
-
-// get top donation of fundraiser
-router.get("/top/:fundId", async (req, res) => {
-  const donation = await Donation.find({
-    fundId: req.params.fundId,
-  })
-    .sort({ amount: -1 })
-    .limit(1);
-
-  res.send(donation);
-});
-
-//get donations with comment 5 at a time
-router.get("/withComments/:fundId", async (req, res) => {
-  const pageNumber = req.query.pageNumber;
-  const pageSize = 5;
-
-  const donations = await Donation.find({
-    fundId: req.params.fundId,
-    comment: { $ne: "" },
-  })
-    .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize);
-
-  res.send(donations);
-});
-
-// get any donation (with or without comment) 5 at a time
-router.get("/all/:fundId", async (req, res) => {
-  const pageNumber = req.query.pageNumber;
-  const pageSize = 5;
-
-  const donations = await Donation.find({
-    fundId: req.params.fundId,
-  })
-    .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize);
-
-  res.send(donations);
 });
 
 module.exports = router;
