@@ -27,6 +27,8 @@ router.get("/", [auth, admin], async (req, res) => {
 router.get("/first/:fundId", async (req, res) => {
   // check fundId
 
+  console.log("i am in first");
+
   const donation = await Donation.find({
     fundId: req.params.fundId,
   })
@@ -38,6 +40,8 @@ router.get("/first/:fundId", async (req, res) => {
 
 // get top donation of fundraiser
 router.get("/top/:fundId", async (req, res) => {
+  console.log("i am in top");
+
   const donation = await Donation.find({
     fundId: req.params.fundId,
   })
@@ -49,6 +53,8 @@ router.get("/top/:fundId", async (req, res) => {
 
 //get donations with comment 5 at a time
 router.get("/withComments/:fundId", async (req, res) => {
+  console.log("i am in withComments");
+
   const pageNumber = req.query.pageNumber;
   const pageSize = 5;
 
@@ -64,6 +70,8 @@ router.get("/withComments/:fundId", async (req, res) => {
 
 // get any donation (with or without comment) 5 at a time
 router.get("/all/:fundId", async (req, res) => {
+  console.log("i am in all");
+
   const pageNumber = req.query.pageNumber;
   const pageSize = 5;
 
