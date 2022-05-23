@@ -27,7 +27,7 @@ router.get("/", [auth, admin], async (req, res) => {
 router.get("/first/:fundId", async (req, res) => {
   // check fundId
 
-  console.log("i am in first");
+  console.log("i am in first " + req.params.fundId);
 
   const donation = await Donation.find({
     fundId: req.params.fundId,
