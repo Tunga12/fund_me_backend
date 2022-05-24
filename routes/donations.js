@@ -25,6 +25,51 @@ router.get("/", [auth, admin], async (req, res) => {
 
 // for fundraiser donations
 
+router.get("/getDonationsInfo/:fundId", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
+    return res.status(400).send("Invalid id");
+  }
+
+  const first = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  })
+    .sort({ date: 1 })
+    .limit(1);
+
+  const top = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  })
+    .sort({ amount: -1 })
+    .limit(1);
+
+  // the latest five donations with comments
+  const withComments = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+    comment: { $ne: "" },
+  })
+    .sort({ date: -1 })
+    .limit(5);
+
+  // the latest five donations (with or without comments)
+  const all = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  })
+    .sort({ date: -1 })
+    .limit(5);
+
+  const total = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  }).countDocuments();
+
+  res.send({
+    total: total,
+    first: first,
+    top: top,
+    withComments: withComments,
+    all: all,
+  });
+});
+
 // get first donation of fundraiser
 router.get("/first/:fundId", async (req, res) => {
   // check fundId
