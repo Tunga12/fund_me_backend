@@ -65,8 +65,14 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
     fundId: ObjectId(req.params.fundId),
   }).countDocuments();
 
+  const totalComments = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+    comment: { $ne: "" },
+  }).countDocuments();
+
   res.send({
     total: total,
+    totalComments: totalComments,
     first: first,
     top: top,
     withComments: withComments,
@@ -75,35 +81,35 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
 });
 
 // get first donation of fundraiser
-router.get("/first/:fundId", async (req, res) => {
-  // check fundId
-  if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
-    return res.status(400).send("Invalid id");
-  }
+// router.get("/first/:fundId", async (req, res) => {
+//   // check fundId
+//   if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
+//     return res.status(400).send("Invalid id");
+//   }
 
-  const donation = await Donation.find({
-    fundId: ObjectId(req.params.fundId),
-  })
-    .sort({ date: 1 })
-    .limit(1);
+//   const donation = await Donation.find({
+//     fundId: ObjectId(req.params.fundId),
+//   })
+//     .sort({ date: 1 })
+//     .limit(1);
 
-  res.send(donation);
-});
+//   res.send(donation);
+// });
 
 // get top donation of fundraiser
-router.get("/top/:fundId", async (req, res) => {
-  // check fundId
-  if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
-    return res.status(400).send("Invalid id");
-  }
-  const donation = await Donation.find({
-    fundId: ObjectId(req.params.fundId),
-  })
-    .sort({ amount: -1 })
-    .limit(1);
+// router.get("/top/:fundId", async (req, res) => {
+//   // check fundId
+//   if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
+//     return res.status(400).send("Invalid id");
+//   }
+//   const donation = await Donation.find({
+//     fundId: ObjectId(req.params.fundId),
+//   })
+//     .sort({ amount: -1 })
+//     .limit(1);
 
-  res.send(donation);
-});
+//   res.send(donation);
+// });
 
 //get donations with comment 5 at a time
 router.get("/withComments/:fundId", async (req, res) => {
@@ -120,7 +126,8 @@ router.get("/withComments/:fundId", async (req, res) => {
   })
     .sort({ date: -1 })
     .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize);
+    .limit(pageSize)
+    .populate("userId", "firstName lastName");
 
   res.send(donations);
 });
@@ -139,7 +146,8 @@ router.get("/all/:fundId", async (req, res) => {
   })
     .sort({ date: -1 })
     .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize);
+    .limit(pageSize)
+    .populate("userId", "firstName lastName");
 
   res.send(donations);
 });
