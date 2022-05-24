@@ -34,13 +34,15 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
     fundId: ObjectId(req.params.fundId),
   })
     .sort({ date: 1 })
-    .limit(1);
+    .limit(1)
+    .populate("userId", "firstName lastName");
 
   const top = await Donation.find({
     fundId: ObjectId(req.params.fundId),
   })
     .sort({ amount: -1 })
-    .limit(1);
+    .limit(1)
+    .populate("userId", "firstName lastName");
 
   // the latest five donations with comments
   const withComments = await Donation.find({
@@ -48,14 +50,16 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
     comment: { $ne: "" },
   })
     .sort({ date: -1 })
-    .limit(5);
+    .limit(5)
+    .populate("userId", "firstName lastName");
 
   // the latest five donations (with or without comments)
   const all = await Donation.find({
     fundId: ObjectId(req.params.fundId),
   })
     .sort({ date: -1 })
-    .limit(5);
+    .limit(5)
+    .populate("userId", "firstName lastName");
 
   const total = await Donation.find({
     fundId: ObjectId(req.params.fundId),
