@@ -61,6 +61,13 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
     .limit(5)
     .populate("userId", "firstName lastName");
 
+  const allTop = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  })
+    .sort({ amount: -1 })
+    .limit(5)
+    .populate("userId", "firstName lastName");
+
   const total = await Donation.find({
     fundId: ObjectId(req.params.fundId),
   }).countDocuments();
@@ -71,12 +78,13 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
   }).countDocuments();
 
   res.send({
-    total: total,
-    totalComments: totalComments,
-    first: first,
-    top: top,
-    withComments: withComments,
-    all: all,
+    total: total, // total donations number
+    totalComments: totalComments, // total donations with comments number
+    first: first, // first donation array
+    top: top, // top donation array
+    withComments: withComments, // all donations with comments
+    all: all, // all donations ordered by date, latest
+    allTop: allTop, // all donations ordered by greatest amount
   });
 });
 
