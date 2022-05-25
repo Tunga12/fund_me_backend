@@ -83,6 +83,7 @@ router.get("/getDonationsInfo/:fundId", async (req, res) => {
     first: first, // first donation array
     top: top, // top donation array
     withComments: withComments, // all donations with comments
+    // these two are not needed on mobile
     all: all, // all donations ordered by date, latest
     allTop: allTop, // all donations ordered by greatest amount
   });
