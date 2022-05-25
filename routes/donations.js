@@ -161,6 +161,26 @@ router.get("/all/:fundId", async (req, res) => {
   res.send(donations);
 });
 
+// get all donations ordered by highest amount
+router.get("/allTop/:fundId", async (req, res) => {
+  // check fundId
+  if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
+    return res.status(400).send("Invalid id");
+  }
+  const pageNumber = parseInt(req.query.pageNumber);
+  const pageSize = 5;
+
+  const donations = await Donation.find({
+    fundId: ObjectId(req.params.fundId),
+  })
+    .sort({ amount: -1 })
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize)
+    .populate("userId", "firstName lastName");
+
+  res.send(donations);
+});
+
 // Get donation by id
 router.get("/:id", async (req, res) => {
   const donation = await Donation.findOne({
