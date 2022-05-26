@@ -3,14 +3,27 @@ const nodeCron = require("node-cron");
 const express = require("express");
 const crypto = require("crypto");
 const NodeRSA = require("node-rsa");
+const fs = require("fs");
 const app = express();
 const cors = require("cors");
 const { Server } = require("socket.io");
 const http = require("http");
-let server = http.createServer(app);
+let server = http.createServer(
+  {
+    key: fs.readFileSync(
+      "/etc/letsencrypt/live/legasfund.com/privkey.pem"
+    ),
+    cert: fs.readFileSync(
+      "/etc/letsencrypt/live/legasfund.com/fullchain.pem"
+    ),
+    //  requestCert: false,
+    //  rejectUnauthorized: false
+  },
+  app
+);
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["highlight-group.com", "localhost:4200"],
+    origin: ["legasfund.com", "localhost:4200"],
     credentials: true,
   },
 });
@@ -20,9 +33,9 @@ const path = require("path");
 {
   origins: [
     "*:*",
-    "http://highlight-group.com",
+    "https://legasfund.com",
     "http://localhost:4200",
-    "http://178.62.55.81",
+    "https://legasfund.com",
   ],
 
   handlePreflightRequest: (req, res) => {

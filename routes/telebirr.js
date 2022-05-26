@@ -42,7 +42,7 @@ router.post("/pay", [auth], async (req, res) => {
     appId: paymentInfo.appIdTelebirr,
     // appId: "c1bf3deacf954f05aba1ea7ee7fd4bbc",
     nonce: uuidv4(),
-    notifyUrl: "http://178.62.55.81/api/telebirr/result",
+    notifyUrl: "https://legasfund.com/api/telebirr/result",
     outTradeNo: pendingDonation._id,
     returnUrl: req.body.returnUrl,
     shortCode: paymentInfo.shortcodeTelebirr,
