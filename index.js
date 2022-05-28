@@ -7,7 +7,7 @@ const fs = require("fs");
 const app = express();
 const cors = require("cors");
 const { Server } = require("socket.io");
-const http = require("http");
+const http = require("https");
 let server = http.createServer(
   {
     key: fs.readFileSync(
