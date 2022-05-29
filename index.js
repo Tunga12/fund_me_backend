@@ -12,8 +12,8 @@ let server = http.createServer(
   {
     key: fs.readFileSync("/etc/letsencrypt/live/legasfund.com/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/legasfund.com/fullchain.pem"),
-    requestCert: false,
-    rejectUnauthorized: false,
+    // requestCert: false,
+    // rejectUnauthorized: false,
   },
   app
 );
