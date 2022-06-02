@@ -190,7 +190,7 @@ router.get("/total/:fundId", async (req, res) => {
     fundId: ObjectId(req.params.fundId),
   }).countDocuments();
 
-  res.send(total);
+  res.send({ total: total });
 });
 
 // Get donation by id
