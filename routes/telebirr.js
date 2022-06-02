@@ -147,7 +147,7 @@ router.post("/result", async (req, res) => {
 
     const id = pendingDonation.fundId;
 
-    delete pendingDonation.fundId;
+    // delete pendingDonation.fundId;
 
     let donation = pendingDonation;
     // let donation = new Donation(pendingDonation);
