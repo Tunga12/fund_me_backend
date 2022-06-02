@@ -185,7 +185,7 @@ router.get("/allTop/:fundId", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const donation = await Donation.findOne({
     _id: req.params.id,
-    isDeleted: false,
+    // isDeleted: false,
   })
     .select("-isDeleted")
     .populate("userId", "firstName lastName email");
