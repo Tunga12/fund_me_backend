@@ -173,7 +173,7 @@ router.get("/allTop/:fundId", async (req, res) => {
   const donations = await Donation.find({
     fundId: ObjectId(req.params.fundId),
   })
-    .sort({ amount: -1 , date: -1})
+    .sort({ amount: -1, date: -1 })
     .skip((pageNumber - 1) * pageSize)
     .limit(pageSize)
     .populate("userId", "firstName lastName");
@@ -181,8 +181,7 @@ router.get("/allTop/:fundId", async (req, res) => {
   res.send(donations);
 });
 
-router.get('/total/:fundId', async (req, res)=> {
-
+router.get("/total/:fundId", async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.fundId)) {
     return res.status(400).send("Invalid id");
   }
@@ -190,7 +189,9 @@ router.get('/total/:fundId', async (req, res)=> {
   const total = await Donation.find({
     fundId: ObjectId(req.params.fundId),
   }).countDocuments();
-})
+
+  res.send(total);
+});
 
 // Get donation by id
 router.get("/:id", async (req, res) => {
