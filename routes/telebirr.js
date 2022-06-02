@@ -22,7 +22,7 @@ let publicKey =
   "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjVUzAaCSeM2C+1Bw9BK2QE9Z5PkdAgY4IuojenkbmitYtBYbN3fvuFBn/8/KlT1DtgFxuclfeYN+zngTQMezF9W7nFy5Yr4R3asaU30PyLYOS+sMbnorwsJemZ6aJi4OXp5srCFdSOk3zt+hHRzBcVDwBq5b1hEWDW21W5KkO0SrCabUiN8JS4K63De9X41OO4HAtoZgfqOz0RWJN3RcM/q2y0i86+ektaVKdyxmo2cEOjX0gYLEvm2mmehBoT3nKDrbZdRkP43iWp6VoBjd1DEqYxbjECqtclRK/eXt+I9DrXGos3HmIn5nh1PsNzB3N4PsSfvD2m6LBjBp8RyXlQIDAQAB";
 
 // sent form web app
-router.post("/pay", [auth], async (req, res) => {
+router.post("/pay", async (req, res) => {
   console.log(`pay: ${JSON.stringify(req.body)}`);
 
   req.body.donation.userId = req.user._id;
@@ -92,7 +92,7 @@ router.post("/pay", [auth], async (req, res) => {
 });
 
 // sent form web app
-router.post("/payMobile", [auth], async (req, res) => {
+router.post("/payMobile", async (req, res) => {
   // validate request
 
   console.log(`pay: ${JSON.stringify(req.body)}`);
@@ -185,13 +185,16 @@ router.post("/result", async (req, res) => {
 
           // log the error which caused the failure
           console.log(err);
+          res.send({ code: 0, msg: "success" });
         });
     } else {
       console.log("Payment method is not telebirr!!!");
+      res.send({ code: 0, msg: "success" });
     }
   } else {
     console.log("pending donation doesn't exist");
-    res.send("pending donation doesn't exist");
+    // res.send("pending donation doesn't exist");
+    res.send({ code: 0, msg: "success" });
   }
 });
 
