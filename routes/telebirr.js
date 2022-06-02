@@ -25,7 +25,7 @@ let publicKey =
 router.post("/pay", async (req, res) => {
   console.log(`pay: ${JSON.stringify(req.body)}`);
 
-  req.body.donation.userId = req.user._id;
+  req.body.donation.userId = req.user ? req.user._id : null;
   // validate request
   const { error } = validatePayReq(req.body);
   if (error) return res.status(400).send(error.details[0].message);
