@@ -56,7 +56,7 @@ function validatePaymentRequest(pay) {
     subject: Joi.string().required(),
     // totalAmount: Joi.number().required(),
     donation: Joi.object({
-      userId: Joi.objectId(),
+      userId: Joi.objectId().allow(null),
       memberId: Joi.objectId().required(),
       name: Joi.string(),
       fundId: Joi.objectId().required(),
