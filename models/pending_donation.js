@@ -12,6 +12,9 @@ const donationSchema = new mongoose.Schema({
     ref: "TeamMember",
     required: true,
   },
+  name: {
+    type: String,
+  },
   // added here
   fundId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -55,6 +58,7 @@ function validatePaymentRequest(pay) {
     donation: Joi.object({
       userId: Joi.objectId().required(),
       memberId: Joi.objectId().required(),
+      name: Joi.string(),
       fundId: Joi.objectId().required(),
       amount: Joi.number().required(),
       tip: Joi.number().required(),
