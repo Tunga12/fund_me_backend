@@ -50,7 +50,7 @@ const Donation = mongoose.model("Donation", donationSchema);
 
 function validateDonation(donation) {
   const schema = Joi.object({
-    userId: Joi.objectId().required(),
+    userId: Joi.objectId().allow(null),
     memberId: Joi.objectId().required(),
     name: Joi.string(),
     amount: Joi.number().required(),

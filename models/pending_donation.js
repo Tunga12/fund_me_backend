@@ -56,7 +56,7 @@ function validatePaymentRequest(pay) {
     subject: Joi.string().required(),
     // totalAmount: Joi.number().required(),
     donation: Joi.object({
-      userId: Joi.objectId().required(),
+      userId: Joi.objectId(),
       memberId: Joi.objectId().required(),
       name: Joi.string(),
       fundId: Joi.objectId().required(),
@@ -77,7 +77,7 @@ function validatePaymentMobile(pay) {
   const schema = Joi.object({
     subject: Joi.string().required(),
     donation: Joi.object({
-      userId: Joi.objectId().required(),
+      userId: Joi.objectId().allow(null),
       memberId: Joi.objectId().required(),
       fundId: Joi.objectId().required(),
       amount: Joi.number().required(),
