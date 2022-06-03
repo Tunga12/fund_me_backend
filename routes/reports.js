@@ -50,7 +50,8 @@ router.post("/", auth, async (req, res) => {
     userId: req.body.userId,
   });
 
-  if (report) return res.send("You have already reported this fundraiser.");
+  if (report)
+    return res.status(400).send("You have already reported this fundraiser.");
 
   report = new Report(req.body);
   report = await report.save();
