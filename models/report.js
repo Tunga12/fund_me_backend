@@ -86,7 +86,7 @@ function validateReport(report) {
     email: Joi.string().email().required(),
     fundraiserId: Joi.objectId().required(),
     knowsOrganizer: Joi.boolean().required(),
-    knowsDescription: Joi.string(),
+    knowsDescription: Joi.string().allow(""),
     reasonType: Joi.objectId().required(),
     reasonDescription: Joi.string().required(),
     userId: Joi.objectId().required(),
