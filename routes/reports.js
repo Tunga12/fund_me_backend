@@ -28,6 +28,51 @@ router.get("/", [auth, admin], async (req, res) => {
   });
 });
 
+//get reports grouped by fundraiser
+router.get("/byFund", [auth, admin], async (req, res) => {
+  // returns _id: the fundraiser id
+  // count: the number of reports for that fundraising
+  // fund: an array containing the fundraiser title and totalRaised
+  const reportsByFund = Report.aggregate([
+    {
+      $match: {
+        status: "pending",
+      },
+    },
+    {
+      $group: {
+        _id: "$fundraiserId",
+        count: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $sort: {
+        count: -1,
+        date: -1,
+      },
+    },
+    {
+      $lookup: {
+        from: "fundraisers",
+        localField: "_id",
+        foreignField: "_id",
+        as: "fund",
+      },
+    },
+    {
+      $project: {
+        "fund.title": 1,
+        "fund.totalRaised": 1,
+        count: 1,
+      },
+    },
+  ]);
+
+  res.send(reportsByFund);
+});
+
 router.get("/:id", [auth, admin], async (req, res) => {
   const report = await Report.findOne({ _id: req.params.id }).populate(
     "reasonType",
@@ -93,51 +138,6 @@ router.delete("/:id", auth, async (req, res) => {
     return res.status(404).send("Report with the given ID was not found.");
 
   res.send("Report is deleted");
-});
-
-//get reports grouped by fundraiser
-router.get("/byFund", async (req, res) => {
-  // returns _id: the fundraiser id
-  // count: the number of reports for that fundraising
-  // fund: an array containing the fundraiser title and totalRaised
-  const reportsByFund = Report.aggregate([
-    {
-      $match: {
-        status: "pending",
-      },
-    },
-    {
-      $group: {
-        _id: "$fundraiserId",
-        count: {
-          $sum: 1,
-        },
-      },
-    },
-    {
-      $sort: {
-        count: -1,
-        date: -1,
-      },
-    },
-    {
-      $lookup: {
-        from: "fundraisers",
-        localField: "_id",
-        foreignField: "_id",
-        as: "fund",
-      },
-    },
-    {
-      $project: {
-        "fund.title": 1,
-        "fund.totalRaised": 1,
-        count: 1,
-      },
-    },
-  ]);
-
-  res.send(reportsByFund);
 });
 
 module.exports = router;
