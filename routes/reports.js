@@ -44,7 +44,15 @@ router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let report = new Report(req.body);
+  // has the user filled a report on this fundraising before
+  let report = await Report.findOne({
+    fundraiserId: req.body.fundraiserId,
+    userId: req.body.userId,
+  });
+
+  if (report) return res.send("You have already reported this fundraiser.");
+
+  report = new Report(req.body);
   report = await report.save();
 
   res.send(report);

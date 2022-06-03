@@ -39,8 +39,9 @@ const reportSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  url: {
-    type: String,
+  fundraiserId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Fundraiser",
     required: true,
   },
   knowsOrganizer: {
@@ -83,7 +84,7 @@ function validateReport(report) {
     name: Joi.string().required(),
     phone: Joi.string().min(10).required(),
     email: Joi.string().email().required(),
-    url: Joi.string().required(),
+    fundraiserId: Joi.objectId().required(),
     knowsOrganizer: Joi.boolean().required(),
     knowsDescription: Joi.string(),
     reasonType: Joi.objectId().required(),
