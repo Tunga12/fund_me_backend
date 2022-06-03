@@ -33,7 +33,7 @@ router.get("/byFund", [auth, admin], async (req, res) => {
   // returns _id: the fundraiser id
   // count: the number of reports for that fundraising
   // fund: an array containing the fundraiser title and totalRaised
-  const reportsByFund = Report.aggregate([
+  const reportsByFund = await Report.aggregate([
     {
       $match: {
         status: "pending",
