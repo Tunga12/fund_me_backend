@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.23.0",
     "bcrypt": "^5.0.1",
+    "child_process": "^1.0.2",
     "compression": "^1.7.4",
     "config": "^3.3.6",
     "cors": "^2.8.5",

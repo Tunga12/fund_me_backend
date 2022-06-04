@@ -37,7 +37,7 @@ async function scheduler() {
             notificationType: "Donation",
             recipients: recp,
             title: `${fund.title}[Donation]`,
-            content: `A total amount of money donated today is ${totalRaisedD}dollar and ${totalRaisedB}birr.'`,
+            content: `The total amount of money donated today is ${totalRaisedD} dollar and ${totalRaisedB} birr.'`,
             target: fund._id,
           });
           totalRaisedB = 0;
