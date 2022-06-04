@@ -69,8 +69,8 @@ const job = nodeCron.schedule("0 55 20 * * *", scheduler);
 
 const { backupMongoDB } = require("./startup/backup");
 
-// Scheduling the backup every day at 3am (9 lelit in ethiopia time)
-const task = nodeCron.schedule("0 3 * * *", backupMongoDB);
+// Scheduling the backup every week at 3am on wednesday (9 lelit in ethiopia time)
+const task = nodeCron.schedule("0 3 * * 3", backupMongoDB);
 
 task.start();
 
