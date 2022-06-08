@@ -15,6 +15,12 @@ const donationSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  email: {
+    type: String,
+    minlength: 5,
+    maxlength: 255,
+    required: true,
+  },
   // added here
   fundId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -58,7 +64,8 @@ function validatePaymentRequest(pay) {
     donation: Joi.object({
       userId: Joi.objectId().allow(null),
       memberId: Joi.objectId().required(),
-      name: Joi.string(),
+      name: Joi.string().required(),
+      email: Joi.string().min(5).max(255).required().email().required(),
       fundId: Joi.objectId().required(),
       amount: Joi.number().required(),
       tip: Joi.number().required(),
